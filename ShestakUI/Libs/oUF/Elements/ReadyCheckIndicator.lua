@@ -1,0 +1,120 @@
+local _, ns = ...
+local oUF = ns.oUF
+local Private = oUF.Private
+
+local unitExists = Private.unitExists
+
+local function OnFinished(self)
+	local element = self:GetParent()
+	element:Hide()
+
+	--[[ Callback: ReadyCheckIndicator:PostUpdateFadeOut()
+	Called after the element has been faded out.
+
+	* self - the ReadyCheckIndicator element
+	--]]
+	if(element.PostUpdateFadeOut) then
+		element:PostUpdateFadeOut()
+	end
+end
+
+local function Update(self, event)
+	local element = self.ReadyCheckIndicator
+	local unit = self.__unit
+
+	--[[ Callback: ReadyCheckIndicator:PreUpdate()
+	Called before the element has been updated.
+
+	* self - the ReadyCheckIndicator element
+	--]]
+	if(element.PreUpdate) then
+		element:PreUpdate()
+	end
+
+	local status = GetReadyCheckStatus(unit)
+	if(unitExists(unit) and status) then
+		if(status == 'ready') then
+			element:SetAtlas('UI-LFG-ReadyMark-Raid', element.useAtlasSize)
+		elseif(status == 'notready') then
+			element:SetAtlas('UI-LFG-DeclineMark-Raid', element.useAtlasSize)
+		else
+			element:SetAtlas('UI-LFG-PendingMark-Raid', element.useAtlasSize)
+		end
+
+		element:Show()
+	elseif(event ~= 'READY_CHECK_FINISHED') then
+		status = nil
+		element:Hide()
+	end
+
+	if(event == 'READY_CHECK_FINISHED') then
+		if(status == 'waiting') then
+			element:SetAtlas('UI-LFG-DeclineMark-Raid', element.useAtlasSize)
+		end
+
+		element.Animation:Play()
+	end
+
+	--[[ Callback: ReadyCheckIndicator:PostUpdate(status)
+	Called after the element has been updated.
+
+	* self   - the ReadyCheckIndicator element
+	* status - the unit's ready check status (string?)['ready', 'notready', 'waiting']
+	--]]
+	if(element.PostUpdate) then
+		return element:PostUpdate(status)
+	end
+end
+
+local function Path(self, ...)
+	--[[ Override: ReadyCheckIndicator.Override(self, event, ...)
+	Used to completely override the internal update function.
+
+	* self  - the parent object
+	* event - the event triggering the update (string)
+	* ...   - the arguments accompanying the event
+	--]]
+	return (self.ReadyCheckIndicator.Override or Update) (self, ...)
+end
+
+local function ForceUpdate(element)
+	return Path(element.__owner, 'ForceUpdate')
+end
+
+local function Enable(self, unit)
+	local element = self.ReadyCheckIndicator
+	unit = unit and unit:match('(%a+)%d*$')
+	if(element and (unit == 'party' or unit == 'raid')) then
+		element.__owner = self
+		element.ForceUpdate = ForceUpdate
+
+		local AnimationGroup = element:CreateAnimationGroup()
+		AnimationGroup:SetScript('OnFinished', OnFinished)
+		element.Animation = AnimationGroup
+
+		local Animation = AnimationGroup:CreateAnimation('Alpha')
+		Animation:SetFromAlpha(1)
+		Animation:SetToAlpha(0)
+		Animation:SetDuration(element.fadeTime or 1.5)
+		Animation:SetStartDelay(element.finishedTime or 10)
+
+		self:RegisterEvent('READY_CHECK', Path, true)
+		self:RegisterEvent('READY_CHECK_CONFIRM', Path, true)
+		self:RegisterEvent('READY_CHECK_FINISHED', Path, true)
+
+		return true
+	end
+end
+
+local function Disable(self)
+	local element = self.ReadyCheckIndicator
+	if(element) then
+		element:Hide()
+
+		self:UnregisterEvent('READY_CHECK', Path)
+		self:UnregisterEvent('READY_CHECK_CONFIRM', Path)
+		self:UnregisterEvent('READY_CHECK_FINISHED', Path)
+	end
+end
+
+oUF:AddElement('ReadyCheckIndicator', Path, Enable, Disable)

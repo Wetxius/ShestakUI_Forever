@@ -1,0 +1,110 @@
+local T, C, L = unpack(ShestakUI)
+if C.minimap.enable ~= true or C.skins.minimap_buttons ~= true then return end
+
+----------------------------------------------------------------------------------------
+--	Collect minimap buttons in one line
+----------------------------------------------------------------------------------------
+local BlackList = {
+	["QueueStatusButton"] = true,
+	["MiniMapTracking"] = true,
+	["MiniMapMailFrame"] = true,
+	["HelpOpenTicketButton"] = true,
+	["GameTimeFrame"] = true,
+}
+
+local buttons = {}
+local collectFrame = CreateFrame("Frame", "ButtonCollectFrame", UIParent)
+local line = math.ceil(C.minimap.size / 20.8)
+collectFrame.col = 1	-- for minimap on top option
+
+local texList = {
+	["136430"] = true,	-- Interface\\Minimap\\MiniMap-TrackingBorder
+	["136467"] = true,	-- Interface\\Minimap\\UI-Minimap-Background
+}
+
+local function SkinButton(f)
+	f:SetPushedTexture(0)
+	f:SetHighlightTexture(0)
+	f:SetDisabledTexture(0)
+	f:SetSize(20.8, 20.8)
+
+	for i = 1, f:GetNumRegions() do
+		local region = select(i, f:GetRegions())
+		if region:IsVisible() and region:GetObjectType() == "Texture" then
+			local tex = tostring(region:GetTexture())
+
+			if tex and (texList[tex] or tex:find("Border") or tex:find("Background") or tex:find("AlphaMask")) then
+				region:SetTexture(nil)
+			else
+				region:ClearAllPoints()
+				region:SetPoint("TOPLEFT", f, "TOPLEFT", 2, -2)
+				region:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -2, 2)
+				region:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				region:SetDrawLayer("ARTWORK")
+				if f:GetName() == "PS_MinimapButton" then
+					region.SetPoint = T.dummy
+				end
+			end
+		end
+	end
+
+	f:SetTemplate("ClassColor")
+end
+
+local function PositionAndStyle()
+	collectFrame:SetSize(20.8, 20.8)
+	collectFrame:SetPoint(unpack(C.position.minimap_buttons))
+	for i = 1, #buttons do
+		local f = buttons[i]
+		f:ClearAllPoints()
+		if i == 1 then
+			f:SetPoint("TOP", collectFrame, "TOP", 0, 0)
+		elseif i == line then
+			f:SetPoint("TOPRIGHT", buttons[1], "TOPLEFT", -1, 0)
+			collectFrame.col = 2
+		else
+			f:SetPoint("TOP", buttons[i-1], "BOTTOM", 0, -1)
+		end
+		f.ClearAllPoints = T.dummy
+		f.SetPoint = T.dummy
+		if C.skins.minimap_buttons_mouseover then
+			f:SetAlpha(0)
+			f:HookScript("OnEnter", function()
+				f:FadeIn()
+			end)
+			f:HookScript("OnLeave", function()
+				f:FadeOut()
+			end)
+		end
+		SkinButton(f)
+	end
+end
+
+local function skinButton()
+	for _, child in ipairs({Minimap:GetChildren()}) do
+		if not BlackList[child:GetName()] then
+			if child:GetObjectType() == "Button" and child:GetNumRegions() >= 3 and child:IsShown() then
+				child:SetParent(collectFrame)
+				tinsert(buttons, child)
+			end
+		end
+	end
+	if #buttons == 0 then
+		collectFrame:Hide()
+	end
+	PositionAndStyle()
+
+	if WIM3MinimapButton and WIM3MinimapButton:GetParent() == UIParent then
+		SkinButton(WIM3MinimapButton)
+		WIM3MinimapButton.backGround:Hide()
+	end
+end
+
+local collect = CreateFrame("Frame")
+collect:RegisterEvent("PLAYER_ENTERING_WORLD")
+collect:SetScript("OnEvent", function()
+	C_Timer.After(1, function() -- Details icon not working with PLAYER_ENTERING_WORLD after reload
+		skinButton()
+	end)
+	collect:UnregisterEvent("PLAYER_ENTERING_WORLD")
+end)

@@ -1,0 +1,80 @@
+local _, ns = ...
+local oUF = ns.oUF
+
+local function Update(self, event)
+	local element = self.Range
+	local unit = self.__unit
+
+	--[[ Callback: Range:PreUpdate()
+	Called before the element has been updated.
+
+	* self - the Range element
+	--]]
+	if(element.PreUpdate) then
+		element:PreUpdate()
+	end
+
+	local inRange
+	local isEligible = UnitIsConnected(unit) and UnitInParty(unit)
+	if(isEligible) then
+		inRange = UnitInRange(unit)
+		self:SetAlphaFromBoolean(inRange, element.insideAlpha, element.outsideAlpha)
+	else
+		self:SetAlpha(element.insideAlpha)
+	end
+
+	--[[ Callback: Range:PostUpdate(object, inRange, isEligible)
+	Called after the element has been updated.
+
+	* self       - the Range element
+	* object     - the parent object
+	* inRange    - indicates if the unit is within 40 yards of the player (boolean)
+	* isEligible - indicates if the unit is eligible for the range check (boolean)
+	--]]
+	if(element.PostUpdate) then
+		return element:PostUpdate(self, inRange, isEligible)
+	end
+end
+
+local function Path(self, ...)
+	--[[ Override: Range.Override(self, event)
+	Used to completely override the internal update function.
+
+	* self  - the parent object
+	* event - the event triggering the update (string)
+	--]]
+	return (self.Range.Override or Update) (self, ...)
+end
+
+local function Enable(self, unit)
+	local element = self.Range
+	if(element) then
+		element.__owner = self
+		element.insideAlpha = element.insideAlpha or 1
+		element.outsideAlpha = element.outsideAlpha or 0.55
+
+		self:RegisterEvent('UNIT_IN_RANGE_UPDATE', Path)
+		self:RegisterEvent('UNIT_CONNECTION', Path)
+
+		if(unit == 'party' or unit == 'raid') then
+			self:RegisterEvent('PARTY_MEMBER_ENABLE', Path)
+			self:RegisterEvent('PARTY_MEMBER_DISABLE', Path)
+		end
+
+		return true
+	end
+end
+
+local function Disable(self)
+	local element = self.Range
+	if(element) then
+		self:SetAlpha(element.insideAlpha)
+
+		self:UnregisterEvent('UNIT_IN_RANGE_UPDATE', Path)
+		self:UnregisterEvent('UNIT_CONNECTION', Path)
+		self:UnregisterEvent('PARTY_MEMBER_ENABLE', Path)
+		self:UnregisterEvent('PARTY_MEMBER_DISABLE', Path)
+	end
+end
+
+oUF:AddElement('Range', Path, Enable, Disable)

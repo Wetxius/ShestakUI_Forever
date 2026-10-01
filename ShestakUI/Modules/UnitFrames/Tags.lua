@@ -1,0 +1,180 @@
+local T, C, L = unpack(ShestakUI)
+if C.unitframe.enable ~= true and C.nameplate.enable ~= true then return end
+
+----------------------------------------------------------------------------------------
+--	Tags
+----------------------------------------------------------------------------------------
+local _, ns = ...
+local oUF = ns.oUF
+
+oUF.Tags.Methods["Threat"] = function()
+	local _, status, percent = UnitDetailedThreatSituation("player", "target")
+	if percent and percent > 0 then
+		return ("%s%d%%|r"):format(Hex(GetThreatStatusColor(status)), percent)
+	end
+end
+oUF.Tags.Events["Threat"] = "UNIT_THREAT_LIST_UPDATE"
+
+oUF.Tags.Methods["DiffColor"] = function(unit)
+	local r, g, b
+	local level = UnitLevel(unit)
+	if level < 1 then
+		r, g, b = 0.69, 0.31, 0.31
+	else
+		local DiffColor = UnitLevel(unit) - UnitLevel("player")
+		if DiffColor >= 5 then
+			r, g, b = 0.69, 0.31, 0.31
+		elseif DiffColor >= 3 then
+			r, g, b = 0.71, 0.43, 0.27
+		elseif DiffColor >= -2 then
+			r, g, b = 0.84, 0.75, 0.65
+		elseif -DiffColor <= 5 then
+			r, g, b = 0.33, 0.59, 0.33
+		else
+			r, g, b = 0.55, 0.57, 0.61
+		end
+	end
+	return string.format("|cff%02x%02x%02x", r * 255, g * 255, b * 255)
+end
+oUF.Tags.Events["DiffColor"] = "UNIT_LEVEL"
+
+oUF.Tags.Methods["PetNameColor"] = function()
+	return string.format("|cff%02x%02x%02x", T.color.r * 255, T.color.g * 255, T.color.b * 255)
+end
+oUF.Tags.Events["PetNameColor"] = "UNIT_POWER_UPDATE"
+
+oUF.Tags.Methods["GetNameColor"] = function(unit)
+	local reaction = UnitReaction(unit, "player")
+	if (UnitIsPlayer(unit) or UnitInPartyIsAI(unit)) then
+		return _TAGS["raidcolor"](unit)
+	elseif reaction then
+		local c = T.oUF_colors.reaction[reaction]
+		return string.format("|cff%02x%02x%02x", c.r * 255, c.g * 255, c.b * 255)
+	else
+		local r, g, b = 0.33, 0.59, 0.33
+		return string.format("|cff%02x%02x%02x", r * 255, g * 255, b * 255)
+	end
+end
+oUF.Tags.Events["GetNameColor"] = "UNIT_POWER_UPDATE UNIT_FLAGS"
+
+oUF.Tags.Methods["NameArena"] = function(unit)
+	local name = UnitName(unit)
+	return T.UTF(name, 4, false)
+end
+oUF.Tags.Events["NameArena"] = "UNIT_NAME_UPDATE"
+
+oUF.Tags.Methods["NameShort"] = function(unit)
+	local name = UnitName(unit)
+	return T.UTF(name, 8, false)
+end
+oUF.Tags.Events["NameShort"] = "UNIT_NAME_UPDATE"
+
+oUF.Tags.Methods["NameMedium"] = function(unit)
+	local name = UnitName(unit)
+	return T.UTF(name, 11, true)
+end
+oUF.Tags.Events["NameMedium"] = "UNIT_NAME_UPDATE"
+
+oUF.Tags.Methods["NameLong"] = function(unit)
+	local name = UnitName(unit)
+	return T.UTF(name, 18, true)
+end
+oUF.Tags.Events["NameLong"] = "UNIT_NAME_UPDATE"
+
+oUF.Tags.Methods["NameLongAbbrev"] = function(unit)
+	local name = UnitName(unit)
+	if canaccessvalue(name) and string.len(name) > 18 then
+		name = string.gsub(name, "-", "")
+		name = string.gsub(name, "%s?(.[\128-\191]*)%S+%s", "%1. ")
+	end
+	return T.UTF(name, 18, false)
+end
+oUF.Tags.Events["NameLongAbbrev"] = "UNIT_NAME_UPDATE"
+
+oUF.Tags.Methods["LFD"] = function(unit)
+	local role = UnitGroupRolesAssigned(unit)
+	if role == "TANK" then
+		return "|cff0070DE[T]|r"
+	elseif role == "HEALER" then
+		return "|cff00CC12[H]|r"
+	elseif role == "DAMAGER" then
+		return "|cffFF3030[D]|r"
+	end
+end
+oUF.Tags.Events["LFD"] = "PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE"
+
+oUF.Tags.Methods["AltPower"] = function(unit)
+	local perc = UnitPowerPercent(unit, ALTERNATE_POWER_INDEX, true, CurveConstants.ScaleTo100)
+	if not UnitIsDeadOrGhost(unit) then
+		return ("%s%%"):format(perc)
+	end
+end
+oUF.Tags.Events["AltPower"] = "UNIT_POWER_UPDATE"
+
+oUF.Tags.Methods["NameplateLevel"] = function(unit)
+	local level = UnitLevel(unit)
+	local c = UnitClassification(unit)
+	if UnitIsWildBattlePet(unit) or UnitIsBattlePetCompanion(unit) then
+		level = UnitBattlePetLevel(unit)
+	end
+
+	if level == T.level and c == "normal" then return end
+	if level > 0 then
+		return level
+	else
+		return "??"
+	end
+end
+oUF.Tags.Events["NameplateLevel"] = "UNIT_LEVEL PLAYER_LEVEL_UP"
+
+oUF.Tags.Methods["NameplateNameColor"] = function(unit)
+	local reaction = UnitReaction(unit, "player")
+	if not UnitIsUnit("player", unit) and UnitIsPlayer(unit) and (reaction and reaction >= 5) then
+		if C.nameplate.only_name then
+			return _TAGS["raidcolor"](unit)
+		else
+			local c = T.oUF_colors.power["MANA"]
+			return string.format("|cff%02x%02x%02x", c.r * 255, c.g * 255, c.b * 255)
+		end
+	elseif UnitIsPlayer(unit) then
+		return _TAGS["raidcolor"](unit)
+	elseif reaction then
+		local r, g, b
+		if reaction < 4 and not UnitCanAttack("player", unit) then
+			r, g, b = UnitSelectionColor(unit, true)
+		else
+			r, g, b = T.oUF_colors.reaction[reaction]:GetRGB()
+		end
+		return string.format("|cff%02x%02x%02x", r * 255, g * 255, b * 255)
+	else
+		local r, g, b = 0.33, 0.59, 0.33
+		return string.format("|cff%02x%02x%02x", r * 255, g * 255, b * 255)
+	end
+end
+oUF.Tags.Events["NameplateNameColor"] = "UNIT_POWER_UPDATE UNIT_FLAGS"
+
+oUF.Tags.Methods["NameplateNameShort"] = function(unit)
+	local name = UnitName(unit)
+	if T.NotSecretValue(name) then
+		name = T.ShortNames[name] or name
+	end
+	return T.UTF(name, 18, true)
+end
+oUF.Tags.Events["NameplateNameShort"] = "UNIT_NAME_UPDATE"
+
+oUF.Tags.Methods["NameplateHealth"] = function(unit)
+	local hp = UnitHealth(unit)
+	local perc = UnitHealthPercent(unit, true, CurveConstants.ScaleTo100)
+
+	return ("%s - %d%%"):format(T.ShortValue(hp), perc)
+end
+oUF.Tags.Events["NameplateHealth"] = "UNIT_HEALTH UNIT_MAXHEALTH NAME_PLATE_UNIT_ADDED"
+
+oUF.Tags.Methods["Absorbs"] = function(unit)
+	local absorb = UnitGetTotalAbsorbs(unit)
+	if absorb then
+		oUF_Player.Absorbs:SetAlpha(absorb) -- hack to hide when value is zero
+		return T.ShortValue(absorb)
+	end
+end
+oUF.Tags.Events["Absorbs"] = "UNIT_ABSORB_AMOUNT_CHANGED"
