@@ -17,82 +17,224 @@ local function SpellName(id)
 end
 
 T.DebuffWhiteList = {
-	-- Death Knight
-	[108194] = true,	-- Asphyxiate
-	[47476] = true,		-- Strangulate
-	[55078] = true,		-- Blood Plague
-	[55095] = true,		-- Frost Fever
-	-- Demon Hunter
-	[204598] = true,	-- Sigil of Flame
 	-- Druid
-	[33786] = true,		-- Cyclone
-	[339] = true,		-- Entangling Roots
-	[102359] = true,	-- Mass Entanglement
-	[164812] = true,	-- Moonfire
-	[164815] = true,	-- Sunfire
-	[58180] = true,		-- Infected Wounds
-	[155722] = true,	-- Rake
-	[1079] = true,		-- Rip
-	-- Evoker
-	[360806] = true,	-- Sleep Walk
+	[5211] = true,	-- Bash
+	[16922] = true,	-- Celestial Focus (Starfire Stun)
+	[5209] = true,	-- Challenging Roar
+	[99] = true,		-- Demoralizing Roar
+	[339] = true,	-- Entangling Roots
+	-- [19975] = true,	-- Entangling Roots (Nature's Grasp)
+	[770] = true,	-- Faerie Fire
+	[16857] = true,	-- Faerie Fire (Feral)
+	[19675] = true,	-- Feral Charge Effect
+	[2637] = true,	-- Hibernate
+	-- [16914] = true,	-- Hurricane
+	[5570] = true,	-- Insect Swarm
+	[414644] = true,	-- Lacerate [Season of Discovery]
+	[407995] = true,	-- Mangle (Bear) [Season of Discovery]
+	[407993] = true,	-- Mangle (Cat) [Season of Discovery]
+	[8921] = true,	-- Moonfire
+	[9005] = true,	-- Pounce
+	[9007] = true,	-- Pounce Bleed
+	[1822] = true,	-- Rake
+	[1079] = true,	-- Rip
+	[2908] = true,	-- Soothe Animal
+	[414684] = true,	-- Sunfire [Season of Discovery]
+	-- [414687] = true,	-- Sunfire (Bear) [Season of Discovery]
+	-- [414689] = true,	-- Sunfire (Cat) [Season of Discovery]
+
 	-- Hunter
-	[3355] = true,		-- Freezing Trap
-	[13812] = true,		-- Explosive Trap
-	[217200] = true,	-- Barbed Shot
+	-- [1462] = true,	-- Beast Lore
+	[3674] = true,	-- Black Arrow
+	[25999] = true,	-- Charge (Boar)
+	[409495] = true,	-- Chimera Shot - Scorpid [Season of Discovery]
+	[5116] = true,	-- Concussive Shot
+	[19306] = true,	-- Counterattack
+	[19185] = true,	-- Entrapment
+	[409552] = true,	-- Explosive Shot [Season of Discovery]
+	[13812] = true,	-- Explosive Trap Effect
+	[409507] = true,	-- Expose Weakness [Season of Discovery]
+	[1543] = true,	-- Flare
+	[3355] = true,	-- Freezing Trap Effect
+	[13810] = true,	-- Frost Trap Aura
+	[1130] = true,	-- Hunter's Mark
+	[13797] = true,	-- Immolation Trap Effect
+	[19410] = true,	-- Improved Concussive Shot
+	[19229] = true,	-- Improved Wing Clip
+	[24394] = true,	-- Intimidation
+	[444678] = true,	-- Lava Breath [Season of Discovery]
+	[1513] = true,	-- Scare Beast
+	[19503] = true,	-- Scatter Shot
+	[24640] = true,	-- Scorpid Poison (Scorpid)
+	[3043] = true,	-- Scorpid Sting
+	[24423] = true,	-- Screech (Bat / Bird of Prey / Carrion Bird)
+	[1978] = true,	-- Serpent Sting
+	[3034] = true,	-- Viper Sting
+	[2974] = true,	-- Wing Clip
+	[19386] = true,	-- Wyvern Sting
+
 	-- Mage
-	[118] = true,		-- Polymorph
-	[31661] = true,		-- Dragon's Breath
-	[122] = true,		-- Frost Nova
-	[44457] = true,		-- Living Bomb
-	[114923] = true,	-- Nether Tempest
-	[120] = true,		-- Cone of Cold
-	-- Monk
-	[115078] = true,	-- Paralysis
+	[11113] = true,	-- Blast Wave
+	-- [10] = true,	-- Blizzard
+	-- [12484] = true,	-- Chilled (Blizzard)
+	[6136] = true,	-- Chilled (Frost Armor)
+	-- [7321] = true,	-- Chilled (Ice Armor)
+	[120] = true,	-- Cone of Cold
+	[18469] = true,	-- Counterspell - Silenced
+	[428739] = true,	-- Deep Freeze [Season of Discovery]
+	[133] = true,	-- Fireball
+	[22959] = true,	-- Fire Vulnerability (Improved Scorch)
+	[2120] = true,	-- Flamestrike
+	[122] = true,	-- Frost Nova
+	[12494] = true,	-- Frostbite
+	[116] = true,	-- Frostbolt
+	[401502] = true,	-- Frostfire Bolt [Season of Discovery]
+	[12654] = true,	-- Ignite
+	[12355] = true,	-- Impact
+	[400613] = true,	-- Living Bomb [Season of Discovery]
+	-- [401558] = true,	-- Living Flame [Season of Discovery]
+	[118] = true,	-- Polymorph
+	[11366] = true,	-- Pyroblast
+	[412532] = true,	-- Spellfrost Bolt [Season of Discovery]
+	[12579] = true,	-- Winter's Chill
+
 	-- Paladin
-	[20066] = true,		-- Repentance
-	[853] = true,		-- Hammer of Justice
-	[105421] = true,	-- Blinding Light
-	[183218] = true,	-- Hand of Hindrance
+	[407669] = true,	-- Avenger's Shield [Season of Discovery]
+	[26573] = true,	-- Consecration
+	[853] = true,	-- Hammer of Justice
+	[407631] = true,	-- Hand of Reckoning [Season of Discovery]
+	[20184] = true,	-- Judgement of Justice
+	[20185] = true,	-- Judgement of Light
+	[20186] = true,	-- Judgement of Wisdom
+	[21183] = true,	-- Judgement of the Crusader
+	[20066] = true,	-- Repentance
+	[20170] = true,	-- Seal of Justice (Stun)
+	[2878] = true,	-- Turn Undead
+	[67] = true,		-- Vindication
+
 	-- Priest
-	[204213] = true,	-- Purge the Wicked
-	[9484] = true,		-- Shackle Undead
-	[8122] = true,		-- Psychic Scream
-	[64044] = true,		-- Psychic Horror
-	[15487] = true,		-- Silence
-	[589] = true,		-- Shadow Word: Pain
-	[34914] = true,		-- Vampiric Touch
-	[335467] = true,	-- Shadow Word: Madness
+	[15269] = true,	-- Blackout
+	[402808] = true,	-- Cripple (Homunculi) [Season of Discovery]
+	[402792] = true,	-- Curse of the Elements (Eye of the Void) [Season of Discovery]
+	[402791] = true,	-- Curse of Shadow (Eye of the Void) [Season of Discovery]
+	[402794] = true,	-- Curse of Tongues (Eye of the Void) [Season of Discovery]
+	[402818] = true,	-- Degrade (Homunculi) [Season of Discovery]
+	[402811] = true,	-- Demoralize (Homunculi) [Season of Discovery]
+	[2944] = true,	-- Devouring Plague
+	[9035] = true,	-- Hex of Weakness
+	[14914] = true,	-- Holy Fire
+	[605] = true,	-- Mind Control
+	[15407] = true,	-- Mind Flay
+	[413259] = true,	-- Mind Sear [Season of Discovery]
+	[453] = true,	-- Mind Soothe
+	[2096] = true,	-- Mind Vision
+	[8122] = true,	-- Psychic Scream
+	[9484] = true,	-- Shackle Undead
+	[15258] = true,	-- Shadow Vulnerability (Shadow Weaving)
+	[589] = true,	-- Shadow Word: Pain
+	[15487] = true,	-- Silence
+	[10797] = true,	-- Starshards
+	[2943] = true,	-- Touch of Weakness
+	[15286] = true,	-- Vampiric Embrace
+	[425204] = true,	-- Void Plague [Season of Discovery]
+	[431681] = true,	-- Void Zone [Season of Discovery]
+
 	-- Rogue
-	[6770] = true,		-- Sap
-	[2094] = true,		-- Blind
-	[1776] = true,		-- Gouge
+	[439473] = true,	-- Atrophic Poison [Season of Discovery]
+	[400009] = true,	-- Between the Eyes [Season of Discovery]
+	[2094] = true,	-- Blind
+	[1833] = true,	-- Cheap Shot
+	[3409] = true,	-- Crippling Poison
+	[2818] = true,	-- Deadly Poison
+	[8647] = true,	-- Expose Armor
+	[703] = true,	-- Garrote
+	[1776] = true,	-- Gouge
+	[16511] = true,	-- Hemorrhage
+	[18425] = true,	-- Kick - Silenced
+	[408] = true,	-- Kidney Shot
+	[5760] = true,	-- Mind-numbing Poison
+	[439472] = true,	-- Numbing Poison [Season of Discovery]
+	[398196] = true,	-- Quick Draw [Season of Discovery]
+	[14251] = true,	-- Riposte
+	[1943] = true,	-- Rupture
+	[424785] = true,	-- Saber Lash [Season of Discovery]
+	[6770] = true,	-- Sap
+	[439471] = true,	-- Sebacious Poison [Season of Discovery]
+	[415725] = true,	-- Waylay [Season of Discovery]
+	[13218] = true,	-- Wound Poison
+
 	-- Shaman
-	[51514] = true,		-- Hex
-	[3600] = true,		-- Earthbind
-	[196840] = true,	-- Frost Shock
-	[188389] = true,	-- Flame Shock
-	[197209] = true,	-- Lightning Rod
+	[3600] = true,	-- Earthbind
+	[408681] = true,	-- Earth Shock (Way of Earth) [Season of Discovery]
+	[8050] = true,	-- Flame Shock
+	[8056] = true,	-- Frost Shock
+	[8034] = true,	-- Frostbrand Attack
+	[17364] = true,	-- Stormstrike
+
 	-- Warlock
-	[710] = true,		-- Banish
-	[6789] = true,		-- Mortal Coil
-	[5782] = true,		-- Fear
-	[5484] = true,		-- Howl of Terror
-	[6358] = true,		-- Seduction
-	[30283] = true,		-- Shadowfury
-	[603] = true,		-- Doom
-	[980] = true,		-- Agony
-	[146739] = true,	-- Corruption
-	[48181] = true,		-- Haunt
-	[348] = true,		-- Immolate
-	[1259790] = true,	-- Unstable Affliction
+	[18118] = true,	-- Aftermath
+	[710] = true,	-- Banish
+	[172] = true,	-- Corruption
+	[20812] = true,	-- Cripple (Doomguard)
+	[980] = true,	-- Curse of Agony
+	[603] = true,	-- Curse of Doom
+	[18223] = true,	-- Curse of Exhaustion
+	[1010] = true,	-- Curse of Idiocy
+	[704] = true,	-- Curse of Recklessness
+	[17862] = true,	-- Curse of Shadow
+	[1714] = true,	-- Curse of Tongues
+	[702] = true,	-- Curse of Weakness
+	[1490] = true,	-- Curse of the Elements
+	[6789] = true,	-- Death Coil
+	[412789] = true,	-- Demonic Howl (Metamorphosis) [Season of Discovery]
+	[689] = true,	-- Drain Life
+	[5138] = true,	-- Drain Mana
+	[1120] = true,	-- Drain Soul
+	[1098] = true,	-- Enslave Demon
+	[5782] = true,	-- Fear
+	[403501] = true,	-- Haunt [Season of Discovery]
+	[5484] = true,	-- Howl of Terror
+	[348] = true,	-- Immolate
+	[412758] = true,	-- Incinerate [Season of Discovery]
+	-- [403650] = true,	-- Lake of Fire [Season of Discovery]
+	[403828] = true,	-- Menace (Metamorphosis) [Season of Discovery]
+	[18093] = true,	-- Pyroclasm
+	-- [5740] = true,	-- Rain of Fire
+	[6358] = true,	-- Seduction (Succubus)
+	[426325] = true,	-- Shadowflame [Season of Discovery]
+	[17794] = true,	-- Shadow Vulnerability (Improved Shadow Bolt)
+	[18265] = true,	-- Siphon Life
+	[24259] = true,	-- Spell Lock (Felhunter)
+	[21949] = true,	-- Rend (Doomguard)
+	[19479] = true,	-- Tainted Blood Effect (Felhunter)
+	[427717] = true,	-- Unstable Affliction [Season of Discovery]
+	-- [427719] = true,	-- Unstable Affliction (Silence) [Season of Discovery]
+
 	-- Warrior
-	[5246] = true,		-- Intimidating Shout
-	[132168] = true,	-- Shockwave
-	[262115] = true,	-- Deep Wounds
-	[388539] = true,	-- Rend
+	[1161] = true,	-- Challenging Shout
+	[7922] = true,	-- Charge Stun
+	[12809] = true,	-- Concussion Blow
+	[1160] = true,	-- Demoralizing Shout
+	[676] = true,	-- Disarm
+	[1715] = true,	-- Hamstring
+	[23694] = true,	-- Improved Hamstring
+	[20253] = true,	-- Intercept Stun
+	[20511] = true,	-- Intimidating Shout (Cower)
+	[5246] = true,	-- Intimidating Shout (Fear)
+	[694] = true,	-- Mocking Blow
+	[12294] = true,	-- Mortal Strike
+	[12323] = true,	-- Piercing Howl
+	[772] = true,	-- Rend
+	[12798] = true,	-- Revenge Stun
+	[18498] = true,	-- Shield Bash - Silenced
+	[7386] = true,	-- Sunder Armor
+	[6343] = true,	-- Thunder Clap
+
+	-- Mace Specialization
+	[5530] = true,	-- Mace Stun Effect (Rogue / Warrior)
+
 	-- Racial
-	[20549] = true,		-- War Stomp (Tauren)
-	[107079] = true,	-- Quaking Palm (Pandaren)
+	[20549] = true,	-- War Stomp
 }
 
 for _, spell in pairs(C.nameplate.debuffs_list) do
