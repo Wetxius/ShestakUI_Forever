@@ -71,7 +71,7 @@ local function OpenMailFrame_UpdateButtonPositions()
 		end
 	end
 end
-hooksecurefunc("OpenMailFrame_UpdateButtonPositions", OpenMailFrame_UpdateButtonPositions)
+hooksecurefunc(OpenMailFrame, "UpdateButtonPositions", OpenMailFrame_UpdateButtonPositions)
 
 -- Loot frame
 local function LootFrame_UpdateButton(self)
