@@ -370,7 +370,7 @@ local OnTooltipSetUnit = function(self)
 
 	if not canaccessvalue(unit) then return end -- need?
 
-	local name, realm = UnitName(unit) -- TODO add second name instead of realm
+	local name, secondName = UnitName(unit)
 	local race, englishRace = UnitRace(unit)
 	local level = UnitLevel(unit)
 	local levelColor = GetCreatureDifficultyColor(level)
@@ -394,17 +394,14 @@ local OnTooltipSetUnit = function(self)
 	elseif classification == "elite" then classification = "+"
 	else classification = "" end
 
-
 	if titleName and C.tooltip.title then
 		name = titleName
 	end
 
-	local r, g, b = GetColor(unit)
-	_G["GameTooltipTextLeft1"]:SetFormattedText("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, name or "")
+	secondName = secondName or ""
 
-	--BETA if realm and T.NotSecretValue(realm) and realm ~= "" and C.tooltip.realm then
-		-- self:AddLine(FRIENDS_LIST_REALM.."|cffffffff"..realm.."|r")
-	-- end
+	local r, g, b = GetColor(unit)
+	_G["GameTooltipTextLeft1"]:SetFormattedText("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, name.." "..secondName or "")
 
 	if isPlayer then
 		if T.CheckUnitStatus(UnitIsAFK, unit) then
