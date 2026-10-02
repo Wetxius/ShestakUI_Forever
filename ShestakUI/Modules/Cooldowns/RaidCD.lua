@@ -351,8 +351,8 @@ f:RegisterEvent("ENCOUNTER_END")
 
 SlashCmdList.RaidCD = function()
 	StartTimer(UnitName("player"), 20484)	-- Rebirth
-	StartTimer(UnitName("player"), 20707)	-- Soulstone
-	StartTimer(UnitName("player"), 108280)	-- Healing Tide Totem
+	StartTimer(UnitName("player"), 871)		-- Shield Wall
+	StartTimer(UnitName("player"), 29166)	-- Innervate
 end
 SLASH_RaidCD1 = "/raidcd"
 SLASH_RaidCD2 = "/кфшвсв"

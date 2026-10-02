@@ -18,7 +18,7 @@ SkinBlizzUI:SetScript("OnEvent", function(_, _, addon)
 		}
 
 		for _, object in pairs(checkButtons) do
-			T.SkinCheckBox(_G[object].checkButton)
+			-- T.SkinCheckBox(_G[object].checkButton)
 		end
 
 		-- Blizzard Frame reskin
@@ -27,7 +27,7 @@ SkinBlizzUI:SetScript("OnEvent", function(_, _, addon)
 			"BNToastFrame",
 			"ReadyCheckFrame",
 			"ColorPickerFrame",
-			"LFDRoleCheckPopup",
+			-- "LFDRoleCheckPopup",
 			"GuildInviteFrame",
 			"RolePollPopup",
 			"OpacityFrame",
@@ -38,7 +38,7 @@ SkinBlizzUI:SetScript("OnEvent", function(_, _, addon)
 
 		QueueStatusFrame:StripTextures()
 		GameMenuFrame:StripTextures()
-		LFDRoleCheckPopup:StripTextures()
+		-- LFDRoleCheckPopup:StripTextures()
 		RolePollPopup:StripTextures()
 		OpacityFrame:StripTextures()
 		ColorPickerFrame.Border:Hide()

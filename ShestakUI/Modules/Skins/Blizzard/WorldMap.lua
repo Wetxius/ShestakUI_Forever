@@ -200,7 +200,7 @@ local function LoadSkin()
 
 	-- Elements
 	WorldMapFloorNavigationDropDown(WorldMapFrame.overlayFrames[1])
-	WorldMapTrackingOptionsButton(WorldMapFrame.overlayFrames[2])
+	-- WorldMapTrackingOptionsButton(WorldMapFrame.overlayFrames[2])
 	WorldMapTrackingPinButton(WorldMapFrame.overlayFrames[3])
 
 	for i = 1, 15 do

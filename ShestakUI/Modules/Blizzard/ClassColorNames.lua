@@ -135,7 +135,7 @@ local function whoFrame(self)
 	end
 end
 
-hooksecurefunc(_G.WhoFrame.ScrollBox, "Update", whoFrame)
+-- hooksecurefunc(_G.WhoFrame.ScrollBox, "Update", whoFrame)
 
 -- PVPMatchResults
 hooksecurefunc(PVPCellNameMixin, "Populate", function(self, rowData)

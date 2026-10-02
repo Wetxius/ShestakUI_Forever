@@ -9,14 +9,14 @@ local function LoadSkin()
 		FriendsFrame,
 		FriendsListFrame,
 		FriendsTabHeader,
-		WhoFrameColumnHeader1,
-		WhoFrameColumnHeader2,
-		WhoFrameColumnHeader3,
-		WhoFrameColumnHeader4,
+		-- WhoFrameColumnHeader1,
+		-- WhoFrameColumnHeader2,
+		-- WhoFrameColumnHeader3,
+		-- WhoFrameColumnHeader4,
 		AddFriendFrame,
 		FriendsFriendsFrame,
 		FriendsFrameInset,
-		WhoFrameListInset,
+		-- WhoFrameListInset,
 		FriendsFrameBattlenetFrame,
 		BattleTagInviteFrame,
 		QuickJoinRoleSelectionFrame,
@@ -75,7 +75,7 @@ local function LoadSkin()
 
 	local scrollbars = {
 		FriendsListFrame.ScrollBar,
-		WhoFrame.ScrollBar,
+		-- WhoFrame.ScrollBar,
 		QuickJoinFrame.ScrollBar,
 		RecruitAFriendFrame.RecruitList.ScrollBar,
 		FriendsFriendsFrame.ScrollBar
@@ -91,19 +91,19 @@ local function LoadSkin()
 	T.SkinScrollBar(RecentAlliesFrame.List.ScrollBar)
 
 	-- Reposition buttons
-	WhoFrameWhoButton:SetPoint("RIGHT", WhoFrameAddFriendButton, "LEFT", -3, 0)
-	WhoFrameAddFriendButton:SetPoint("RIGHT", WhoFrameGroupInviteButton, "LEFT", -3, 0)
-	WhoFrameGroupInviteButton:SetPoint("BOTTOMRIGHT", WhoFrame, "BOTTOMRIGHT", -4, 4)
-	FriendsFrameAddFriendButton:SetPoint("BOTTOMLEFT", FriendsFrame, "BOTTOMLEFT", 4, 4)
-	FriendsFrameSendMessageButton:SetPoint("BOTTOMRIGHT", FriendsFrame, "BOTTOMRIGHT", -4, 4)
+	-- WhoFrameWhoButton:SetPoint("RIGHT", WhoFrameAddFriendButton, "LEFT", -3, 0)
+	-- WhoFrameAddFriendButton:SetPoint("RIGHT", WhoFrameGroupInviteButton, "LEFT", -3, 0)
+	-- WhoFrameGroupInviteButton:SetPoint("BOTTOMRIGHT", WhoFrame, "BOTTOMRIGHT", -4, 4)
+	-- FriendsFrameAddFriendButton:SetPoint("BOTTOMLEFT", FriendsFrame, "BOTTOMLEFT", 4, 4)
+	-- FriendsFrameSendMessageButton:SetPoint("BOTTOMRIGHT", FriendsFrame, "BOTTOMRIGHT", -4, 4)
 
 	-- Resize Buttons
-	WhoFrameWhoButton:SetSize(WhoFrameWhoButton:GetWidth() + 7, WhoFrameWhoButton:GetHeight())
-	WhoFrameAddFriendButton:SetSize(WhoFrameAddFriendButton:GetWidth() - 4, WhoFrameAddFriendButton:GetHeight())
-	WhoFrameGroupInviteButton:SetSize(WhoFrameGroupInviteButton:GetWidth() - 4, WhoFrameGroupInviteButton:GetHeight())
-	T.SkinEditBox(WhoFrameEditBox, WhoFrameEditBox:GetWidth() + 30, WhoFrameEditBox:GetHeight() - 15)
-	WhoFrameEditBox:SetPoint("BOTTOM", WhoFrame, "BOTTOM", 0, 31)
-	WhoFrameEditBox.backdrop:SetOutside(nil, 2, -2)
+	-- WhoFrameWhoButton:SetSize(WhoFrameWhoButton:GetWidth() + 7, WhoFrameWhoButton:GetHeight())
+	-- WhoFrameAddFriendButton:SetSize(WhoFrameAddFriendButton:GetWidth() - 4, WhoFrameAddFriendButton:GetHeight())
+	-- WhoFrameGroupInviteButton:SetSize(WhoFrameGroupInviteButton:GetWidth() - 4, WhoFrameGroupInviteButton:GetHeight())
+	-- T.SkinEditBox(WhoFrameEditBox, WhoFrameEditBox:GetWidth() + 30, WhoFrameEditBox:GetHeight() - 15)
+	-- WhoFrameEditBox:SetPoint("BOTTOM", WhoFrame, "BOTTOM", 0, 31)
+	-- WhoFrameEditBox.backdrop:SetOutside(nil, 2, -2)
 
 	T.SkinEditBox(AddFriendNameEditBox, nil, AddFriendNameEditBox:GetHeight() - 5)
 	AddFriendNameEditBox.backdrop:SetOutside(nil, 4, 0)
@@ -266,8 +266,8 @@ local function LoadSkin()
 	end)
 
 	T.SkinCloseButton(FriendsFrameCloseButton)
-	T.SkinDropDownBox(WhoFrameDropdown, 150)
-	WhoFrameColumnHeader2:SetHeight(20)
+	-- T.SkinDropDownBox(WhoFrameDropdown, 150)
+	-- WhoFrameColumnHeader2:SetHeight(20)
 	T.SkinDropDownBox(FriendsFrameStatusDropdown)
 	T.SkinDropDownBox(FriendsFriendsFrameDropdown)
 

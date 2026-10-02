@@ -87,25 +87,6 @@ if C.misc.afk_spin_camera == true then
 end
 
 ----------------------------------------------------------------------------------------
---	Auto select current event boss from LFD tool(EventBossAutoSelect by Nathanyel)
-----------------------------------------------------------------------------------------
-local firstLFD
-LFDParentFrame:HookScript("OnShow", function()
-	if not firstLFD then
-		firstLFD = true
-
-		for i = 1, GetNumRandomDungeons() do
-			local id = GetLFGRandomDungeonInfo(i)
-			local isHoliday, _, _, isTimeWalker = select(15, GetLFGDungeonInfo(id))
-			if isHoliday and not isTimeWalker and not GetLFGDungeonRewards(id) then
-				LFDQueueFrame_SetTypeInternal(id) -- Previous function cause taint SetEntryTitle()
-				break
-			end
-		end
-	end
-end)
-
-----------------------------------------------------------------------------------------
 --	Undress button in dress-up frame(by Nefarion)
 ----------------------------------------------------------------------------------------
 local strip = CreateFrame("Button", "DressUpFrameUndressButton", DressUpFrame, "UIPanelButtonTemplate")

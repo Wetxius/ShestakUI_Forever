@@ -2265,9 +2265,9 @@ do
 	local title = ns.CreateCheckBox(parent, "title")
 	title:SetPoint("TOPLEFT", subheader, "BOTTOMLEFT", 0, -8)
 
-	local realm = ns.CreateCheckBox(parent, "realm")
-	realm:SetPoint("LEFT", title, "RIGHT", 320, 0)
-	realm.Text:SetWidth(200)
+	-- local realm = ns.CreateCheckBox(parent, "realm")
+	-- realm:SetPoint("LEFT", title, "RIGHT", 320, 0)
+	-- realm.Text:SetWidth(200)
 
 	local target = ns.CreateCheckBox(parent, "target")
 	target:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, 0)

@@ -284,36 +284,14 @@ local micromenu = {
 	{text = CHAT_CHANNELS, notCheckable = 1, func = function()
 		ToggleChannelFrame()
 	end},
-	{text = PLAYER_V_PLAYER, notCheckable = 1, func = function()
-		if T.level >= 10 then
-			TogglePVPUI()
-		else
-			if C.general.error_filter ~= "WHITELIST" then
-				UIErrorsFrame:AddMessage(format(FEATURE_BECOMES_AVAILABLE_AT_LEVEL, 10), 1, 0.1, 0.1)
-			else
-				print("|cffffff00"..format(FEATURE_BECOMES_AVAILABLE_AT_LEVEL, 10).."|r")
-			end
-		end
-	end},
 	{text = GROUP_FINDER, notCheckable = 1, func = function()
 		if T.level >= 10 then
-			PVEFrame_ToggleFrame("GroupFinderFrame", nil)
+			ToggleGroupFinderFrame()
 		else
 			if C.general.error_filter ~= "WHITELIST" then
 				UIErrorsFrame:AddMessage(format(FEATURE_BECOMES_AVAILABLE_AT_LEVEL, 10), 1, 0.1, 0.1)
 			else
 				print("|cffffff00"..format(FEATURE_BECOMES_AVAILABLE_AT_LEVEL, 10).."|r")
-			end
-		end
-	end},
-	{text = journalText, notCheckable = 1, func = function()
-		if C_AdventureJournal.CanBeShown() then
-			ToggleEncounterJournal()
-		else
-			if C.general.error_filter ~= "WHITELIST" then
-				UIErrorsFrame:AddMessage(FEATURE_NOT_YET_AVAILABLE, 1, 0.1, 0.1)
-			else
-				print("|cffffff00"..FEATURE_NOT_YET_AVAILABLE.."|r")
 			end
 		end
 	end},
@@ -322,13 +300,6 @@ local micromenu = {
 			-- print("|cffffff00"..ERR_NOT_IN_COMBAT.."|r") return
 		-- end
 		ToggleCollectionsJournal()
-	end},
-	{text = HOUSING_MICRO_BUTTON, notCheckable = 1, func = function()
-		if Kiosk.IsEnabled() then
-			return
-		end
-
-		HousingFramesUtil.ToggleHousingDashboard()
 	end},
 	{text = HELP_BUTTON, notCheckable = 1, func = function()
 		ToggleHelpFrame()
@@ -345,31 +316,31 @@ if not IsTrialAccount() and C_StorePublic.IsEnabled() then
 	tinsert(micromenu, {text = BLIZZARD_STORE, notCheckable = 1, func = function() StoreMicroButton:Click() end})
 end
 
-if T.level == GetMaxPlayerLevel() then
-	local name = C_Spell.GetSpellName(1302265)	-- Omnium Folio
-	tinsert(micromenu, {text = name, notCheckable = 1, func = function()
-		if ExpansionLandingPageMinimapButton then
-			ExpansionLandingPageMinimapButton:Click()
-		end
-	end})
+-- if T.level == GetMaxPlayerLevel() then
+	-- local name = C_Spell.GetSpellName(1302265)	-- Omnium Folio
+	-- tinsert(micromenu, {text = name, notCheckable = 1, func = function()
+		-- if ExpansionLandingPageMinimapButton then
+			-- ExpansionLandingPageMinimapButton:Click()
+		-- end
+	-- end})
 
-	tinsert(micromenu, {text = RATED_PVP_WEEKLY_VAULT, notCheckable = 1, func = function()
-		if not WeeklyRewardsFrame then
-			WeeklyRewards_LoadUI()
-		end
-		ToggleFrame(WeeklyRewardsFrame)
-	end})
-else
-	local frame = CreateFrame("Frame")
-	frame:RegisterEvent("GARRISON_SHOW_LANDING_PAGE")
-	frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-	frame:SetScript("OnEvent", function()
-		if ExpansionLandingPageMinimapButton.title then
-			tinsert(micromenu, {text = ExpansionLandingPageMinimapButton.title, notCheckable = 1, func = function() ExpansionLandingPageMinimapButton:ToggleLandingPage() end})
-			frame:UnregisterAllEvents()
-		end
-	end)
-end
+	-- tinsert(micromenu, {text = RATED_PVP_WEEKLY_VAULT, notCheckable = 1, func = function()
+		-- if not WeeklyRewardsFrame then
+			-- WeeklyRewards_LoadUI()
+		-- end
+		-- ToggleFrame(WeeklyRewardsFrame)
+	-- end})
+-- else
+	-- local frame = CreateFrame("Frame")
+	-- frame:RegisterEvent("GARRISON_SHOW_LANDING_PAGE")
+	-- frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+	-- frame:SetScript("OnEvent", function()
+		-- if ExpansionLandingPageMinimapButton.title then
+			-- tinsert(micromenu, {text = ExpansionLandingPageMinimapButton.title, notCheckable = 1, func = function() ExpansionLandingPageMinimapButton:ToggleLandingPage() end})
+			-- frame:UnregisterAllEvents()
+		-- end
+	-- end)
+-- end
 
 local MinimapArea = CreateFrame("Frame", nil, Minimap)
 MinimapArea:SetPassThroughButtons("LeftButton")
