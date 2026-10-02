@@ -18,41 +18,20 @@ end
 
 T.CastBarTicks = {
 	-- Druid
-	[SpellName(740)] = 4,		-- Tranquility
-	-- Evoker
-	[SpellName(356995)] = 3,	-- Disintegrate
+	[SpellName(740)] = 5,		-- Tranquility
+	[SpellName(16914)] = 10,	-- Hurricane
+	-- Hunter
+	[SpellName(136)] = 5,		-- Mend Pet
+	[SpellName(1510)] = 6,		-- Volley
 	-- Mage
-	[SpellName(5143)] = 5,		-- Arcane Missiles
-	[SpellName(12051)] = 6,		-- Evocation
-	[SpellName(205021)] = 5,	-- Ray of Frost
-	-- Monk
-	[SpellName(115175)] = 8,	-- Soothing Mist
-	[SpellName(117952)] = 4,	-- Crackling Jade Lightning
+	[SpellName(10)] = 8,		-- Blizzard
 	-- Priest
-	[SpellName(15407)] = 6,		-- Mind Flay
-	[SpellName(47540)] = 3,		-- Penance
-	[SpellName(64843)] = 4,		-- Divine Hymn
+	[SpellName(15407)] = 3,		-- Mind Flay
 	-- Warlock
-	[SpellName(755)] = 5,		-- Health Funnel
-	[SpellName(198590)] = 5,	-- Drain Soul
-	[SpellName(234153)] = 5,	-- Drain Life
-	-- Racials
-	[SpellName(291944)] = 6,	-- Regeneratin (Zandalari)
+	[SpellName(1120)] = 5,		-- Drain Soul
+	[SpellName(755)] = 10,		-- Health Funnel
+	[SpellName(689)] = 5,		-- Drain Life
+	[SpellName(5138)] = 5,		-- Drain Mana
+	[SpellName(1949)] = 15,		-- Hellfire
+	[SpellName(5740)] = 4,		-- Rain of Fire
 }
-
-local f = CreateFrame("Frame")
-f:RegisterEvent("PLAYER_ENTERING_WORLD")
-f:RegisterEvent("PLAYER_TALENT_UPDATE")
-f:SetScript("OnEvent", function()
-	if T.class == "PRIEST" then
-		-- Penance
-		local penanceTicks = C_SpellBook.IsSpellKnown(193134) and 4 or 3
-		T.CastBarTicks[SpellName(47540)] = penanceTicks
-	elseif T.class == "MAGE" then
-		-- Arcane Missiles
-		local newTicks = C_SpellBook.IsSpellKnown(236628) and 7 or 5
-		T.CastBarTicks[SpellName(5143)] = newTicks
-	else
-		f:UnregisterAllEvents()
-	end
-end)
