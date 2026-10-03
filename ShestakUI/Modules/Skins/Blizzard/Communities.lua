@@ -373,6 +373,7 @@ local function LoadSkin()
 	SkinTab(CommunitiesFrame.RosterTab)
 	SkinTab(CommunitiesFrame.GuildBenefitsTab)
 	SkinTab(CommunitiesFrame.GuildInfoTab)
+	SkinTab(CommunitiesFrame.GuildPreferredPlaySettingsTab)
 	SkinTab(ClubFinderGuildFinderFrame.ClubFinderSearchTab)
 	SkinTab(ClubFinderGuildFinderFrame.ClubFinderPendingTab)
 	SkinTab(ClubFinderCommunityAndGuildFinderFrame.ClubFinderSearchTab)
@@ -594,6 +595,13 @@ local function LoadSkin()
 		local checkbox = CommunitiesGuildNewsFiltersFrame.GuildNewsFilterButtons[i]
 		T.SkinCheckBox(checkbox)
 	end
+
+	-- Preferred Play Settings
+	T.SkinDropDownBox(CommunitiesFrameGuildPreferredPlaySettingsFrame.LocaleDropdown)
+	T.SkinDropDownBox(CommunitiesFrameGuildPreferredPlaySettingsFrame.DatacenterDropdown)
+
+	CommunitiesFrameGuildPreferredPlaySettingsFrame.LocaleApplyButton:SkinButton()
+	CommunitiesFrameGuildPreferredPlaySettingsFrame.DatacenterApplyButton:SkinButton()
 end
 
 tinsert(T.SkinFuncs["ShestakUI"], LoadSkin)
