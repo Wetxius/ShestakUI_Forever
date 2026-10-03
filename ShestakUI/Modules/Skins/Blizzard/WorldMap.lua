@@ -47,6 +47,8 @@ local function LoadSkin()
 
 	QuestScrollFrame.SearchBox:DisableDrawLayer("BACKGROUND")
 
+	QuestLogCount:StripTextures()
+
 	do
 		local frame = QuestScrollFrame.Contents.StoryHeader
 		frame:CreateBackdrop("Overlay")
@@ -154,20 +156,22 @@ local function LoadSkin()
 
 	-- Tracking Button
 	local function WorldMapTrackingOptionsButton(button)
-		local shadow = button:GetRegions()
-		shadow:Hide()
+		-- local shadow = button:GetRegions()
+		-- shadow:Hide()
 
-		button.Background:Hide()
-		button.Border:Hide()
+		-- button.Background:Hide()
+		-- button.Border:Hide()
 
 		T.SkinCloseButton(button.ResetButton, nil, nil, true)
 		button.ResetButton:SetSize(15, 15)
 		button.ResetButton:ClearAllPoints()
 		button.ResetButton:SetPoint("CENTER", button, "TOPRIGHT", -4, -4)
 
-		local tex = button:GetHighlightTexture()
-		tex:SetAtlas("Map-Filter-Button")
-		tex:SetAllPoints(button.Icon)
+		-- local tex = button:GetHighlightTexture()
+		-- tex:SetAtlas("Map-Filter-Button")
+		-- tex:SetAllPoints(button.Icon)
+
+		button:SetMovePoint(nil, -44)
 	end
 
 	-- Tracking Pin
@@ -200,7 +204,7 @@ local function LoadSkin()
 
 	-- Elements
 	WorldMapFloorNavigationDropDown(WorldMapFrame.overlayFrames[1])
-	-- WorldMapTrackingOptionsButton(WorldMapFrame.overlayFrames[2])
+	WorldMapTrackingOptionsButton(WorldMapFrame.overlayFrames[2])
 	WorldMapTrackingPinButton(WorldMapFrame.overlayFrames[3])
 
 	for i = 1, 15 do
