@@ -279,21 +279,21 @@ frame:SetScript("OnEvent", function()
 
 	StyleNormalButton(ExtraActionButton1)
 
-	local variables = {
-		"PROXY_SHOW_ACTIONBAR_2",
-		"PROXY_SHOW_ACTIONBAR_3",
-		"PROXY_SHOW_ACTIONBAR_4",
-		"PROXY_SHOW_ACTIONBAR_5",
-		"PROXY_SHOW_ACTIONBAR_6",
-		"PROXY_SHOW_ACTIONBAR_7",
-		"PROXY_SHOW_ACTIONBAR_8",
-	}
+	-- local variables = {
+		-- "PROXY_SHOW_ACTIONBAR_2",
+		-- "PROXY_SHOW_ACTIONBAR_3",
+		-- "PROXY_SHOW_ACTIONBAR_4",
+		-- "PROXY_SHOW_ACTIONBAR_5",
+		-- "PROXY_SHOW_ACTIONBAR_6",
+		-- "PROXY_SHOW_ACTIONBAR_7",
+		-- "PROXY_SHOW_ACTIONBAR_8",
+	-- }
 
-	for _, variable in ipairs(variables) do
-		if Settings.GetSetting(variable) then
-			Settings.SetValue(variable, true)
-		end
-	end
+	-- for _, variable in ipairs(variables) do
+		-- if Settings.GetSetting(variable) then
+			-- Settings.SetValue(variable, true) -- cause taint when open edit mode
+		-- end
+	-- end
 end)
 
 local function SetupFlyoutButton(button)
