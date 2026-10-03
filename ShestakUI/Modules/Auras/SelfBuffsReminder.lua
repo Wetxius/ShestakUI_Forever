@@ -114,6 +114,11 @@ local function OnEvent(self, event, arg1)
 			-- i = i + 1
 		-- end
 
+		local secret
+		if C_Secrets.ShouldAurasBeSecret() then
+			secret = true
+		end
+
 		if reversecheck then
 			if group.negate_reversecheck and group.negate_reversecheck == T.Spec then self:Hide() return end
 			for i = 1, #group.spells do
@@ -127,7 +132,7 @@ local function OnEvent(self, event, arg1)
 		else
 			for i = 1, #group.spells do
 				local name = group.spells[i][3]
-				if name and C_UnitAuras.GetPlayerAuraBySpellID(name) then
+				if (name and C_UnitAuras.GetPlayerAuraBySpellID(name)) or secret then
 					self:Hide()
 					return
 				end
