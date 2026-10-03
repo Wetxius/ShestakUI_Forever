@@ -7,38 +7,32 @@ if C.actionbar.enable ~= true then return end
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:SetScript("OnEvent", function()
-	MainActionBar:SetMovable(true) -- need for scale
-	MainActionBar:SetUserPlaced(true)
-	MainActionBar:SetScale(0.0001)
+	-- MainActionBar:SetMovable(true) -- need for scale
+	-- MainActionBar:SetUserPlaced(true)
+	-- MainActionBar:SetScale(0.0001)
 	MainActionBar:SetAlpha(0)
 	MainActionBar:EnableMouse(false)
-	MainActionBar:UnregisterAllEvents()
+	-- MainActionBar:UnregisterAllEvents()
 
 	PetActionBar:EnableMouse(false)
-	-- PetActionBar:UnregisterAllEvents() -- need to wait entering world
 	StanceBar:EnableMouse(false)
 	StanceBar:UnregisterAllEvents()
 
-	if not C.actionbar.micromenu then
-		MicroMenu:Hide()
+	-- if not C.actionbar.micromenu then
+		MicroMenuContainer:ClearAllPoints()
+		MicroMenuContainer:SetPoint("TOP", UIParent, "TOP", 0, 100)
+		MicroMenuContainer:Hide()
+		MicroMenuContainer:SetClampedToScreen(false)
+		StatusTrackingBarManager:SetClampedToScreen(false)
+		BagsBar:SetClampedToScreen(false)
 		PlayerSpellsMicroButton:ClearAllPoints()
 		PlayerSpellsMicroButton:SetPoint("TOP", UIParent, "TOP", 0, 100) -- hide missing talent alert
-	end
-
-	-- MainActionBar.ignoreFramePositionManager = true
-	-- MainActionBar:SetAttribute("ignoreFramePositionManager", true)
-
-	-- EditModeUtil.GetRightActionBarWidth = function() return 100 end -- prevent error in GetRightContainerAnchor, abs is nil
-	-- EditModeUtil.GetBottomActionBarHeight = function() return 225 end
+	-- end
 
 	local elements = {
 		OverrideActionBar, PossessActionBar, StatusTrackingBarManager, BagsBar,
 		MultiBarBottomLeft.QuickKeybindGlow, MultiBarLeft.QuickKeybindGlow, MultiBarBottomRight.QuickKeybindGlow, MultiBarRight.QuickKeybindGlow,
 	}
-
-	if not C_ClassTrial.IsClassTrialCharacter() then
-		tinsert(elements, IconIntroTracker)
-	end
 
 	for i = 1, #elements do
 		local f = elements[i]
@@ -51,16 +45,16 @@ frame:SetScript("OnEvent", function()
 			f:UnregisterAllEvents()
 		end
 
-		f:Hide()
+		-- f:Hide() - cause taint
 		f:SetAlpha(0)
 	end
 
-	for i = 1, 6 do
-		local b = _G["OverrideActionBarButton"..i]
-		b:UnregisterAllEvents()
-		b:SetAttribute("statehidden", true)
-		-- b:SetAttribute("showgrid", 1)
-	end
+	-- for i = 1, 6 do
+		-- local b = _G["OverrideActionBarButton"..i]
+		-- b:UnregisterAllEvents()
+		-- b:SetAttribute("statehidden", true)
+		-- -- b:SetAttribute("showgrid", 1)
+	-- end
 
 	-- Enable grid showing
 	for i = 1, 10 do
