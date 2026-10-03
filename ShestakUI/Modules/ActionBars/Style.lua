@@ -25,6 +25,11 @@ local function StyleNormalButton(button, size)
 		local assist = button.AssistedCombatRotationFrame
 		local loc = button.lossOfControlCooldown
 
+		local normal = _G[name.."NormalTexture"]
+		if normal then
+			normal:SetAlpha(0)
+		end
+
 		if button.IconMask then
 			button.IconMask:Hide()
 		end
