@@ -166,70 +166,70 @@ local function OnAuraChange(_, event, arg1)
 		end
 	end
 
-	for i = 1, #versbuffs do
-		local name, icon = unpack(versbuffs[i])
-		if i == 1 then
-			VersFrame.t:SetTexture(icon)
-		end
-		if playerBuff[name] then
-			VersFrame:SetAlpha(C.reminder.raid_buffs_alpha)
-			vers = true
-			break
-		else
-			VersFrame:SetAlpha(1)
-			vers = false
-		end
-	end
+	-- for i = 1, #versbuffs do
+		-- local name, icon = unpack(versbuffs[i])
+		-- if i == 1 then
+			-- VersFrame.t:SetTexture(icon)
+		-- end
+		-- if playerBuff[name] then
+			-- VersFrame:SetAlpha(C.reminder.raid_buffs_alpha)
+			-- vers = true
+			-- break
+		-- else
+			-- VersFrame:SetAlpha(1)
+			-- vers = false
+		-- end
+	-- end
 
-	for i = 1, #Spell4Buff do
-		local name, icon = unpack(Spell4Buff[i])
-		if i == 1 then
-			Spell4Frame.t:SetTexture(icon)
-		end
-		if playerBuff[name] then
-			Spell4Frame:SetAlpha(C.reminder.raid_buffs_alpha)
-			spell4 = true
-			break
-		else
-			Spell4Frame:SetAlpha(1)
-			spell4 = false
-		end
-	end
+	-- for i = 1, #Spell4Buff do
+		-- local name, icon = unpack(Spell4Buff[i])
+		-- if i == 1 then
+			-- Spell4Frame.t:SetTexture(icon)
+		-- end
+		-- if playerBuff[name] then
+			-- Spell4Frame:SetAlpha(C.reminder.raid_buffs_alpha)
+			-- spell4 = true
+			-- break
+		-- else
+			-- Spell4Frame:SetAlpha(1)
+			-- spell4 = false
+		-- end
+	-- end
 
-	for i = 1, #reducebuffs do
-		local name, icon = unpack(reducebuffs[i])
-		if i == 1 then
-			ReduceFrame.t:SetTexture(icon)
-		end
-		if playerBuff[name] then
-			ReduceFrame:SetAlpha(C.reminder.raid_buffs_alpha)
-			reduce = true
-			break
-		else
-			ReduceFrame:SetAlpha(1)
-			reduce = false
-		end
-	end
+	-- for i = 1, #reducebuffs do
+		-- local name, icon = unpack(reducebuffs[i])
+		-- if i == 1 then
+			-- ReduceFrame.t:SetTexture(icon)
+		-- end
+		-- if playerBuff[name] then
+			-- ReduceFrame:SetAlpha(C.reminder.raid_buffs_alpha)
+			-- reduce = true
+			-- break
+		-- else
+			-- ReduceFrame:SetAlpha(1)
+			-- reduce = false
+		-- end
+	-- end
 
-	if #custombuffs > 0 then
-		for i = 1, #custombuffs do
-			local name, icon = unpack(custombuffs[i])
-			if i == 1 then
-				CustomFrame.t:SetTexture(icon)
-			end
-			if playerBuff[name] then
-				CustomFrame:SetAlpha(C.reminder.raid_buffs_alpha)
-				custom = true
-				break
-			else
-				CustomFrame:SetAlpha(1)
-				custom = false
-			end
-		end
-	else
-		CustomFrame:Hide()
-		custom = true
-	end
+	-- if #custombuffs > 0 then
+		-- for i = 1, #custombuffs do
+			-- local name, icon = unpack(custombuffs[i])
+			-- if i == 1 then
+				-- CustomFrame.t:SetTexture(icon)
+			-- end
+			-- if playerBuff[name] then
+				-- CustomFrame:SetAlpha(C.reminder.raid_buffs_alpha)
+				-- custom = true
+				-- break
+			-- else
+				-- CustomFrame:SetAlpha(1)
+				-- custom = false
+			-- end
+		-- end
+	-- else
+		-- CustomFrame:Hide()
+		-- custom = true
+	-- end
 
 	UpdatePositions()
 	local _, instanceType = IsInInstance()
@@ -276,10 +276,14 @@ local buffButtons = {
 	"FoodFrame",
 	"WeaponFrame",
 	"StaminaFrame",
-	"VersFrame",
+	-- "VersFrame",
+	"Spell3Frame",
 	"Spell4Frame",
-	"ReduceFrame",
-	"CustomFrame",
+	"Spell5Frame",
+	"Spell6Frame",
+	"Spell7Frame",
+	-- "ReduceFrame",
+	-- "CustomFrame",
 }
 
 local color = C.reminder.raid_buffs_classcolor and "ClassColor" or "Default"
