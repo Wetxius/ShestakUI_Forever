@@ -1705,37 +1705,8 @@ do
 
 	combo.children = {combo_always, combo_old}
 
-	local arcane = ns.CreateCheckBox(parent, "arcane", L_GUI_UF_PLUGINS_ARCANE_BAR)
-	arcane:SetPoint("TOPLEFT", combo_old, "BOTTOMLEFT", -20, 0)
-
-	local chi = ns.CreateCheckBox(parent, "chi", L_GUI_UF_PLUGINS_CHI_BAR)
-	chi:SetPoint("TOPLEFT", arcane, "BOTTOMLEFT", 0, 0)
-
-	local essence = ns.CreateCheckBox(parent, "essence")
-	essence:SetPoint("TOPLEFT", chi, "BOTTOMLEFT", 0, 0)
-
-	local stagger = ns.CreateCheckBox(parent, "stagger", L_GUI_UF_PLUGINS_STAGGER_BAR)
-	stagger:SetPoint("TOPLEFT", essence, "BOTTOMLEFT", 0, 0)
-
-	local holy = ns.CreateCheckBox(parent, "holy", L_GUI_UF_PLUGINS_HOLY_BAR)
-	holy:SetPoint("TOPLEFT", stagger, "BOTTOMLEFT", 0, 0)
-
-	local shard = ns.CreateCheckBox(parent, "shard", L_GUI_UF_PLUGINS_SHARD_BAR)
-	shard:SetPoint("TOPLEFT", holy, "BOTTOMLEFT", 0, 0)
-
-	local soul = ns.CreateCheckBox(parent, "soul")
-	soul:SetPoint("TOPLEFT", shard, "BOTTOMLEFT", 0, 0)
-
-	local rune = ns.CreateCheckBox(parent, "rune", L_GUI_UF_PLUGINS_RUNE_BAR)
-	rune:SetPoint("TOPLEFT", soul, "BOTTOMLEFT", 0, 0)
-
 	local totem = ns.CreateCheckBox(parent, "totem", L_GUI_UF_PLUGINS_TOTEM_BAR)
-	totem:SetPoint("TOPLEFT", rune, "BOTTOMLEFT", 0, 0)
-
-	local totem_other = ns.CreateCheckBox(parent, "totem_other")
-	totem_other:SetPoint("TOPLEFT", totem, "BOTTOMLEFT", 20, 0)
-
-	totem.children = {totem_other}
+	totem:SetPoint("TOPLEFT", combo_old, "BOTTOMLEFT", -20, 0)
 end
 
 -- Raid Frames

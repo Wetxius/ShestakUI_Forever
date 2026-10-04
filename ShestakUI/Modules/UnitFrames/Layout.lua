@@ -341,198 +341,6 @@ local function Shared(self, unit)
 			self.GroupRoleIndicator:SetPoint("TOPLEFT", 10, 8)
 		end
 
-		-- Rune bar
-		if C.unitframe_class_bar.rune and T.class == "DEATHKNIGHT" then
-			self.Runes = CreateFrame("Frame", self:GetName().."_RuneBar", self)
-			self.Runes:CreateBackdrop("Default")
-			self.Runes:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-			self.Runes:SetSize(player_width, 7)
-			self.Runes.colorSpec = true
-			self.Runes.sortOrder = "asc"
-
-			self.Runes.PostUpdateColor = function(element, color)
-				for index = 1, #element do
-					T.PostUpdateBackdropColor(element[index], color)
-				end
-			end
-
-			for i = 1, 6 do
-				self.Runes[i] = CreateFrame("StatusBar", self:GetName().."_Rune"..i, self.Runes)
-				self.Runes[i]:SetSize((player_width - 5) / 6, 7)
-				if i == 1 then
-					self.Runes[i]:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-				else
-					self.Runes[i]:SetPoint("TOPLEFT", self.Runes[i-1], "TOPRIGHT", 1, 0)
-				end
-				self.Runes[i]:SetStatusBarTexture(C.media.texture)
-
-				self.Runes[i].bg = self.Runes[i]:CreateTexture(nil, "BORDER")
-				self.Runes[i].bg:SetAllPoints()
-				self.Runes[i].bg:SetTexture(C.media.texture)
-				self.Runes[i].bg.multiplier = 0.2
-			end
-		end
-
-		-- Soul fragments bar
-		if C.unitframe_class_bar.soul and T.class == "DEMONHUNTER" then
-			self.SoulFragments = CreateFrame("StatusBar", self:GetName().."_SoulFragments", self)
-			self.SoulFragments:CreateBackdrop("Default")
-			self.SoulFragments:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-			self.SoulFragments:SetSize(player_width, 7)
-			self.SoulFragments:SetStatusBarTexture(C.media.texture)
-
-			self.SoulFragments:GetStatusBarTexture():SetVertexColor(0.4, 0, 1, 1)
-
-			self.SoulFragments.bg = self.SoulFragments:CreateTexture(nil, "BORDER")
-			self.SoulFragments.bg:SetAllPoints()
-			self.SoulFragments.bg:SetTexture(C.media.texture)
-			self.SoulFragments.bg:SetVertexColor(0.4, 0, 1, 0.2)
-
-			self.SoulFragments.Text = T.SetFontString(self.SoulFragments, C.font.unit_frames_font, C.font.unit_frames_font_size, C.font.unit_frames_font_style)
-			self.SoulFragments.Text:SetPoint("CENTER", self.SoulFragments, "CENTER", 0, 0)
-
-			if C.unitframe.plugins_smooth_bar then
-				self.SoulFragments.smoothing = Enum.StatusBarInterpolation.ExponentialEaseOut or 1
-			end
-		end
-
-		-- Essence bar
-		if C.unitframe_class_bar.essence and T.class == "EVOKER" then
-			self.Essence = CreateFrame("Frame", self:GetName().."_Essence", self, "BackdropTemplate", "BackdropTemplate")
-			self.Essence:CreateBackdrop("Default")
-			self.Essence:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-			self.Essence:SetSize(player_width, 7)
-
-			for i = 1, 6 do
-				self.Essence[i] = CreateFrame("StatusBar", self:GetName().."_Essence"..i, self.Essence, "BackdropTemplate")
-				self.Essence[i]:SetSize((player_width - 5) / 6, 7)
-				if i == 1 then
-					self.Essence[i]:SetPoint("LEFT", self.Essence)
-				else
-					self.Essence[i]:SetPoint("TOPLEFT", self.Essence[i-1], "TOPRIGHT", 1, 0)
-				end
-				self.Essence[i]:SetStatusBarTexture(C.media.texture)
-				self.Essence[i]:SetStatusBarColor(0.2, 0.58, 0.5)
-
-				self.Essence[i].bg = self.Essence[i]:CreateTexture(nil, "BORDER")
-				self.Essence[i].bg:SetAllPoints()
-				self.Essence[i].bg:SetTexture(C.media.texture)
-				self.Essence[i].bg:SetVertexColor(0.2, 0.58, 0.5, 0.2)
-			end
-		end
-
-		-- Arcane Charge bar
-		if C.unitframe_class_bar.arcane and T.class == "MAGE" then
-			self.ArcaneCharge = CreateFrame("Frame", self:GetName().."_ArcaneChargeBar", self)
-			self.ArcaneCharge:CreateBackdrop("Default")
-			self.ArcaneCharge:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-			self.ArcaneCharge:SetSize(player_width, 7)
-
-			for i = 1, 4 do
-				self.ArcaneCharge[i] = CreateFrame("StatusBar", self:GetName().."_ArcaneCharge"..i, self.ArcaneCharge)
-				self.ArcaneCharge[i]:SetSize((player_width - 3) / 4, 7)
-				if i == 1 then
-					self.ArcaneCharge[i]:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-				else
-					self.ArcaneCharge[i]:SetPoint("TOPLEFT", self.ArcaneCharge[i-1], "TOPRIGHT", 1, 0)
-				end
-				self.ArcaneCharge[i]:SetStatusBarTexture(C.media.texture)
-				self.ArcaneCharge[i]:SetStatusBarColor(0.4, 0.8, 1)
-
-				self.ArcaneCharge[i].bg = self.ArcaneCharge[i]:CreateTexture(nil, "BORDER")
-				self.ArcaneCharge[i].bg:SetAllPoints()
-				self.ArcaneCharge[i].bg:SetTexture(C.media.texture)
-				self.ArcaneCharge[i].bg:SetVertexColor(0.4, 0.8, 1, 0.2)
-			end
-		end
-
-		if T.class == "MONK" then
-			-- Chi bar
-			if C.unitframe_class_bar.chi then
-				self.HarmonyBar = CreateFrame("Frame", self:GetName().."_HarmonyBar", self)
-				self.HarmonyBar:CreateBackdrop("Default")
-				self.HarmonyBar:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-				self.HarmonyBar:SetSize(player_width, 7)
-
-				for i = 1, 6 do
-					self.HarmonyBar[i] = CreateFrame("StatusBar", self:GetName().."_Harmony"..i, self.HarmonyBar)
-					self.HarmonyBar[i]:SetSize((player_width - 5) / 6, 7)
-					if i == 1 then
-						self.HarmonyBar[i]:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-					else
-						self.HarmonyBar[i]:SetPoint("TOPLEFT", self.HarmonyBar[i-1], "TOPRIGHT", 1, 0)
-					end
-					self.HarmonyBar[i]:SetStatusBarTexture(C.media.texture)
-					self.HarmonyBar[i]:SetStatusBarColor(0.33, 0.63, 0.33)
-
-					self.HarmonyBar[i].bg = self.HarmonyBar[i]:CreateTexture(nil, "BORDER")
-					self.HarmonyBar[i].bg:SetAllPoints()
-					self.HarmonyBar[i].bg:SetTexture(C.media.texture)
-					self.HarmonyBar[i].bg:SetVertexColor(0.33, 0.63, 0.33, 0.2)
-				end
-			end
-
-			-- Stagger bar
-			if C.unitframe_class_bar.stagger then
-				self.Stagger = CreateFrame("StatusBar", self:GetName().."_Stagger", self)
-				self.Stagger:CreateBackdrop("Default")
-				self.Stagger:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-				self.Stagger:SetSize(player_width, 7)
-				self.Stagger:SetStatusBarTexture(C.media.texture)
-
-				self.Stagger.bg = self.Stagger:CreateTexture(nil, "BORDER")
-				self.Stagger.bg:SetAllPoints()
-				self.Stagger.bg:SetTexture(C.media.texture)
-				self.Stagger.bg.multiplier = 0.2
-
-				self.Stagger.Text = T.SetFontString(self.Stagger, C.font.unit_frames_font, C.font.unit_frames_font_size, C.font.unit_frames_font_style)
-				self.Stagger.Text:SetPoint("CENTER", self.Stagger, "CENTER", 0, 0)
-
-				self.Stagger.PostUpdateColor = function(element, color)
-					T.PostUpdateBackdropColor(element, color)
-				end
-
-				self.Stagger.PostVisibility = function(element, isVisible)
-					if isVisible then
-						if element.__owner.Debuffs then element.__owner.Debuffs:SetPoint("BOTTOMRIGHT", element.__owner, "TOPRIGHT", 2, 19) end
-					else
-						if C_SpecializationInfo.GetSpecialization() ~= SPEC_MONK_WINDWALKER then -- Windwalker has own chi bar
-							if element.__owner.Debuffs then element.__owner.Debuffs:SetPoint("BOTTOMRIGHT", element.__owner, "TOPRIGHT", 2, 5) end
-						end
-					end
-				end
-
-				if C.unitframe.plugins_smooth_bar then
-					self.Stagger.smoothing = Enum.StatusBarInterpolation.ExponentialEaseOut or 1
-				end
-			end
-		end
-
-		-- Holy Power bar
-		if C.unitframe_class_bar.holy and T.class == "PALADIN" then
-			self.HolyPower = CreateFrame("Frame", self:GetName().."_HolyPowerBar", self)
-			self.HolyPower:CreateBackdrop("Default")
-			self.HolyPower:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-			self.HolyPower:SetSize(player_width, 7)
-
-			for i = 1, 5 do
-				self.HolyPower[i] = CreateFrame("StatusBar", self:GetName().."_HolyPower"..i, self.HolyPower)
-				self.HolyPower[i]:SetSize((player_width - 4) / 5, 7)
-				if i == 1 then
-					self.HolyPower[i]:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-				else
-					self.HolyPower[i]:SetPoint("TOPLEFT", self.HolyPower[i-1], "TOPRIGHT", 1, 0)
-				end
-				self.HolyPower[i]:SetStatusBarTexture(C.media.texture)
-				self.HolyPower[i]:SetStatusBarColor(0.89, 0.88, 0.1)
-
-				self.HolyPower[i].bg = self.HolyPower[i]:CreateTexture(nil, "BORDER")
-				self.HolyPower[i].bg:SetAllPoints()
-				self.HolyPower[i].bg:SetTexture(C.media.texture)
-				self.HolyPower[i].bg:SetVertexColor(0.89, 0.88, 0.1, 0.2)
-			end
-		end
-
 		-- Rogue/Druid Combo bar
 		if C.unitframe_class_bar.combo and C.unitframe_class_bar.combo_old ~= true and (T.class == "ROGUE" or T.class == "DRUID") then
 			self.ComboPoints = CreateFrame("Frame", self:GetName().."_ComboBar", self)
@@ -603,31 +411,6 @@ local function Shared(self, unit)
 				self.TotemBar[i].bg:SetAllPoints()
 				self.TotemBar[i].bg:SetTexture(C.media.texture)
 				self.TotemBar[i].bg.multiplier = 0.2
-			end
-		end
-
-		-- Soul Shards bar
-		if C.unitframe_class_bar.shard and T.class == "WARLOCK" then
-			self.SoulShards = CreateFrame("Frame", self:GetName().."_SoulShardsBar", self)
-			self.SoulShards:CreateBackdrop("Default")
-			self.SoulShards:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-			self.SoulShards:SetSize(player_width, 7)
-
-			for i = 1, 5 do
-				self.SoulShards[i] = CreateFrame("StatusBar", self:GetName().."_SoulShards"..i, self.SoulShards)
-				self.SoulShards[i]:SetSize((player_width - 4) / 5, 7)
-				if i == 1 then
-					self.SoulShards[i]:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
-				else
-					self.SoulShards[i]:SetPoint("TOPLEFT", self.SoulShards[i-1], "TOPRIGHT", 1, 0)
-				end
-				self.SoulShards[i]:SetStatusBarTexture(C.media.texture)
-				self.SoulShards[i]:SetStatusBarColor(0.9, 0.37, 0.37)
-
-				self.SoulShards[i].bg = self.SoulShards[i]:CreateTexture(nil, "BORDER")
-				self.SoulShards[i].bg:SetAllPoints()
-				self.SoulShards[i].bg:SetTexture(C.media.texture)
-				self.SoulShards[i].bg:SetVertexColor(0.9, 0.37, 0.37, 0.2)
 			end
 		end
 
@@ -716,31 +499,6 @@ local function Shared(self, unit)
 			self:Tag(self.Absorbs, "[Absorbs]")
 		end
 	end
-
-	-- Counter bar (Darkmoon Fair) -- Midnight secret error (BETA)
-	-- if unit == "player" or unit == "pet" then
-		-- self.CounterBar = CreateFrame("StatusBar", self:GetName().."_CounterBar", self)
-		-- self.CounterBar:CreateBackdrop("Default")
-		-- self.CounterBar:SetWidth(221)
-		-- self.CounterBar:SetHeight(20)
-		-- self.CounterBar:SetStatusBarTexture(C.media.texture)
-		-- self.CounterBar:SetPoint("TOP", UIParent, "TOP", 0, -102)
-
-		-- self.CounterBar.bg = self.CounterBar:CreateTexture(nil, "BORDER")
-		-- self.CounterBar.bg:SetAllPoints()
-		-- self.CounterBar.bg:SetTexture(C.media.texture)
-
-		-- self.CounterBar.Text = T.SetFontString(self.CounterBar, C.font.unit_frames_font, C.font.unit_frames_font_size, C.font.unit_frames_font_style)
-		-- self.CounterBar.Text:SetPoint("CENTER")
-
-		-- self.CounterBar:SetScript("OnValueChanged", function(_, value)
-			-- local _, max = self.CounterBar:GetMinMaxValues()
-			-- local r, g, b = oUF:ColorGradient(value, max, 0.8, 0, 0, 0.8, 0.8, 0, 0, 0.8, 0)
-			-- self.CounterBar:SetStatusBarColor(r, g, b)
-			-- self.CounterBar.bg:SetVertexColor(r, g, b, 0.2)
-			-- self.CounterBar.Text:SetText(floor(value))
-		-- end)
-	-- end
 
 	-- Debuff icons
 	if unit == "pet" and C.aura.pet_debuffs or unit == "focus" and C.aura.focus_debuffs
@@ -843,10 +601,8 @@ local function Shared(self, unit)
 				self.Debuffs.sortDirection = AuraContainerSortDirection.Reverse
 				self.Debuffs.PostCreateButton = T.PostCreateIcon
 
-				if (T.class == "DEATHKNIGHT" and C.unitframe_class_bar.rune)
-				or ((T.class == "DRUID" or T.class == "ROGUE") and C.unitframe_class_bar.combo and C.unitframe_class_bar.combo_old ~= true)
-				or (T.class == "SHAMAN" and C.unitframe_class_bar.totem)
-				or (T.class == "WARLOCK" and C.unitframe_class_bar.shard) then
+				if ((T.class == "DRUID" or T.class == "ROGUE") and C.unitframe_class_bar.combo and C.unitframe_class_bar.combo_old ~= true)
+				or (T.class == "SHAMAN" and C.unitframe_class_bar.totem) then
 					self.Debuffs:SetPoint("BOTTOMRIGHT", self, "TOPRIGHT", 2, 19)
 				else
 					self.Debuffs:SetPoint("BOTTOMRIGHT", self, "TOPRIGHT", 2, 5)

@@ -63,7 +63,6 @@
 	<Script file="Modules\Misc\BattlefieldScore.lua"/>
 	<Script file="Modules\Misc\CharsCurrency.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
-	<!-- <Script file="Modules\Misc\LFGQueueTimer.lua"/> -->
 	<Script file="Modules\Misc\MagePortals.lua"/>
 	<Script file="Modules\Misc\Marking.lua"/>
 	<Script file="Modules\Misc\Misc.lua"/>
@@ -78,7 +77,6 @@
 	<Script file="Modules\Trade\Merchant.lua"/>
 	<Script file="Modules\Trade\OneClickDisenchanting.lua"/>
 	<Script file="Modules\Trade\OneClickEnchantScroll.lua"/>
-	<!-- <Script file="Modules\Trade\ProfessionTabs.lua"/> -->
 	<Script file="Modules\Trade\SumAucBuyouts.lua"/>
 	<Script file="Modules\Trade\TrainAll.lua"/>
 
