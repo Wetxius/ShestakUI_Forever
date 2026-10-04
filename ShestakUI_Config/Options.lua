@@ -2425,14 +2425,14 @@ do
 	local class_icons = ns.CreateCheckBox(parent, "class_icons")
 	class_icons:SetPoint("TOPLEFT", cast_target, "BOTTOMLEFT", -20, 0)
 
-	local name_abbrev = ns.CreateCheckBox(parent, "name_abbrev")
-	name_abbrev:SetPoint("TOPLEFT", class_icons, "BOTTOMLEFT", 0, 0)
+	-- local name_abbrev = ns.CreateCheckBox(parent, "name_abbrev")
+	-- name_abbrev:SetPoint("TOPLEFT", class_icons, "BOTTOMLEFT", 0, 0)
 
-	local short_name = ns.CreateCheckBox(parent, "short_name")
-	short_name:SetPoint("TOPLEFT", name_abbrev, "BOTTOMLEFT", 0, 0)
+	-- local short_name = ns.CreateCheckBox(parent, "short_name")
+	-- short_name:SetPoint("TOPLEFT", name_abbrev, "BOTTOMLEFT", 0, 0)
 
 	local clamp = ns.CreateCheckBox(parent, "clamp")
-	clamp:SetPoint("TOPLEFT", short_name, "BOTTOMLEFT", 0, 0)
+	clamp:SetPoint("TOPLEFT", class_icons, "BOTTOMLEFT", 0, 0)
 
 	local track_debuffs = ns.CreateCheckBox(parent, "track_debuffs")
 	track_debuffs:SetPoint("TOPLEFT", clamp, "BOTTOMLEFT", 0, 0)
