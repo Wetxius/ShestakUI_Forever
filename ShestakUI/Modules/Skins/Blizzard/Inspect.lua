@@ -47,7 +47,8 @@ local function LoadSkin()
 		"Trinket0Slot",
 		"Trinket1Slot",
 		"MainHandSlot",
-		"SecondaryHandSlot"
+		"SecondaryHandSlot",
+		"RangedSlot"
 	}
 
 	for _, slot in pairs(slots) do
@@ -90,7 +91,7 @@ local function LoadSkin()
 
 	InspectPVPFrame.BG:Kill()
 	InspectGuildFrameBG:Kill()
-	InspectPaperDollItemsFrame.InspectTalents:SkinButton()
+	InspectPaperDollFrame.InspectTalents:SkinButton()
 end
 
 T.SkinFuncs["Blizzard_InspectUI"] = LoadSkin
