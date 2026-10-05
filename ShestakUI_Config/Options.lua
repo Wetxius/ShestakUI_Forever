@@ -481,7 +481,7 @@ do
 	GithubButton:SetSize(100, 23)
 	GithubButton:SetText("Github")
 	GithubButton:SetWidth(GithubButton.Text:GetWidth() + 15)
-	local url = "https://github.com/Wetxius/ShestakUI"
+	local url = "https://github.com/Wetxius/ShestakUI_Forever"
 	GithubButton:SetScript("OnClick", function()
 		StaticPopup_Show("LINK_URL", _, _, url)
 	end)
