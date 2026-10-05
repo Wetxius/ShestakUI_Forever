@@ -19,10 +19,10 @@
 	<Script file="Bubbles.lua"/>
 	<Script file="Calendar.lua"/>
 	<Script file="Channels.lua"/>
-	<!-- <Script file="Character.lua"/> -->
+	<Script file="Character.lua"/>
 	<Script file="ChatConfig.lua"/>
 	<Script file="ChromieTime.lua"/>
-	<!-- <Script file="Collections.lua"/> -->
+	<Script file="Collections.lua"/>
 	<Script file="Communities.lua"/>
 	<Script file="Container.lua"/>
 	<Script file="Contribution.lua"/>
@@ -81,7 +81,7 @@
 	<Script file="Soulbinds.lua"/>
 	<Script file="Subscription.lua"/>
 	<Script file="Tabard.lua"/>
-	<!-- <Script file="Talent.lua"/> -->
+	<Script file="Talent.lua"/>
 	<Script file="TalkingHead.lua"/>
 	<Script file="Taxi.lua"/>
 	<Script file="TimeManager.lua"/>
