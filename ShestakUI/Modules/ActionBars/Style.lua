@@ -278,6 +278,7 @@ frame:SetScript("OnEvent", function()
 	end
 
 	StyleNormalButton(ExtraActionButton1)
+	frame:UnregisterAllEvents()
 end)
 
 local function SetupFlyoutButton(button)
