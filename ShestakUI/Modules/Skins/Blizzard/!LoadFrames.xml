@@ -66,9 +66,7 @@
 	<!-- <Script file="PetStable.lua"/> -->
 	<Script file="Petition.lua"/>
 	<Script file="PlayerChoice.lua"/>
-	<!-- <Script file="Professions.lua"/> -->
-	<!-- <Script file="ProfessionsBook.lua"/> -->
-	<!-- <Script file="ProfessionsOrders.lua"/> -->
+	<Script file="Professions.lua"/>
 	<!-- <Script file="PvE.lua"/> -->
 	<Script file="PvP.lua"/>
 	<Script file="PvPMatch.lua"/>

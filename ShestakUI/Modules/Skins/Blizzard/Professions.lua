@@ -8,11 +8,85 @@ local function LoadSkin()
 	local frame = ProfessionsFrame
 	T.SkinFrame(frame)
 
-	T.SkinMaxMinFrame(frame.MaximizeMinimize, frame.CloseButton)
-	T.SkinEditBox(frame.CraftingPage.MinimizedSearchBox, nil, 16)
+	for _, tab in next, _G.ProfessionsFrame.rightProfessionTabs do
+		T.SkinSideTabs(tab)
+	end
+	T.SkinSideTabs(ProfessionsFrame.ProfessionsOverviewTab)
 
-	ProfessionsFrame.CraftingPage.TutorialButton.Ring:Hide()
-	ProfessionsFrame.CraftingPage.TutorialButton:SetPoint("TOPLEFT", frame, "TOPLEFT", -5, 10)
+	local function replaceHighlight(button)
+		button.highlightTexture:SetColorTexture(1, 1, 1, 0.3)
+		button.highlightTexture:SetPoint("TOPLEFT", button, 4, -4)
+		button.highlightTexture:SetPoint("BOTTOMRIGHT", button, -4, 4)
+	end
+
+	local frames = {
+		ProfessionsFrame.BookPage.ProfessionsContentFrame.PrimaryProfession1,
+		ProfessionsFrame.BookPage.ProfessionsContentFrame.PrimaryProfession2,
+		ProfessionsFrame.BookPage.ProfessionsContentFrame.SecondaryProfession1,
+		ProfessionsFrame.BookPage.ProfessionsContentFrame.SecondaryProfession2,
+		ProfessionsFrame.BookPage.ProfessionsContentFrame.SecondaryProfession3
+	}
+
+	for i = 1, #frames do
+		local frame = frames[i]
+		frame:CreateBackdrop("Overlay")
+		frame.backdrop:SetInside(nil, 5, 5)
+		frame.Background:SetTexCoord(0.05, 0.95, 0.05, 0.95)
+		frame.Background:SetInside(frame.backdrop, 1, 1)
+
+		local bar = frame.StatusBar
+		if bar then
+			bar.Border:Hide()
+			bar.Background:Hide()
+			bar:CreateBackdrop("Overlay")
+			bar.backdrop:SetOutside(bar.Fill)
+
+			if bar.overrideWidth then
+				bar.Fill:SetWidth(bar.overrideWidth)
+			end
+		end
+
+		local unlearn = frame.UnlearnButton
+		if unlearn then
+			unlearn:SetMovePoint(6)
+		end
+
+		local spellButtons = frame.spellButtons
+		if spellButtons then
+			for _, button in next, spellButtons do
+				button.IconTextureOverlay:SetAlpha(0)
+
+				button:GetCheckedTexture():SetColorTexture(0, 1, 0, 0.3)
+				button:GetCheckedTexture():SetPoint("TOPLEFT", button, 4, -4)
+				button:GetCheckedTexture():SetPoint("BOTTOMRIGHT", button, -4, 4)
+
+				button:GetPushedTexture():SetColorTexture(0, 1, 0, 0.3)
+				button:GetPushedTexture():SetPoint("TOPLEFT", button, 4, -4)
+				button:GetPushedTexture():SetPoint("BOTTOMRIGHT", button, -4, 4)
+
+				button.cooldown:SetPoint("TOPLEFT", button, 4, -4)
+				button.cooldown:SetPoint("BOTTOMRIGHT", button, -4, 4)
+
+				local icon = button.IconTexture
+				if icon then
+					icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+					icon:ClearAllPoints()
+					icon:SetPoint("TOPLEFT", 4, -4)
+					icon:SetPoint("BOTTOMRIGHT", -4, 4)
+
+					hooksecurefunc(button, "UpdateButton", replaceHighlight)
+
+					if not button.backdrop then
+						button:CreateBackdrop("Default")
+						button.backdrop:SetPoint("TOPLEFT", 2, -2)
+						button.backdrop:SetPoint("BOTTOMRIGHT", -2, 2)
+					end
+				end
+			end
+		end
+	end
+
+	ProfessionsFrame.CraftingPage:StripTextures()
 
 	T.SkinEditBox(frame.CraftingPage.RecipeList.SearchBox, nil, 16)
 
@@ -42,28 +116,14 @@ local function LoadSkin()
 	end
 
 	local LinkButton = frame.CraftingPage.LinkButton
-	LinkButton:GetNormalTexture():SetTexCoord(0.25, 0.7, 0.37, 0.75)
-	LinkButton:GetPushedTexture():SetTexCoord(0.25, 0.7, 0.45, 0.8)
-	LinkButton:GetHighlightTexture():Kill()
 	LinkButton:CreateBackdrop("Overlay")
 	LinkButton:SetSize(17, 14)
 	LinkButton:SetPoint("LEFT", ProfessionsFrame.CraftingPage.RankBar, "RIGHT", 1, -3)
 
-	for _, name in pairs({"Prof0ToolSlot", "Prof0Gear0Slot", "Prof0Gear1Slot", "Prof1ToolSlot", "Prof1Gear0Slot", "Prof1Gear1Slot", "CookingToolSlot", "CookingGear0Slot", "FishingToolSlot", "FishingGear0Slot", "FishingGear1Slot"}) do
-		local button = frame.CraftingPage[name]
-		if button then
-			button:StripTextures()
-			button.icon:SkinIcon()
-			T.SkinIconBorder(button.IconBorder, button.icon:GetParent().backdrop)
-			button:SetNormalTexture(0)
-			button:SetPushedTexture(0)
-		end
-	end
-
 	hooksecurefunc(_G.ProfessionsFrame.CraftingPage.RecipeList.ScrollBox, "Update", function(frame)
 		for _, child in next, {frame.ScrollTarget:GetChildren()} do
-			if child.CenterPiece and not child.isSkinned then
-				child:DisableDrawLayer("BACKGROUND")
+			if child.CollapseButton and not child.isSkinned then
+				child:StripTextures()
 				child:CreateBackdrop("Overlay")
 				child.backdrop:SetPoint("TOPLEFT", child, 6, 0)
 				child.backdrop:SetPoint("BOTTOMRIGHT", child, -6, 4)
@@ -74,7 +134,7 @@ local function LoadSkin()
 
 	local RecipeList = frame.CraftingPage.RecipeList
 	RecipeList:StripTextures()
-	RecipeList.BackgroundNineSlice:Hide()
+	RecipeList.Background:SetAlpha(0)
 	T.SkinScrollBar(RecipeList.ScrollBar)
 
 	local SchematicForm = frame.CraftingPage.SchematicForm
@@ -197,291 +257,6 @@ local function LoadSkin()
 	ProfessionsFrame.CraftingPage.CreateMultipleInputBox.IncrementButton:SetPoint("LEFT", ProfessionsFrame.CraftingPage.CreateMultipleInputBox, "RIGHT", 5, 0)
 	ProfessionsFrame.CraftingPage.CreateMultipleInputBox.IncrementButton:SetSize(22, 22)
 	ProfessionsFrame.CraftingPage.CreateMultipleInputBox.DecrementButton:SetSize(22, 22)
-
-	for _, tab in next, {frame.TabSystem:GetChildren()} do
-		T.SkinTab(tab)
-	end
-
-	local function HandleOutputButtons(frame)
-		for _, child in next, {frame.ScrollTarget:GetChildren()} do
-			if not child.isSkinned then
-				local itemContainer = child.ItemContainer
-				if itemContainer then
-					local item = itemContainer.Item
-					item:SetNormalTexture(0)
-					item:SetPushedTexture(0)
-					item:SetHighlightTexture(0)
-
-					local icon = item:GetRegions()
-					icon:SkinIcon()
-					item.IconBorder:Kill()
-
-					itemContainer.CritFrame:SetAlpha(0)
-					itemContainer.BorderFrame:Hide()
-					itemContainer.HighlightNameFrame:SetAlpha(0)
-					itemContainer.PushedNameFrame:SetAlpha(0)
-					itemContainer.NameFrame:Hide()
-				end
-
-				local bonus = child.CreationBonus
-				if bonus then
-					local item = bonus.Item
-					item:StripTextures()
-					local icon = item:GetRegions()
-					icon:SkinIcon()
-				end
-
-				child.isSkinned = true
-			end
-
-			local itemContainer = child.ItemContainer
-			if itemContainer then
-				itemContainer.Item.IconBorder:Hide()
-				itemContainer.Item.IconBorder:SetAlpha(0)
-			end
-		end
-	end
-
-	local function ReskinOutputLog(frame)
-		frame:StripTextures()
-		frame:SetTemplate("Transparent")
-
-		T.SkinCloseButton(frame.ClosePanelButton)
-		T.SkinScrollBar(frame.ScrollBar)
-
-		hooksecurefunc(frame.ScrollBox, "Update", HandleOutputButtons)
-	end
-
-	ReskinOutputLog(frame.CraftingPage.CraftingOutputLog)
-
-	-- Guild
-	frame.CraftingPage.ViewGuildCraftersButton:SkinButton()
-	local GuildFrame = frame.CraftingPage.GuildFrame
-	GuildFrame:StripTextures()
-	GuildFrame:CreateBackdrop("Transparent")
-	GuildFrame.Container:StripTextures()
-	GuildFrame.Container:CreateBackdrop("Overlay")
-
-	-- Spec page
-	local specPage = frame.SpecPage
-	specPage.TreeView:StripTextures()
-	specPage.TreeView.Background:Hide()
-	specPage.PanelFooter:StripTextures()
-	specPage.TopDivider:Hide()
-	specPage.VerticalDivider:Hide()
-
-	local specPageButtons = {
-		specPage.ApplyButton,
-		specPage.UnlockTabButton,
-		specPage.ViewTreeButton,
-		specPage.BackToPreviewButton,
-		specPage.ViewPreviewButton,
-		specPage.BackToFullTreeButton
-	}
-
-	for i = 1, #specPageButtons do
-		local button = specPageButtons[i]
-		if button then
-			button:SkinButton()
-		end
-	end
-
-	hooksecurefunc(specPage, "UpdateTabs", function(self)
-		for tab in self.tabsPool:EnumerateActive() do
-			if not tab.styled then
-				tab.styled = true
-				tab:DisableDrawLayer("BACKGROUND")
-				tab:StripTextures()
-				tab.backdrop = CreateFrame("Frame", nil, tab)
-				tab.backdrop:SetFrameLevel(tab:GetFrameLevel() - 1)
-				tab.backdrop:SetTemplate("Overlay")
-				tab.backdrop:SetPoint("TOPLEFT", 6, -2)
-				tab.backdrop:SetPoint("BOTTOMRIGHT", -6, 2)
-			end
-		end
-	end)
-
-	local DetailedView = specPage.DetailedView
-	DetailedView:StripTextures()
-	DetailedView.UnlockPathButton:SkinButton()
-	DetailedView.SpendPointsButton:SkinButton()
-	DetailedView.UnspentPoints.Icon:SkinIcon()
-
-	-- Order page
-	local Orders = ProfessionsFrame.OrdersPage
-
-	local tabs = {
-		Orders.BrowseFrame.PublicOrdersButton,
-		Orders.BrowseFrame.GuildOrdersButton,
-		Orders.BrowseFrame.PersonalOrdersButton,
-		Orders.BrowseFrame.NpcOrdersButton
-	}
-
-	for i = 1, #tabs do
-		local tab = tabs[i]
-		tab:DisableDrawLayer("BACKGROUND")
-		tab:StripTextures()
-		tab.backdrop = CreateFrame("Frame", nil, tab)
-		tab.backdrop:SetFrameLevel(tab:GetFrameLevel() - 1)
-		tab.backdrop:SetTemplate("Overlay")
-		tab.backdrop:SetPoint("TOPLEFT", 6, -2)
-		tab.backdrop:SetPoint("BOTTOMRIGHT", -6, 2)
-	end
-
-	local BrowseFrame = Orders.BrowseFrame
-	BrowseFrame.OrdersRemainingDisplay:StripTextures()
-	BrowseFrame.OrdersRemainingDisplay:CreateBackdrop("Overlay")
-	BrowseFrame.FavoritesSearchButton:SkinButton()
-	BrowseFrame.FavoritesSearchButton:SetSize(22, 22)
-	BrowseFrame.FavoritesSearchButton:SetPoint("BOTTOMLEFT", Orders.BrowseFrame.RecipeList, "TOPLEFT", 11, 0)
-	BrowseFrame.SearchButton:SkinButton()
-	BrowseFrame.SearchButton:SetPoint("LEFT", BrowseFrame.FavoritesSearchButton, "RIGHT", 3, 0)
-
-	local BrowseList = Orders.BrowseFrame.RecipeList
-	BrowseList:StripTextures()
-	T.SkinScrollBar(BrowseList.ScrollBar)
-	T.SkinEditBox(BrowseList.SearchBox, nil, 16)
-	T.SkinCloseButton(BrowseList.FilterDropdown.ResetButton)
-
-	T.SkinFilter(BrowseList.FilterDropdown)
-	BrowseList.FilterDropdown:SetHeight(20)
-	BrowseList.FilterDropdown:SetPoint("TOPRIGHT", BrowseList, "TOPRIGHT", -8, -6)
-	BrowseList.BackgroundNineSlice:Hide()
-
-	hooksecurefunc(BrowseList.ScrollBox, "Update", function(frame)
-		for _, child in next, {frame.ScrollTarget:GetChildren()} do
-			if child.CenterPiece and not child.isSkinned then
-				child:DisableDrawLayer("BACKGROUND")
-				child:CreateBackdrop("Overlay")
-				child.backdrop:SetPoint("TOPLEFT", child, 6, 0)
-				child.backdrop:SetPoint("BOTTOMRIGHT", child, -6, 4)
-				child.isSkinned = true
-			end
-		end
-	end)
-
-	local OrderList = Orders.BrowseFrame.OrderList
-	OrderList:StripTextures()
-	T.SkinScrollBar(OrderList.ScrollBar)
-	OrderList.HeaderContainer:SetPoint("TOPLEFT", OrderList, "TOPLEFT", 3, -6)
-
-	hooksecurefunc(Orders, "SetupTable", function()
-		local maxHeaders = OrderList.HeaderContainer:GetNumChildren()
-		for i = 1, maxHeaders do
-			local header = select(i, OrderList.HeaderContainer:GetChildren())
-			if not header.styled then
-				header:DisableDrawLayer("BACKGROUND")
-				header:GetHighlightTexture():Hide()
-				header:CreateBackdrop("Overlay")
-				header.backdrop:SetPoint("TOPLEFT", 2, 0)
-				header.backdrop:SetPoint("BOTTOMRIGHT", -2, 0)
-
-				header.styled = true
-			end
-		end
-	end)
-	Orders:SetupTable() -- init header
-
-	local OrderView = Orders.OrderView
-	OrderView.ConcentrationDisplay.Icon:SkinIcon()
-	local OrderRankBar = OrderView.RankBar
-	OrderRankBar.Border:Hide()
-	OrderRankBar.Background:Hide()
-	OrderRankBar:CreateBackdrop("Overlay")
-	OrderRankBar.backdrop:SetOutside(OrderRankBar.Fill)
-
-	if OrderRankBar.ExpansionDropdownButton then
-		local arrow = OrderRankBar.ExpansionDropdownButton:CreateTexture(nil, "ARTWORK")
-		arrow:SetSize(14, 15)
-		arrow:SetPoint("CENTER")
-		arrow:SetTexture("Interface\\ChatFrame\\UI-ChatIcon-ScrollDown-Up")
-		arrow:SetTexCoord(0.3, 0.29, 0.3, 0.81, 0.65, 0.29, 0.65, 0.81)
-
-		OrderRankBar.ExpansionDropdownButton:SetSize(18, 18)
-		OrderRankBar.ExpansionDropdownButton:SetPoint("RIGHT", OrderRankBar, "RIGHT", -7, -3)
-		OrderRankBar.ExpansionDropdownButton:SkinButton()
-		OrderRankBar.ExpansionDropdownButton.Texture:Hide()
-	end
-
-	ReskinOutputLog(OrderView.CraftingOutputLog)
-
-	OrderView.CreateButton:SkinButton()
-	OrderView.StartRecraftButton:SkinButton()
-	OrderView.CompleteOrderButton:SkinButton()
-
-	local OrderInfo = OrderView.OrderInfo
-	OrderInfo:StripTextures()
-	OrderInfo.BackButton:SkinButton()
-	OrderInfo.StartOrderButton:SkinButton()
-	OrderInfo.DeclineOrderButton:SkinButton()
-	OrderInfo.ReleaseOrderButton:SkinButton()
-
-	local RewardsFrame = OrderInfo.NPCRewardsFrame
-	if RewardsFrame then
-		RewardsFrame.Background:SetAlpha(0)
-		RewardsFrame.Background:CreateBackdrop("Overlay")
-
-		skinReagentIcon(RewardsFrame.RewardItem1)
-		skinReagentIcon(RewardsFrame.RewardItem2)
-	end
-
-	local NoteBox = OrderInfo.NoteBox
-	NoteBox:StripTextures()
-	NoteBox:CreateBackdrop("Overlay")
-	NoteBox.Background:Hide()
-
-	local OrderDetails = OrderView.OrderDetails
-	OrderDetails:StripTextures()
-	OrderDetails:CreateBackdrop("Overlay")
-	OrderDetails.backdrop:SetPoint("BOTTOMRIGHT", -2, 0)
-	OrderDetails.Background:ClearAllPoints()
-	OrderDetails.Background:SetInside(OrderDetails.backdrop, 1, 1)
-
-	local OrderSchematicForm = OrderDetails.SchematicForm
-	T.SkinCheckBox(OrderSchematicForm.AllocateBestQualityCheckbox)
-	skinDetails(OrderSchematicForm.Details)
-	T.SkinCheckBox(OrderSchematicForm.TrackRecipeCheckbox)
-
-	local ConcentrateToggleButton = OrderSchematicForm.Details.CraftingChoicesContainer.ConcentrateContainer.ConcentrateToggleButton
-	ConcentrateToggleButton:CreateBackdrop()
-	ConcentrateToggleButton.backdrop:SetAllPoints()
-	ConcentrateToggleButton.Icon:CropIcon()
-	ConcentrateToggleButton:StyleButton()
-	ConcentrateToggleButton.NormalTexture:SetAlpha(0)
-
-	hooksecurefunc(OrderSchematicForm, "Init", function(frame)
-		for slot in frame.reagentSlotPool:EnumerateActive() do
-			skinReagentIcon(slot.Button)
-		end
-
-		local slot = OrderSchematicForm.salvageSlot
-		if slot then
-			skinReagentIcon(slot.Button)
-		end
-	end)
-
-	local OutputIcon = OrderSchematicForm.OutputIcon
-	if OutputIcon then
-		OutputIcon.Icon:SkinIcon()
-		T.SkinIconBorder(OutputIcon.IconBorder, OutputIcon.Icon:GetParent().backdrop)
-		OutputIcon:GetHighlightTexture():Hide()
-		OutputIcon.CircleMask:Hide()
-		if OutputIcon.CountShadow then OutputIcon.CountShadow:SetAlpha(0) end
-	end
-
-	local FulfillmentForm = OrderDetails.FulfillmentForm
-	local NoteBox = FulfillmentForm.NoteEditBox
-	NoteBox:StripTextures()
-	NoteBox:CreateBackdrop("Overlay")
-
-	local OutputIcon = OrderDetails.FulfillmentForm.ItemIcon
-	if OutputIcon then
-		OutputIcon.Icon:SkinIcon()
-		T.SkinIconBorder(OutputIcon.IconBorder, OutputIcon.Icon:GetParent().backdrop)
-		OutputIcon:GetHighlightTexture():Hide()
-		OutputIcon.CircleMask:Hide()
-		if OutputIcon.CountShadow then OutputIcon.CountShadow:SetAlpha(0) end
-	end
 end
 
 T.SkinFuncs["Blizzard_Professions"] = LoadSkin
