@@ -298,54 +298,6 @@ if C.tooltip.health_value then
 	end)
 end
 
-if C.tooltip.mount then
-	local MountCache = {}
-	local frame = CreateFrame("Frame")
-	frame:RegisterEvent("PLAYER_LOGIN")
-	frame:SetScript("OnEvent", function()
-		for _, mountID in ipairs(C_MountJournal.GetMountIDs()) do
-			MountCache[select(2, C_MountJournal.GetMountInfoByID(mountID))] = mountID
-		end
-	end)
-
-	local function checkBuff(self, aura)
-		local id = aura and aura.spellId
-
-		if id and MountCache[id] then
-			local text = NOT_COLLECTED
-			local r, g, b = 1, 0, 0
-			local collected = select(11, C_MountJournal.GetMountInfoByID(MountCache[id]))
-
-			if collected then
-				text = COLLECTED
-				r, g, b = 0, 1, 0
-			end
-
-			self:AddLine(" ")
-			self:AddLine(text, r, g, b)
-
-			local sourceText = select(3, C_MountJournal.GetMountInfoExtraByID(MountCache[id]))
-			self:AddLine(sourceText, 1, 1, 1)
-			-- self:AddLine(" ")
-			self:Show()
-		end
-	end
-
-	T.MountSource = function(self, unit)
-		if T.IsSecretAuras() or T.unitIsUnit(unit, "player") then return end
-		for i = 1, 40 do
-			local auraData = C_UnitAuras.GetAuraDataByIndex(unit, i, "HELPFUL")
-			if auraData then
-				if auraData.spellId and canaccessvalue(auraData.spellId) then
-					checkBuff(self, auraData)
-				end
-			else
-				break
-			end
-		end
-	end
-end
-
 local function GetUnitToken(tt)
 	local mouseover = UnitExists("mouseover") and "mouseover"
 
@@ -487,8 +439,6 @@ local OnTooltipSetUnit = function(self)
 	if C.tooltip.who_targetting then
 		-- token = unit AddTargetedBy() -- BETA secret now
 	end
-
-	if C.tooltip.mount and isPlayer then T.MountSource(self, unit) end
 end
 
 TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, OnTooltipSetUnit)

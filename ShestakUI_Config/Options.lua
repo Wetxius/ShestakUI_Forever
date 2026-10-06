@@ -2277,9 +2277,6 @@ do
 
 	local instance_lock = ns.CreateCheckBox(parent, "instance_lock")
 	instance_lock:SetPoint("TOPLEFT", achievements, "BOTTOMLEFT", 0, 0)
-
-	local mount = ns.CreateCheckBox(parent, "mount")
-	mount:SetPoint("TOPLEFT", instance_lock, "BOTTOMLEFT", 0, 0)
 end
 
 -- Chat
