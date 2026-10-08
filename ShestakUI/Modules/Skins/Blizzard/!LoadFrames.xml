@@ -67,7 +67,7 @@
 	<Script file="Petition.lua"/>
 	<Script file="PlayerChoice.lua"/>
 	<Script file="Professions.lua"/>
-	<!-- <Script file="PvE.lua"/> -->
+	<Script file="PvE.lua"/>
 	<Script file="PvP.lua"/>
 	<Script file="PvPMatch.lua"/>
 	<Script file="Quest.lua"/>
