@@ -54,6 +54,7 @@
 	<Script file="ItemSocketing.lua"/>
 	<Script file="ItemText.lua"/>
 	<Script file="ItemUpgrade.lua"/>
+	<Script file="LegacySystem.lua"/>
 	<Script file="Loot.lua"/>
 	<Script file="LossOfControl.lua"/>
 	<Script file="Macro.lua"/>
