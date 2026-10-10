@@ -5,18 +5,16 @@ if C.skins.blizzard_frames ~= true then return end
 --	Friends skin
 ----------------------------------------------------------------------------------------
 local function LoadSkin()
+	local frame = SocialUIFrame
+	T.SkinFrame(frame)
+
 	local StripAllTextures = {
 		FriendsFrame,
 		FriendsListFrame,
 		FriendsTabHeader,
-		-- WhoFrameColumnHeader1,
-		-- WhoFrameColumnHeader2,
-		-- WhoFrameColumnHeader3,
-		-- WhoFrameColumnHeader4,
 		AddFriendFrame,
 		FriendsFriendsFrame,
 		FriendsFrameInset,
-		-- WhoFrameListInset,
 		FriendsFrameBattlenetFrame,
 		BattleTagInviteFrame,
 		QuickJoinRoleSelectionFrame,
@@ -45,6 +43,9 @@ local function LoadSkin()
 	end
 
 	local buttons = {
+		SocialUIFrame.BattleNetBar.ControlsContainer.BattleNetMenuButton,
+		SocialUIFrame.RaidFrame.ConvertToRaidButton,
+		SocialUIFrame.RaidFrame.RaidInfoButton,
 		FriendsFrameAddFriendButton,
 		FriendsFrameSendMessageButton,
 		WhoFrameWhoButton,
@@ -74,8 +75,8 @@ local function LoadSkin()
 	end
 
 	local scrollbars = {
+		SocialUIFrame.RecentAlliesList.ScrollBar,
 		FriendsListFrame.ScrollBar,
-		-- WhoFrame.ScrollBar,
 		QuickJoinFrame.ScrollBar,
 		RecruitAFriendFrame.RecruitList.ScrollBar,
 		FriendsFriendsFrame.ScrollBar
@@ -88,22 +89,33 @@ local function LoadSkin()
 		end
 	end
 
-	T.SkinScrollBar(RecentAlliesFrame.List.ScrollBar)
+	for _, frame in next, { SocialUIFrame.FriendsList, SocialUIFrame.RecentAlliesList, SocialUIFrame.QuickJoinFrame, SocialUIFrame.FriendRequestsList, SocialUIFrame.RecruitAFriendFrame } do
+		frame:StripTextures()
+		T.SkinFilter(frame.FilterBar.SearchFilterDropdown)
+		T.SkinEditBox(frame.FilterBar.SearchBar)
+		T.SkinScrollBar(frame.ScrollBar)
+		frame.ActionButton:SkinButton()
+	end
 
-	-- Reposition buttons
-	-- WhoFrameWhoButton:SetPoint("RIGHT", WhoFrameAddFriendButton, "LEFT", -3, 0)
-	-- WhoFrameAddFriendButton:SetPoint("RIGHT", WhoFrameGroupInviteButton, "LEFT", -3, 0)
-	-- WhoFrameGroupInviteButton:SetPoint("BOTTOMRIGHT", WhoFrame, "BOTTOMRIGHT", -4, 4)
-	-- FriendsFrameAddFriendButton:SetPoint("BOTTOMLEFT", FriendsFrame, "BOTTOMLEFT", 4, 4)
-	-- FriendsFrameSendMessageButton:SetPoint("BOTTOMRIGHT", FriendsFrame, "BOTTOMRIGHT", -4, 4)
+	hooksecurefunc(SocialUIFrame, "RefreshTabs", function(frame)
+		for _, tabData in ipairs(frame.availableTabData) do
+			local tab = frame:GetTabByType(tabData.tabType)
+			if tab and not tab.styled then
+				T.SkinSideTabs(tab)
+				tab.styled = true
+			end
+		end
+	end)
 
-	-- Resize Buttons
-	-- WhoFrameWhoButton:SetSize(WhoFrameWhoButton:GetWidth() + 7, WhoFrameWhoButton:GetHeight())
-	-- WhoFrameAddFriendButton:SetSize(WhoFrameAddFriendButton:GetWidth() - 4, WhoFrameAddFriendButton:GetHeight())
-	-- WhoFrameGroupInviteButton:SetSize(WhoFrameGroupInviteButton:GetWidth() - 4, WhoFrameGroupInviteButton:GetHeight())
-	-- T.SkinEditBox(WhoFrameEditBox, WhoFrameEditBox:GetWidth() + 30, WhoFrameEditBox:GetHeight() - 15)
-	-- WhoFrameEditBox:SetPoint("BOTTOM", WhoFrame, "BOTTOM", 0, 31)
-	-- WhoFrameEditBox.backdrop:SetOutside(nil, 2, -2)
+	-- BattleNetBar
+	SocialUIFrame.BattleNetBar:StripTextures()
+	T.SkinDropDownBox(SocialUIFrame.BattleNetBar.ControlsContainer.OnlineStatusDropdown)
+
+	local battleTag = SocialUIFrame.BattleNetBar.ControlsContainer.PersonalBattleTagDisplay
+	battleTag:CreateBackdrop('Transparent')
+	battleTag.backdrop:SetOutside(SocialUIFrame.BattleNetBar.ControlsContainer.BattleNetBackground, 4)
+	battleTag.backdrop:SetBackdropColor(FRIENDS_BNET_BACKGROUND_COLOR.r, FRIENDS_BNET_BACKGROUND_COLOR.g, FRIENDS_BNET_BACKGROUND_COLOR.b, FRIENDS_BNET_BACKGROUND_COLOR.a)
+	SocialUIFrame.BattleNetBar.ControlsContainer.BattleNetBackground:SetAlpha(0)
 
 	T.SkinEditBox(AddFriendNameEditBox, nil, AddFriendNameEditBox:GetHeight() - 5)
 	AddFriendNameEditBox.backdrop:SetOutside(nil, 4, 0)
@@ -266,8 +278,6 @@ local function LoadSkin()
 	end)
 
 	T.SkinCloseButton(FriendsFrameCloseButton)
-	-- T.SkinDropDownBox(WhoFrameDropdown, 150)
-	-- WhoFrameColumnHeader2:SetHeight(20)
 	T.SkinDropDownBox(FriendsFrameStatusDropdown)
 	T.SkinDropDownBox(FriendsFriendsFrameDropdown)
 
