@@ -11,6 +11,8 @@ local function LoadSkin()
 	for _, tab in next, LegacySystemFrame.Tabs do
 		T.SkinSideTabs(tab)
 	end
+
+	LegacySystemFrame.TreePage.LegacyTreeTraitPanel.ApplyButton:SkinButton()
 end
 
 T.SkinFuncs["Blizzard_LegacySystem"] = LoadSkin

@@ -56,6 +56,7 @@ local function LoadSkin()
 	end
 
 	T.SkinDropDownBox(LFGListingFrameActivityView.PlayStyleDropdown)
+	T.SkinDropDownBox(LFGListingFrameActivityViewVoiceChatDropdown)
 	T.SkinDropDownBox(LFGBrowseFrameCategoryDropdown)
 	T.SkinDropDownBox(LFGBrowseFrameActivityDropdown)
 

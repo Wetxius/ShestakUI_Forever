@@ -95,6 +95,21 @@ local function LoadSkin()
 		T.SkinEditBox(frame.FilterBar.SearchBar)
 		T.SkinScrollBar(frame.ScrollBar)
 		frame.ActionButton:SkinButton()
+
+		hooksecurefunc(frame.ScrollBox, "Update", function(frame)
+			for _, child in next, {frame.ScrollTarget:GetChildren()} do
+				if child and not child.isSkinned then
+					if child.CollapseButton then
+						child:SetNormalTexture(0)
+						child:CreateBackdrop("Overlay")
+						child.backdrop:SetPoint("TOPLEFT", child, 3, -1)
+						child.backdrop:SetPoint("BOTTOMRIGHT", child, -1, 1)
+					end
+
+					child.isSkinned = true
+				end
+			end
+		end)
 	end
 
 	hooksecurefunc(SocialUIFrame, "RefreshTabs", function(frame)
