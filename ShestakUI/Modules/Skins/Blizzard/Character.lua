@@ -47,10 +47,84 @@ local function LoadSkin()
 		end
 	end
 
-	T.SkinNextPrevButton(CharacterFrameRightPaneToggleButton)
+	local checkboxes = {
+		ReputationFrame.ReputationDetailFrame.AtWarCheckbox,
+		ReputationFrame.ReputationDetailFrame.MakeInactiveCheckbox,
+		ReputationFrame.ReputationDetailFrame.WatchFactionCheckbox,
+		TokenDetailFrame.InactiveCheckbox,
+		TokenDetailFrame.BackpackCheckbox
+	}
 
-	T.SkinModelControl(CharacterModelScene)
+	for i = 1, #checkboxes do
+		local checkbox = checkboxes[i]
+		if checkbox then
+			T.SkinCheckBox(checkbox)
+		end
+	end
 
+	PaperDollFrameEquipSet:SkinButton()
+	PaperDollFrameSaveSet:SkinButton()
+
+	local function updateToggleCollapse(button)
+		if button:GetHeader():IsCollapsed() then
+			button.bg.plus:Show()
+		else
+			button.bg.plus:Hide()
+		end
+	end
+
+	local frames = {
+		ReputationFrame,
+		TokenFrame,
+		SkillsFrame,
+		StatisticsFrame
+	}
+
+	for i = 1, #frames do
+		local scrollBox = frames[i].ScrollBox
+		for _, child in next, { scrollBox:GetChildren() } do
+			child:StripTextures()
+		end
+		hooksecurefunc(scrollBox, "Update", function(frame)
+			for _, child in next, {frame.ScrollTarget:GetChildren()} do
+				if child and not child.isSkinned then
+					if child.StateIcon then
+						child:DisableDrawLayer("BACKGROUND")
+						child:CreateBackdrop("Overlay")
+						child.backdrop:SetPoint("TOPLEFT", child, 3, -2)
+						child.backdrop:SetPoint("BOTTOMRIGHT", child, -1, 2)
+					end
+
+					local bar = child.Content and (child.Content.ReputationBar or child.Content.SkillsBar)
+					if bar then
+						bar:DisableDrawLayer("BACKGROUND")
+						-- if not bar.backdrop then
+							-- bar:CreateBackdrop("Overlay")
+							-- bar.backdrop:SetInside(nil, 4, 6) -- weird scale
+						-- end
+					end
+
+					if child.ToggleCollapseButton then
+						child.ToggleCollapseButton:GetNormalTexture():SetAlpha(0)
+						child.ToggleCollapseButton:GetPushedTexture():SetAlpha(0)
+						T.SkinExpandOrCollapse(child.ToggleCollapseButton)
+						updateToggleCollapse(child.ToggleCollapseButton)
+						hooksecurefunc(child.ToggleCollapseButton, "RefreshIcon", updateToggleCollapse)
+					end
+
+					child.isSkinned = true
+				end
+			end
+		end)
+	end
+
+	for _, bar in next, {ReputationFrame.ReputationDetailFrame.StandingBar, SkillsFrame.SkillDetailFrame.RankBar} do
+		bar:DisableDrawLayer("BACKGROUND")
+		bar:CreateBackdrop("Overlay")
+		bar.backdrop:SetInside(nil, 4, 6)
+	end
+
+	-- EquipmentFlyout
 	EquipmentFlyoutFrameHighlight:Kill()
 	EquipmentFlyoutFrame.NavigationFrame:StripTextures()
 	EquipmentFlyoutFrame.NavigationFrame.BottomBackground:Hide()
@@ -89,7 +163,7 @@ local function LoadSkin()
 	EquipmentFlyoutFrame:HookScript("OnShow", SkinItemFlyouts)
 	hooksecurefunc("EquipmentFlyout_Show", SkinItemFlyouts)
 
-	-- Icon in upper right corner of character frame
+	-- CharacterModelScene
 	CharacterModelScene.BackgroundOverlay:SetColorTexture(0.01, 0.01, 0.01, 0.5)
 	CharacterModelScene:CreateBackdrop("Default")
 	CharacterModelScene:ClearAllPoints()
@@ -97,6 +171,9 @@ local function LoadSkin()
 	CharacterModelScene:SetPoint("BOTTOMRIGHT", CharacterFrame.LeftPaneHost, -66, 62)
 
 	CharacterModelScene.BackgroundOverlay:SetInside(CharacterModelScene.backdrop)
+
+	T.SkinNextPrevButton(CharacterFrameRightPaneToggleButton)
+	T.SkinModelControl(CharacterModelScene)
 
 	-- Unit Background Texture
 	local BackgroundTopLeft, BackgroundTopRight, BackgroundBotLeft, BackgroundBotRight = CharacterModelScene.BackgroundTopLeft, CharacterModelScene.BackgroundTopRight, CharacterModelScene.BackgroundBotLeft, CharacterModelScene.BackgroundBotRight
