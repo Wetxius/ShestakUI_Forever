@@ -17,7 +17,10 @@ local function LoadSkin()
 
 	local charframe = {
 		CharacterFrameInsetRight,
-		PaperDollSidebarTabs
+		PaperDollSidebarTabs,
+		PaperDollFrame.EquipmentManagerPane,
+		PaperDollFrame.TopBackgroundStripHost,
+		CharacterStatsPaneScrollBox
 	}
 
 	for i = 1, #charframe do
@@ -26,6 +29,25 @@ local function LoadSkin()
 			button:StripTextures()
 		end
 	end
+
+	local scrollbars = {
+		CharacterStatsPaneScrollBox.ScrollBar,
+		PaperDollFrame.EquipmentManagerPane.ScrollBar,
+		ReputationFrame.ScrollBar,
+		SkillsFrame.ScrollBar,
+		SkillsFrame.SkillDetailFrame.DescriptionScrollBar,
+		TokenFrame.ScrollBar,
+		StatisticsFrame.ScrollBar
+	}
+
+	for i = 1, #scrollbars do
+		local scrollbar = scrollbars[i]
+		if scrollbar then
+			T.SkinScrollBar(scrollbar, true)
+		end
+	end
+
+	T.SkinNextPrevButton(CharacterFrameRightPaneToggleButton)
 
 	T.SkinModelControl(CharacterModelScene)
 
@@ -70,8 +92,9 @@ local function LoadSkin()
 	-- Icon in upper right corner of character frame
 	CharacterModelScene.BackgroundOverlay:SetColorTexture(0.01, 0.01, 0.01, 0.5)
 	CharacterModelScene:CreateBackdrop("Default")
-	CharacterModelScene:SetPoint("TOPLEFT", CharacterFrame.LeftPaneHost, 70, -62)
-	CharacterModelScene:SetPoint("BOTTOMRIGHT", CharacterFrame.LeftPaneHost, -66, 72)
+	CharacterModelScene:ClearAllPoints()
+	CharacterModelScene:SetPoint("TOPLEFT", CharacterFrame.LeftPaneHost, 70, -42)
+	CharacterModelScene:SetPoint("BOTTOMRIGHT", CharacterFrame.LeftPaneHost, -66, 62)
 
 	CharacterModelScene.BackgroundOverlay:SetInside(CharacterModelScene.backdrop)
 
