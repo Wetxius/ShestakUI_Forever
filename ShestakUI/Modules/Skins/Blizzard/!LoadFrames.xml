@@ -79,6 +79,7 @@
 	<Script file="Scrapping.lua"/>
 	<Script file="Soulbinds.lua"/>
 	<Script file="Subscription.lua"/>
+	<Script file="SwingTimer.lua"/>
 	<Script file="Tabard.lua"/>
 	<Script file="Talent.lua"/>
 	<Script file="TalkingHead.lua"/>
