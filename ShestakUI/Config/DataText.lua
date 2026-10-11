@@ -156,7 +156,7 @@ LPSTAT_CONFIG = {
 			--	Haste [haste]%			Crit [crit]%			Mastery [mastery]%			Versatility [versatility]%
 			--	Armor [armor]			Dodge [dodge]%			Parry [parry]%				Block [block]%
 			--	Avoidance [avoidance]% 	Leech [leech]%			Resilience [resilience]%
-		fmt = class"Crit: ".."[crit]%"..class"  Haste: ".."[haste]%"..class"  Mastery: ".."[mastery]%"..class"  Vers: ".."[versatility]%",
+		fmt = class"Crit: ".."[crit]%"..class"  Haste: ".."[haste]%",
 		anchor_frame = "TopPanel", anchor_to = "center", anchor_from = "center",
 		x_off = 0, y_off = 6,
 	},
