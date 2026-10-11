@@ -8,40 +8,10 @@ local spells = (UnitFactionGroup("player") == "Horde") and {
 	[1] = {3567,11417},			-- Orgrimmar
 	[2] = {3563,11418},			-- Undercity
 	[3] = {3566,11420},			-- Thunder Bluff
-	[4] = {32272,32267},		-- Silvermoon
-	[5] = {49358,49361},		-- Stonard
-	[6] = {35715,35717},		-- Shattrath
-	[7] = {53140,53142},		-- Dalaran
-	[8] = {88344,88346},		-- Tol Barad
-	[9] = {120145,120146},		-- Ancient Dalaran
-	[10] = {132627,132626},		-- Vale of Eternal Blossoms
-	[11] = {176242,176244},		-- Warspear
-	[12] = {193759, 193759}, 	-- Hall of the Guardian (OrderHall)
-	[13] = {224869, 224871}, 	-- Dalaran, Broken Isles
-	[14] = {281404, 281402}, 	-- Dazar'alor
-	[15] = {344587, 344597}, 	-- Oribos
-	[16] = {395277, 395289}, 	-- Valdrakken
-	[17] = {446540, 446534}, 	-- Dornogal
-	[18] = {1259190, 1259194},	-- Silvermoon City
 } or { -- Alliance
 	[1] = {3561,10059},			-- Stormwind
 	[2] = {3562,11416},			-- Ironforge
 	[3] = {3565,11419},			-- Darnassus
-	[4] = {32271,32266},		-- Exodar
-	[5] = {49359,49360},		-- Theramore
-	[6] = {33690,33691},		-- Shattrath
-	[7] = {53140,53142},		-- Dalaran
-	[8] = {88342,88345},		-- Tol Barad
-	[9] = {120145,120146},		-- Ancient Dalaran
-	[10] = {132621,132620},		-- Vale of Eternal Blossoms
-	[11] = {176248,176246},		-- Stormshield
-	[12] = {193759, 193759}, 	-- Hall of the Guardian (OrderHall)
-	[13] = {224869, 224871}, 	-- Dalaran, Broken Isles
-	[14] = {281403, 281400}, 	-- Boralus
-	[15] = {344587, 344597}, 	-- Oribos
-	[16] = {395277, 395289}, 	-- Valdrakken
-	[17] = {446540, 446534}, 	-- Dornogal
-	[18] = {1259190, 1259194},	-- Silvermoon City
 }
 
 local frame = CreateFrame("Frame", "TeleportMenu", UIParent)
@@ -67,13 +37,7 @@ for i, spell in pairs(spells) do
 
 	local l = b:CreateFontString("TeleportMenuName"..i, "OVERLAY")
 	l:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
-	if i == 5 and UnitFactionGroup("player") == "Horde" then
-		l:SetText(C_Map.GetAreaInfo(75))
-	elseif i == 9 then
-		l:SetText(L_ZONE_ANCIENTDALARAN)
-	else
-		l:SetText(string.sub(teleport, (string.find(teleport, ":") and string.find(teleport, ":") + 1) or 0))
-	end
+	l:SetText(string.sub(teleport, (string.find(teleport, ":") and string.find(teleport, ":") + 1) or 0))
 
 	l:SetPoint("LEFT", b, "LEFT", 2, 0)
 	l:SetPoint("RIGHT", b, "RIGHT", -2, 0)
