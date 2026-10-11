@@ -144,7 +144,7 @@ C["unitframe"] = {
 C["unitframe_class_bar"] = {
 	["combo"] = true,							-- Rogue/Druid Combo bar
 	["combo_always"] = false,					-- Always show Combo bar for Druid
-	["combo_old"] = false,						-- Show combo point on the target
+	["combo_old"] = true,						-- Show combo point on the target
 	["totem"] = true,							-- Totem bar for Shaman
 }
 

@@ -16,7 +16,7 @@ local function Update(self, _, unit, powerType)
 		cur = UnitPower("vehicle", 4)
 		max = UnitPowerMax("vehicle", 4)
 	else
-		cur = UnitPower("player", 4)
+		cur = GetComboPoints("player", "target")
 		max = UnitPowerMax("player", 4)
 	end
 
@@ -63,16 +63,6 @@ local function Update(self, _, unit, powerType)
 	if T.class == "ROGUE" then
 		for i = 2, 5 do
 			element[i]:SetStatusBarColor(unpack(element.Colors[i]))
-		end
-
-		local chargedPoints = GetUnitChargedPowerPoints("player")
-		if chargedPoints then
-			for _, chargedIndex in next, chargedPoints do
-				element[chargedIndex]:SetStatusBarColor(unpack(element.Colors[8]))
-				if element[chargedIndex]:GetAlpha() == 0.2 then
-					element[chargedIndex]:SetAlpha(0.5)
-				end
-			end
 		end
 	end
 
