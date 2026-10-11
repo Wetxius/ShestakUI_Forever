@@ -71,47 +71,23 @@ local function LoadSkin()
 	LFGWhoListFrame.WhoSearch:SkinButton()
 	LFGWhoListFrame.WhoSearch:SetSize(22, 22)
 	LFGWhoListFrame.WhoSearch:SetMovePoint(4, 1)
-	T.SkinFilter(LFGWhoListFrame.FilterDropdown)
+	T.SkinFilter(LFGWhoListFrame.FilterDropdown, true)
 
-	-- for i = 1, 4 do
-		-- local button = GroupFinderFrame["groupButton"..i]
+	hooksecurefunc("LFGListingCategorySelection_AddButton", function(self, index)
+		local button = self.CategoryButtons[index]
+		if button and not button.styled then
+			button.Cover:SetAlpha(0)
+			button:SetTemplate("Overlay")
+			button.HighlightTexture:SetColorTexture(1, 1, 1, 0.3)
+			button:SetPushedTexture(0)
+			button.Icon:SetDrawLayer("ARTWORK")
+			button.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			button.Icon:SetPoint("TOPLEFT", 2, -2)
+			button.Icon:SetPoint("BOTTOMRIGHT", -2, 2)
 
-		-- if button then
-			-- button.ring:Hide()
-			-- button.CircleMask:Hide()
-			-- button:CreateBackdrop("Overlay")
-			-- button.backdrop:SetAllPoints()
-			-- button:StyleButton()
-
-			-- button.bg:SetTexture("")
-
-			-- button.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-			-- button.icon:SetPoint("LEFT", button, "LEFT", 10, 0)
-			-- button.icon:SetDrawLayer("OVERLAY")
-			-- button.icon:SetSize(40, 40)
-
-			-- button.border = CreateFrame("Frame", nil, button)
-			-- button.border:CreateBackdrop("Default")
-			-- button.border.backdrop:SetPoint("TOPLEFT", button.icon, -2, 2)
-			-- button.border.backdrop:SetPoint("BOTTOMRIGHT", button.icon, 2, -2)
-		-- end
-	-- end
-
-	-- hooksecurefunc("GroupFinderFrame_SelectGroupButton", function(index)
-		-- local self = GroupFinderFrame
-		-- for i = 1, 3 do
-			-- local button = self["groupButton"..i]
-			-- if i == index then
-				-- button.backdrop:SetBackdropBorderColor(1, 0.82, 0, 1)
-				-- button.backdrop.overlay:SetVertexColor(1, 0.82, 0, 0.3)
-				-- button.border.backdrop:SetBackdropBorderColor(1, 0.82, 0, 1)
-			-- else
-				-- button.backdrop:SetBackdropBorderColor(unpack(C.media.border_color))
-				-- button.backdrop.overlay:SetVertexColor(0.1, 0.1, 0.1, 1)
-				-- button.border.backdrop:SetBackdropBorderColor(unpack(C.media.border_color))
-			-- end
-		-- end
-	-- end)
+			button.styled = true
+		end
+	end)
 
 	-- hooksecurefunc("LFGRewardsFrame_SetItemButton", function(parentFrame, _, index)
 		-- local parentName = parentFrame:GetName()

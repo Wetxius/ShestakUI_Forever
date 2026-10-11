@@ -64,6 +64,9 @@ local function LoadSkin()
 
 	PaperDollFrameEquipSet:SkinButton()
 	PaperDollFrameSaveSet:SkinButton()
+	PaperDollFrameNewSet:SkinButton()
+
+	T.SkinIconSelectionFrame(GearManagerPopupFrame)
 
 	local function updateToggleCollapse(button)
 		if button:GetHeader():IsCollapsed() then
