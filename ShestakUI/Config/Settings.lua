@@ -531,7 +531,6 @@ C["announcements"] = {
 	["flask_food_auto"] = false,				-- Auto check when ReadyCheck
 	["pull_countdown"] = true,					-- Pull countdown announce (/pc #)
 	["bad_gear"] = false,						-- Check your bad gear in instance (fishing pole, from the list)
-	["safari_hat"] = true,						-- Check Safari Hat when starting Pet Battle
 }
 
 ----------------------------------------------------------------------------------------

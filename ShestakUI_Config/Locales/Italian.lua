@@ -521,8 +521,6 @@ L.announcements_portals = "Portali/Rituale di Evocazione"
 L.announcements_subheader_self = "Annunci personali"
 L.announcements_bad_gear = "Controlla equipaggiamento sbagliato"
 L.announcements_bad_gear_desc = "Controlla equipaggiamento non idoneo in istanza (canna da pesca, dalla lista)"
-L.announcements_safari_hat = "Cappello da Safari"
-L.announcements_safari_hat_desc = "Controlla se il Cappello da Safari è equipaggiato all'inizio di un combattimento con mascotte"
 
 -- Automation options
 L.automation = "Automatismi"

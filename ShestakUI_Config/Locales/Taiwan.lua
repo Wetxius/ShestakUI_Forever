@@ -525,8 +525,6 @@ L.announcements_portals = "開啟傳送門/召喚儀式時進行通告"
 L.announcements_subheader_self = "個人通告"
 L.announcements_bad_gear = "檢查裝備"
 L.announcements_bad_gear_desc = "進入副本時提醒非副本裝備(魚竿等裝備)"
-L.announcements_safari_hat = "狩旅團之帽"
-L.announcements_safari_hat_desc = "檢查'狩旅團之帽'使用情況"
 
 -- Automation options
 L.automation = "自動設定"

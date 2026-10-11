@@ -525,8 +525,6 @@ L.announcements_portals = "开启传送门/召唤仪式时进行通告"
 L.announcements_subheader_self = "个人通告"
 L.announcements_bad_gear = "检查装备"
 L.announcements_bad_gear_desc = "进入副本时提醒非副本装备(鱼竿等装备)"
-L.announcements_safari_hat = "狩猎帽"
-L.announcements_safari_hat_desc = "检查'狩猎帽'使用情况"
 
 -- Automation options
 L.automation = "自动设定"

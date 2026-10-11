@@ -542,8 +542,6 @@ L.announcements_portals = "Portals/Ritual of Summoning"
 L.announcements_subheader_self = "Self announcements"
 L.announcements_bad_gear = "Check your bad gear"
 L.announcements_bad_gear_desc = "Check your bad gear in instance (fishing pole, from the list)"
-L.announcements_safari_hat = "Safari Hat"
-L.announcements_safari_hat_desc = "Check Safari Hat when starting Pet Battle"
 
 -- Automation options
 L.automation = "Automation"

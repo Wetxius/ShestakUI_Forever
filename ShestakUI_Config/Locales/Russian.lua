@@ -526,8 +526,6 @@ L.announcements_portals = "Порталы и ритуал призыва"
 L.announcements_subheader_self = "Локальное оповещение"
 L.announcements_bad_gear = "'Плохое' снаряжение"
 L.announcements_bad_gear_desc = "Проверять ваше 'плохое' снаряжение в подземельях (удочки и прочее из списка)"
-L.announcements_safari_hat = "Шляпа для сафари"
-L.announcements_safari_hat_desc = "Проверять Шляпу для сафари в начале битвы петов"
 
 -- Automation options
 L.automation = "Автоматизация"

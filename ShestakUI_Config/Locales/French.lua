@@ -523,8 +523,6 @@ L.announcements_portals = "Annonce le lancement de Portails/Pierre de téléport
 L.announcements_subheader_self = "Annonces personnelles"
 L.announcements_bad_gear = "Vérifiez le mauvais équipement"
 L.announcements_bad_gear_desc = "Vérifie si un mauvais équipement est porté en instance (dans la liste)"
-L.announcements_safari_hat = "Chapeau de safari"
-L.announcements_safari_hat_desc = "Vérifie si le chapeau de safari est activé lors du démarrage d'un combat de pet"
 
 -- Automation options
 L.automation = "Automatisation"

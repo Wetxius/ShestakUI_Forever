@@ -523,8 +523,6 @@ L.announcements_portals = "Benachrichtigung über Portale/Ritual der Beschwörun
 L.announcements_subheader_self = "Selbst-Ankündigungen"
 L.announcements_bad_gear = "Überprüfe Deine schlechte Ausrüstung"
 L.announcements_bad_gear_desc = "Überprüfe auf schlechte Ausrüstung in Instanzen"
-L.announcements_safari_hat = "Safari-Hut"
-L.announcements_safari_hat_desc = "Überprüfe Safari Hat"
 
 -- Automation options
 L.automation = "Automatisierung"

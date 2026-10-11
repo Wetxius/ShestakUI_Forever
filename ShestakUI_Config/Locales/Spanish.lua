@@ -521,8 +521,6 @@ L.announcements_portals = "Portales/Ritual de Invocación"
 L.announcements_subheader_self = "Anuncios propios"
 L.announcements_bad_gear = "Comprobar tu equipo malo"
 L.announcements_bad_gear_desc = "Comprobar equipo malo en instancia (caña de pescar, de la lista)"
-L.announcements_safari_hat = "Sombrero de safari"
-L.announcements_safari_hat_desc = "Comprobar Sombrero de safari al iniciar combate de mascotas"
 
 -- Automation options
 L.automation = "Automatización"

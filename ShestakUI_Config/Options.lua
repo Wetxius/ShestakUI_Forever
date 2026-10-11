@@ -2972,9 +2972,6 @@ do
 
 	local bad_gear = ns.CreateCheckBox(parent, "bad_gear")
 	bad_gear:SetPoint("TOPLEFT", subheader, "BOTTOMLEFT", 0, -10)
-
-	local safari_hat = ns.CreateCheckBox(parent, "safari_hat")
-	safari_hat:SetPoint("TOPLEFT", bad_gear, "BOTTOMLEFT", 0, 0)
 end
 
 -- Automation
