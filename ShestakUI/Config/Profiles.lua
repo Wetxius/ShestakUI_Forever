@@ -157,7 +157,6 @@ if IsWetxius then
 	C["stats"].currency_cooking = false
 	C["stats"].currency_professions = false
 	C["stats"].currency_raid = false
-	C["stats"].currency_misc = false
 	C["trade"].disenchanting = true
 	C["trade"].enchantment_scroll = true
 	C["misc"].shift_marking = false

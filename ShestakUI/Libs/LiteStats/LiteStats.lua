@@ -1846,11 +1846,6 @@ if gold.enabled then
 				-- Currency(1580, false, true)	-- Seal of Wartorn Fate
 			-- end
 
-			if C.stats.currency_misc then
-				titleName = EXPANSION_NAME10
-				Currency(2803)	-- Undercoin
-			end
-
 			-- Anima (Shadownlands currency as items in bags credits to StoredAnimaCounter by Falx)
 			do
 				local function GetAnimaForQuality(quality)

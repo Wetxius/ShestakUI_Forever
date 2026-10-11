@@ -3343,16 +3343,6 @@ do
 	local bottom_line = ns.CreateCheckBox(parent, "bottom_line")
 	bottom_line:SetPoint("TOPLEFT", damage, "BOTTOMLEFT", 0, 0)
 
-	-- Currency
-	local currency = ns.addSubCategory(parent, L_GUI_STATS_SUBHEADER_CURRENCY)
-	currency:SetPoint("TOPLEFT", bottom_line, "BOTTOMLEFT", 0, -10)
-
-	local currency_misc = ns.CreateCheckBox(parent, "currency_misc", CURRENCY.. " "..EXPANSION_NAME10)
-	currency_misc:SetPoint("TOPLEFT", currency, "BOTTOMLEFT", 0, -8)
-
-	-- local currency_raid = ns.CreateCheckBox(parent, "currency_raid", L_GUI_STATS_CURRENCY_RAID) -- save for future
-	-- currency_raid:SetPoint("TOPLEFT", currency_misc, "BOTTOMLEFT", 0, 0)
-
 	local ResetGoldButton = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
 	ResetGoldButton:SetPoint("BOTTOMRIGHT", parent, "BOTTOMRIGHT", -20, 5)
 	ResetGoldButton:SetSize(100, 23)
