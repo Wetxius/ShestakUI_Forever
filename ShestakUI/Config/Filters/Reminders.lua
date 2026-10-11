@@ -185,7 +185,7 @@ if C.reminder.raid_buffs_enable == true or C.announcements.flask_food == true th
 		local faction = UnitFactionGroup("player")
 		if not faction or faction == "Neutral" then faction = "Alliance" end
 
-		T.ReminderBuffs.Spell4Buff = faction == "Alliance" and T.ReminderBuffs["Kings"] or (T.SoD and T.ReminderBuffs["Kings"] or T.ReminderBuffs["Horde"]["Threat"])
+		T.ReminderBuffs.Spell4Buff = faction == "Alliance" and T.ReminderBuffs["Kings"] or T.ReminderBuffs["Horde"]["Threat"]
 		T.ReminderBuffs.Spell5Buff = T.ReminderBuffs["AP"]
 		T.ReminderBuffs.Spell6Buff = T.ReminderBuffs[faction]["Physical"]
 	end

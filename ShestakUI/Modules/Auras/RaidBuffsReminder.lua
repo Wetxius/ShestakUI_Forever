@@ -9,9 +9,12 @@ local battleelixirbuffs = T.ReminderBuffs["BattleElixir"]
 local guardianelixirbuffs = T.ReminderBuffs["GuardianElixir"]
 local foodbuffs = T.ReminderBuffs["Food"]
 local staminabuffs = T.ReminderBuffs["Stamina"]
-local versbuffs = T.ReminderBuffs["Vers"]
-local reducebuffs = T.ReminderBuffs["Reduce"]
 local custombuffs = T.ReminderBuffs["Custom"]
+local spell3Buffs = T.ReminderBuffs["Spell3Buff"]
+local spell4Buffs = T.ReminderBuffs["Spell4Buff"]
+local spell5Buffs = T.ReminderBuffs["Spell5Buff"]
+local spell6Buffs = T.ReminderBuffs["Spell6Buff"]
+local spell7Buffs = T.ReminderBuffs["Spell7Buff"]
 local visible, flask, battleelixir, guardianelixir, food, stamina, vers, spell4, reduce, custom, weapon
 local playerBuff = {}
 local icons = {}
@@ -116,6 +119,10 @@ local function OnAuraChange(_, event, arg1)
 		T.ReminderPhysicalBuffs()
 	end
 
+	spell4Buffs = T.ReminderBuffs["Spell4Buff"]
+	spell5Buffs = T.ReminderBuffs["Spell5Buff"]
+	spell6Buffs = T.ReminderBuffs["Spell6Buff"]
+
 	-- Start checking buffs to see if we can find a match from the list
 	for i = 1, #flaskbuffs do
 		local name, icon = unpack(flaskbuffs[i])
@@ -166,50 +173,80 @@ local function OnAuraChange(_, event, arg1)
 		end
 	end
 
-	-- for i = 1, #versbuffs do
-		-- local name, icon = unpack(versbuffs[i])
+	-- for i = 1, #spell3Buffs do
+		-- local name, icon = unpack(spell3Buffs[i])
 		-- if i == 1 then
-			-- VersFrame.t:SetTexture(icon)
+			-- Spell3Frame.t:SetTexture(icon)
 		-- end
 		-- if playerBuff[name] then
-			-- VersFrame:SetAlpha(C.reminder.raid_buffs_alpha)
+			-- Spell3Frame:SetAlpha(C.reminder.raid_buffs_alpha)
 			-- vers = true
 			-- break
 		-- else
-			-- VersFrame:SetAlpha(1)
+			-- Spell3Frame:SetAlpha(1)
 			-- vers = false
 		-- end
 	-- end
 
-	-- for i = 1, #Spell4Buff do
-		-- local name, icon = unpack(Spell4Buff[i])
-		-- if i == 1 then
-			-- Spell4Frame.t:SetTexture(icon)
-		-- end
-		-- if playerBuff[name] then
-			-- Spell4Frame:SetAlpha(C.reminder.raid_buffs_alpha)
-			-- spell4 = true
-			-- break
-		-- else
-			-- Spell4Frame:SetAlpha(1)
-			-- spell4 = false
-		-- end
-	-- end
+	for i = 1, #spell4Buffs do
+		local name, icon = unpack(spell4Buffs[i])
+		if i == 1 then
+			Spell4Frame.t:SetTexture(icon)
+		end
+		if playerBuff[name] then
+			Spell4Frame:SetAlpha(C.reminder.raid_buffs_alpha)
+			spell4 = true
+			break
+		else
+			Spell4Frame:SetAlpha(1)
+			spell4 = false
+		end
+	end
 
-	-- for i = 1, #reducebuffs do
-		-- local name, icon = unpack(reducebuffs[i])
-		-- if i == 1 then
-			-- ReduceFrame.t:SetTexture(icon)
-		-- end
-		-- if playerBuff[name] then
-			-- ReduceFrame:SetAlpha(C.reminder.raid_buffs_alpha)
-			-- reduce = true
-			-- break
-		-- else
-			-- ReduceFrame:SetAlpha(1)
-			-- reduce = false
-		-- end
-	-- end
+	for i = 1, #spell5Buffs do
+		local name, icon = unpack(spell5Buffs[i])
+		if i == 1 then
+			Spell5Frame.t:SetTexture(icon)
+		end
+		if playerBuff[name] then
+			Spell5Frame:SetAlpha(C.reminder.raid_buffs_alpha)
+			reduce = true
+			break
+		else
+			Spell5Frame:SetAlpha(1)
+			reduce = false
+		end
+	end
+
+	for i = 1, #spell6Buffs do
+		local name, icon = unpack(spell6Buffs[i])
+		if i == 1 then
+			Spell6Frame.t:SetTexture(icon)
+		end
+		if playerBuff[name] then
+			Spell6Frame:SetAlpha(C.reminder.raid_buffs_alpha)
+			reduce = true
+			break
+		else
+			Spell6Frame:SetAlpha(1)
+			reduce = false
+		end
+	end
+
+	for i = 1, #spell7Buffs do
+		local name, icon = unpack(spell7Buffs[i])
+		if i == 1 then
+			Spell7Frame.t:SetTexture(icon)
+		end
+		if playerBuff[name] then
+			Spell7Frame:SetAlpha(C.reminder.raid_buffs_alpha)
+			reduce = true
+			break
+		else
+			Spell7Frame:SetAlpha(1)
+			reduce = false
+		end
+	end
 
 	-- if #custombuffs > 0 then
 		-- for i = 1, #custombuffs do
@@ -276,13 +313,11 @@ local buffButtons = {
 	"FoodFrame",
 	"WeaponFrame",
 	"StaminaFrame",
-	-- "VersFrame",
-	"Spell3Frame",
+	-- "Spell3Frame",
 	"Spell4Frame",
 	"Spell5Frame",
 	"Spell6Frame",
 	"Spell7Frame",
-	-- "ReduceFrame",
 	-- "CustomFrame",
 }
 
