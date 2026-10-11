@@ -84,7 +84,6 @@ local function InstallUI()
 	ShestakUISettingsPerChar.Install = true
 	ShestakUISettingsPerChar.FogOfWar = true
 	ShestakUISettingsPerChar.Coords = true
-	ShestakUISettingsPerChar.Archaeology = false
 	ShestakUISettingsPerChar.BarsLocked = false
 	ShestakUISettingsPerChar.SplitBars = true
 	ShestakUISettingsPerChar.RightBars = C.actionbar.rightbars
@@ -180,7 +179,6 @@ OnLogon:SetScript("OnEvent", function(self)
 	if ShestakUISettingsPerChar == nil then ShestakUISettingsPerChar = {} end
 	if ShestakUISettingsPerChar.FogOfWar == nil then ShestakUISettingsPerChar.FogOfWar = true end
 	if ShestakUISettingsPerChar.Coords == nil then ShestakUISettingsPerChar.Coords = true end
-	if ShestakUISettingsPerChar.Archaeology == nil then ShestakUISettingsPerChar.Archaeology = false end
 	if ShestakUISettingsPerChar.BarsLocked == nil then ShestakUISettingsPerChar.BarsLocked = false end
 	if ShestakUISettingsPerChar.SplitBars == nil then ShestakUISettingsPerChar.SplitBars = true end
 	if ShestakUISettingsPerChar.RightBars == nil then ShestakUISettingsPerChar.RightBars = C.actionbar.rightbars end

@@ -1788,7 +1788,6 @@ if gold.enabled then
 		end,
 		OnEnter = function(self)
 			local curgold = GetMoney()
-			local _, _, archaeology = GetProfessions()
 			conf.Gold = curgold
 			GameTooltip:SetOwner(self, "ANCHOR_NONE")
 			GameTooltip:ClearAllPoints()
@@ -1842,30 +1841,6 @@ if gold.enabled then
 					currencies = currencies + 1
 				end
 			end
-			if archaeology and C.stats.currency_archaeology then
-				titleName = PROFESSIONS_ARCHAEOLOGY
-				Currency(384)	-- Dwarf Archaeology Fragment
-				Currency(385)	-- Troll
-				Currency(393)	-- Fossil
-				Currency(394)	-- Night Elf
-				Currency(397)	-- Orc
-				Currency(398)	-- Draenei
-				Currency(399)	-- Vrykul
-				Currency(400)	-- Nerubian
-				Currency(401)	-- Tol'vir
-				Currency(676)	-- Pandaren
-				Currency(677)	-- Mogu
-				Currency(754)	-- Mantid
-				Currency(821)	-- Draenor Clans
-				Currency(828)	-- Ogre
-				Currency(829)	-- Arakkoa
-				Currency(1172)	-- Highborne
-				Currency(1173)	-- Highmountain Tauren
-				Currency(1174)	-- Demonic
-				Currency(1534)	-- Zandalari
-				Currency(1535)	-- Drust
-			end
-
 			-- if C.stats.currency_raid and T.level == GetMaxPlayerLevel() then
 				-- titleName = L_STATS_CURRENCY_RAID
 				-- Currency(1580, false, true)	-- Seal of Wartorn Fate

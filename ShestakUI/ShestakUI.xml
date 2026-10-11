@@ -73,7 +73,6 @@
 	<Script file="Modules\Misc\Threat.lua"/>
 
 	<Script file="Modules\Trade\AlreadyKnown.lua"/>
-	<Script file="Modules\Trade\Archaeology.lua"/>
 	<Script file="Modules\Trade\Merchant.lua"/>
 	<Script file="Modules\Trade\OneClickDisenchanting.lua"/>
 	<Script file="Modules\Trade\OneClickEnchantScroll.lua"/>
@@ -126,7 +125,6 @@
 	<Script file="Modules\Automation\Screenshots.lua"/>
 	<Script file="Modules\Automation\SetRole.lua"/>
 	<Script file="Modules\Automation\SkipCinematic.lua"/>
-	<Script file="Modules\Automation\SolveArtifact.lua"/>
 	<Script file="Modules\Automation\Summon.lua"/>
 	<Script file="Modules\Automation\TabBinder.lua"/>
 

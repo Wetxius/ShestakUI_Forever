@@ -542,7 +542,6 @@ C["announcements"] = {
 C["automation"] = {
 	["release"] = true,							-- Auto release the spirit in battlegrounds
 	["screenshot"] = false,						-- Take screenshot when player get achievement
-	["solve_artifact"] = true,					-- Auto popup for solve artifact
 	["accept_invite"] = false,					-- Auto accept invite
 	["decline_duel"] = true,					-- Auto decline duel (/disduel to temporarily disable)
 	["accept_quest"] = false,					-- Auto accept quests (disabled if hold Shift)
@@ -660,7 +659,6 @@ C["stats"] = {
 	["damage"] = false,							-- Show damage per second
 	["bottom_line"] = true,						-- Bottom classcolor line
 	-- Currency (displayed in gold stats)
-	["currency_archaeology"] = false,			-- Archaeology Fragments
 	["currency_misc"] = true,					-- Expansion Currency
 	["currency_raid"] = true,					-- Raid Seals (not used now)
 }
@@ -674,7 +672,6 @@ C["trade"] = {
 	["disenchanting"] = false,					-- Milling, Prospecting and Disenchanting by Alt + click
 	["enchantment_scroll"] = false,				-- Enchantment scroll on TradeSkill frame
 	["sum_buyouts"] = false,					-- Sum up all current auctions
-	["archaeology"] = false,					-- Archaeology tracker ('/arch' or right mouseover minimap button to show)
 	["merchant_itemlevel"] = false,				-- Show item level for weapons and armor in merchant
 }
 

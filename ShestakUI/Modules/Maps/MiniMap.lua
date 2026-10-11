@@ -459,11 +459,6 @@ if C.minimap.on_top then
 		GhostFrame:ClearAllPoints()
 		GhostFrame:SetPoint("TOP", Minimap, "BOTTOM", 0, -5)
 
-		if stArchaeologyFrame then
-			stArchaeologyFrame:ClearAllPoints()
-			stArchaeologyFrame:SetPoint("TOPRIGHT", Minimap, "BOTTOMRIGHT", 2, -5)
-		end
-
 		if AutoButtonAnchor and not positionTable[AutoButtonAnchor:GetName()] then
 			AutoButtonAnchor:ClearAllPoints()
 			AutoButtonAnchor:SetPoint("TOPLEFT", Minimap, "BOTTOMLEFT", -2, -27)

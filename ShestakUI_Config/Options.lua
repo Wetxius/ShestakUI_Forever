@@ -2993,11 +2993,8 @@ do
 	local screenshot = ns.CreateCheckBox(parent, "screenshot")
 	screenshot:SetPoint("TOPLEFT", release, "BOTTOMLEFT", 0, 0)
 
-	local solve_artifact = ns.CreateCheckBox(parent, "solve_artifact")
-	solve_artifact:SetPoint("TOPLEFT", screenshot, "BOTTOMLEFT", 0, 0)
-
 	local accept_invite = ns.CreateCheckBox(parent, "accept_invite")
-	accept_invite:SetPoint("TOPLEFT", solve_artifact, "BOTTOMLEFT", 0, 0)
+	accept_invite:SetPoint("TOPLEFT", screenshot, "BOTTOMLEFT", 0, 0)
 
 	local decline_duel = ns.CreateCheckBox(parent, "decline_duel")
 	decline_duel:SetPoint("TOPLEFT", accept_invite, "BOTTOMLEFT", 0, 0)
@@ -3350,11 +3347,8 @@ do
 	local currency = ns.addSubCategory(parent, L_GUI_STATS_SUBHEADER_CURRENCY)
 	currency:SetPoint("TOPLEFT", bottom_line, "BOTTOMLEFT", 0, -10)
 
-	local currency_archaeology = ns.CreateCheckBox(parent, "currency_archaeology", L_GUI_STATS_CURRENCY_ARCHAEOLOGY)
-	currency_archaeology:SetPoint("TOPLEFT", currency, "BOTTOMLEFT", 0, -8)
-
 	local currency_misc = ns.CreateCheckBox(parent, "currency_misc", CURRENCY.. " "..EXPANSION_NAME10)
-	currency_misc:SetPoint("TOPLEFT", currency_archaeology, "BOTTOMLEFT", 0, 0)
+	currency_misc:SetPoint("TOPLEFT", currency, "BOTTOMLEFT", 0, -8)
 
 	-- local currency_raid = ns.CreateCheckBox(parent, "currency_raid", L_GUI_STATS_CURRENCY_RAID) -- save for future
 	-- currency_raid:SetPoint("TOPLEFT", currency_misc, "BOTTOMLEFT", 0, 0)
@@ -3390,11 +3384,8 @@ do
 	local sum_buyouts = ns.CreateCheckBox(parent, "sum_buyouts")
 	sum_buyouts:SetPoint("TOPLEFT", enchantment_scroll, "BOTTOMLEFT", 0, 0)
 
-	local archaeology = ns.CreateCheckBox(parent, "archaeology")
-	archaeology:SetPoint("TOPLEFT", sum_buyouts, "BOTTOMLEFT", 0, 0)
-
 	local merchant_itemlevel = ns.CreateCheckBox(parent, "merchant_itemlevel")
-	merchant_itemlevel:SetPoint("TOPLEFT", archaeology, "BOTTOMLEFT", 0, 0)
+	merchant_itemlevel:SetPoint("TOPLEFT", sum_buyouts, "BOTTOMLEFT", 0, 0)
 end
 
 -- Miscellaneous

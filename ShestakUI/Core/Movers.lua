@@ -109,7 +109,6 @@ local placed = {
 	"Butsu",
 	"UIAltPowerBar",
 	"GroupLootHistoryFrame",
-	"stArchaeologyFrame",
 	"StuffingFrameBags",
 	"StuffingFrameBank",
 	"UIWidgetTopAnchor",

@@ -56,7 +56,6 @@ C["position"] = {
 	["ghost"] = {"BOTTOM", Minimap, "TOP", 0, 5},									-- Ghost frame
 	["bag"] = {"BOTTOMRIGHT", Minimap, "TOPRIGHT", 2, 5},							-- Bag
 	["bank"] = {"LEFT", UIParent, "LEFT", 23, 150},									-- Bank
-	["archaeology"] = {"BOTTOMRIGHT", Minimap, "TOPRIGHT", 2, 5},					-- Archaeology frame
 	["auto_button"] = {"BOTTOMLEFT", Minimap, "TOPLEFT", -2, 27},					-- Quest Item auto button
 	["chat"] = {"BOTTOMLEFT", UIParent, "BOTTOMLEFT", 24, 23},						-- Chat
 	["chat_right"] = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -25, 23},				-- Chat on right side

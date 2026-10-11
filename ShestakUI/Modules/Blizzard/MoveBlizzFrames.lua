@@ -28,7 +28,6 @@ end
 
 local AddOnFrames = {
 	["Blizzard_AchievementUI"] = {"AchievementFrame"},
-	["Blizzard_ArchaeologyUI"] = {"ArchaeologyFrame"},
 	["Blizzard_ArtifactUI"] = {"ArtifactRelicForgeFrame"},
 	["Blizzard_AuctionHouseUI"] = {"AuctionHouseFrame"},
 	["Blizzard_BarberShopUI"] = {"BarberShopFrame"},
