@@ -467,7 +467,6 @@ C["minimap"] = {
 	["enable"] = true,							-- Enable minimap
 	["on_top"] = false,							-- Move minimap to top right corner
 	["tracking_icon"] = false,					-- Tracking icon
-	["garrison_icon"] = false,					-- Expansion Summary icon
 	["size"] = 130,								-- Minimap size
 	["hide_combat"] = false,					-- Hide minimap in combat
 	["toggle_menu"] = true,						-- Show toggle menu

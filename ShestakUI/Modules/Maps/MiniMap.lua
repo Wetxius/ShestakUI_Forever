@@ -158,22 +158,6 @@ AddonCompartmentFrame:Kill()
 -- Hide coords
 C_CVar.SetCVar("minimapShowPlayerCoords", 0)
 
--- Garrison icon
-if C.minimap.garrison_icon == true then
-	ExpansionLandingPageMinimapButton:SetScale(0.6)
-	ExpansionLandingPageMinimapButton:ClearAllPoints()
-	ExpansionLandingPageMinimapButton:SetPoint("TOPLEFT", Minimap, "TOPLEFT", -3, 1)
-	hooksecurefunc(ExpansionLandingPageMinimapButton, "SetPoint", function(_, _, _, _, _, y)
-		if y ~= 1 then
-			ExpansionLandingPageMinimapButton:ClearAllPoints()
-			ExpansionLandingPageMinimapButton:SetPoint("TOPLEFT", Minimap, "TOPLEFT", -3, 1)
-		end
-	end)
-else
-	ExpansionLandingPageMinimapButton:SetScale(0.0001)
-	ExpansionLandingPageMinimapButton:SetAlpha(0)
-end
-
 -- Feedback icon
 if FeedbackUIButton then
 	FeedbackUIButton:ClearAllPoints()

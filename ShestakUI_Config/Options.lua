@@ -2763,11 +2763,8 @@ do
 	local tracking_icon = ns.CreateCheckBox(parent, "tracking_icon", L_GUI_MINIMAP_ICON)
 	tracking_icon:SetPoint("TOPLEFT", on_top, "BOTTOMLEFT", 0, 0)
 
-	local garrison_icon = ns.CreateCheckBox(parent, "garrison_icon", WAR_WITHIN_LANDING_PAGE_TITLE)
-	garrison_icon:SetPoint("TOPLEFT", tracking_icon, "BOTTOMLEFT", 0, 0)
-
 	local size = ns.CreateNumberSlider(parent, "size", nil, nil, 0, 300, 1, true, L_GUI_MINIMAP_SIZE)
-	size:SetPoint("TOPLEFT", garrison_icon, "BOTTOMLEFT", 0, -20)
+	size:SetPoint("TOPLEFT", tracking_icon, "BOTTOMLEFT", 0, -20)
 
 	local hide_combat = ns.CreateCheckBox(parent, "hide_combat", L_GUI_MINIMAP_HIDE_COMBAT)
 	hide_combat:SetPoint("TOPLEFT", size, "BOTTOMLEFT", 0, -10)
