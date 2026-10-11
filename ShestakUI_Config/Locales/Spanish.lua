@@ -503,7 +503,6 @@ L.filger_category_list = "Categoría de lista de hechizos"
 -- Announcements options
 L.announcements = "Anuncios"
 L.announcements_subtext = "Configuraciones que añaden anuncios en el chat sobre hechizos u objetos."
-L.announcements_drinking = "Anunciar en el chat cuando un enemigo en la arena beba"
 L.announcements_interrupts = "Interrupciones"
 L.announcements_interrupts_desc = "Anunciar en grupo/banda cuando interrumpes"
 L.announcements_spells = "Lanzamientos de hechizos"

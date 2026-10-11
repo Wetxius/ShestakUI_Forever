@@ -43,7 +43,6 @@ L_TOOLTIP_INSPECT_OPEN = "检查框体已开启"
 
 -- Misc
 L_MISC_UNDRESS = "无装备"
-L_MISC_DRINKING = " 进食中..."
 L_MISC_BUY_STACK = "Alt+右键批量购买"
 L_MISC_HEADER_MARK = "鼠标悬停显示团队图标"
 L_MISC_BINDER_OPEN = "鼠标绑定"

@@ -505,7 +505,6 @@ L.filger_category_list = "Catégorie de la liste de sorts"
 -- Announcements options
 L.announcements = "Annonces"
 L.announcements_subtext = "Paramètres qui ajoutent des annonces de chat pour les sorts ou les objets."
-L.announcements_drinking = "Un ennemi de l’arène est entrain de boire"
 L.announcements_interrupts = "Interruptions"
 L.announcements_interrupts_desc = "Annonce dans le groupe/raid lorsque vous interrompez un sort"
 L.announcements_spells = "Lancement de certains sorts"

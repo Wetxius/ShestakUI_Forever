@@ -503,7 +503,6 @@ L.filger_category_list = "Categoria lista incantesimi"
 -- Announcements options
 L.announcements = "Annunci"
 L.announcements_subtext = "Impostazioni che aggiungono annunci in chat su incantesimi o oggetti."
-L.announcements_drinking = "Annuncia in chat quando un nemico in arena sta bevendo"
 L.announcements_interrupts = "Interruzioni"
 L.announcements_interrupts_desc = "Annuncia in gruppo/incursione quando interrompi un incantesimo"
 L.announcements_spells = "Lancio incantesimi"

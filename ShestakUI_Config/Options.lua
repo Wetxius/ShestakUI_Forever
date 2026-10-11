@@ -2963,11 +2963,8 @@ do
 
 	flask_food.children = {flask_food_raid, flask_food_auto}
 
-	local drinking = ns.CreateCheckBox(parent, "drinking")
-	drinking:SetPoint("TOPLEFT", flask_food_auto, "BOTTOMLEFT", -20, 0)
-
 	local pull_countdown = ns.CreateCheckBox(parent, "pull_countdown")
-	pull_countdown:SetPoint("TOPLEFT", drinking, "BOTTOMLEFT", 0, 0)
+	pull_countdown:SetPoint("TOPLEFT", flask_food_auto, "BOTTOMLEFT", -20, 0)
 
 	-- Self announcements
 	local subheader = ns.addSubCategory(parent, L.announcements_subheader_self)

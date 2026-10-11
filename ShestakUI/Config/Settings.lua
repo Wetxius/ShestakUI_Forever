@@ -529,7 +529,6 @@ C["announcements"] = {
 	["flask_food"] = false,						-- Announce the usage of flasks and food (/ffcheck)
 	["flask_food_raid"] = false,				-- Announce to raid channel
 	["flask_food_auto"] = false,				-- Auto check when ReadyCheck
-	["drinking"] = false,						-- Announce when arena enemy is drinking
 	["pull_countdown"] = true,					-- Pull countdown announce (/pc #)
 	["bad_gear"] = false,						-- Check your bad gear in instance (fishing pole, from the list)
 	["safari_hat"] = true,						-- Check Safari Hat when starting Pet Battle

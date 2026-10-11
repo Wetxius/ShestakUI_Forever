@@ -43,7 +43,6 @@ L_TOOLTIP_INSPECT_OPEN = "El marco de inspección está abierto"
 
 -- Misc
 L_MISC_UNDRESS = "Desvestir"
-L_MISC_DRINKING = " está bebiendo."
 L_MISC_BUY_STACK = "Alt-Click para comprar un lote"
 L_MISC_HEADER_MARK = "Iconos de raid al pasar el ratón"
 L_MISC_BINDER_OPEN = "Asignaciones de ratón"

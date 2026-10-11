@@ -43,7 +43,6 @@ L_TOOLTIP_INSPECT_OPEN = "Открыто окно осмотра"
 
 -- Misc
 L_MISC_UNDRESS = "Раздеть"
-L_MISC_DRINKING = " пьёт."
 L_MISC_BUY_STACK = "Зажмите Alt и щелкните мышью, чтобы купить связку"
 L_MISC_HEADER_MARK = "Метки по наведению курсора"
 L_MISC_BINDER_OPEN = "Назначения мыши"

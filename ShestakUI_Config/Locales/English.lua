@@ -524,7 +524,6 @@ L.filger_category_list = "Spell list category"
 -- Announcements options
 L.announcements = "Announcements"
 L.announcements_subtext = "Settings that add chat announcements about spells or items."
-L.announcements_drinking = "Arena enemy is drinking"
 L.announcements_interrupts = "Interrupts"
 L.announcements_interrupts_desc = "Announce in party/raid when you interrupt"
 L.announcements_spells = "Cast spells"

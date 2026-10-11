@@ -39,7 +39,6 @@ L_TOOLTIP_INSPECT_OPEN = "Inspect Frame is open"
 
 -- Misc
 L_MISC_UNDRESS = "Undress"
-L_MISC_DRINKING = " is drinking."
 L_MISC_BUY_STACK = "Alt-Click to buy a stack"
 L_MISC_HEADER_MARK = "Mouseover Raid Icons"
 L_MISC_BINDER_OPEN = "Mouse Bindings"

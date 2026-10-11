@@ -505,7 +505,6 @@ L.filger_category_list = "Kategorie der Zauberliste"
 -- Announcements options
 L.announcements = "Benachrichtigungen"
 L.announcements_subtext = "Einstellungen, die Chat-Ankündigungen über Zaubersprüche oder Gegenstände hinzufügen."
-L.announcements_drinking = "Sage im Chat an wenn ein Arenagegener trinkt"
 L.announcements_interrupts = "Unterbrechungen"
 L.announcements_interrupts_desc = "Sage deine Unterbrechungen im Raid oder Schlachtzugschat an"
 L.announcements_spells = "Zauber casten"

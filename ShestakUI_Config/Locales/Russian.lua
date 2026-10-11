@@ -508,7 +508,6 @@ L.filger_category_list = "Выбор списка"
 -- Announcements options
 L.announcements = "Объявления"
 L.announcements_subtext = "Здесь можно включить оповещения в чат о заклинаниях и предметах."
-L.announcements_drinking = "Враг пьет на арене"
 L.announcements_interrupts = "Прерывание заклинания"
 L.announcements_interrupts_desc = "Сообщать о вашем прерывании заклинания"
 L.announcements_spells = "Использование заклинаний"

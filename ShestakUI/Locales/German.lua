@@ -43,7 +43,6 @@ L_TOOLTIP_INSPECT_OPEN = "Betrachtungsfenster offen"
 
 -- Misc
 L_MISC_UNDRESS = "Ausziehen"
-L_MISC_DRINKING = " trinkt."
 L_MISC_BUY_STACK = "Alt-Klick, um einen Stapel zu kaufen"
 L_MISC_HEADER_MARK = "Mausdrüber Raid Icon"
 L_MISC_BINDER_OPEN = "Maus gebunden"

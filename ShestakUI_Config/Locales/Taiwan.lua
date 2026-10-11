@@ -507,7 +507,6 @@ L.filger_category_list = "分組"
 -- Announcements options
 L.announcements = "通告預警"
 L.announcements_subtext = "添加特定事件進行通報"
-L.announcements_drinking = "當敵人進食時在聊天框進行通告"
 L.announcements_interrupts = "斷法"
 L.announcements_interrupts_desc = "當你斷法成功時在隊伍/團隊中進行通告"
 L.announcements_spells = "施法"
