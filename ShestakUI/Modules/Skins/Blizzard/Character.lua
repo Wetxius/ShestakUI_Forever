@@ -12,6 +12,21 @@ local function LoadSkin()
 		T.SkinSideTabs(tab)
 	end
 
+	for i = 1, 4 do
+		local tab = _G["PaperDollSidebarTab"..i]
+		for _, region in next, { tab:GetRegions() } do
+			if region ~= tab.Icon and region:IsObjectType('Texture') then
+				region:SetTexture()
+			end
+		end
+
+		tab.Icon:SetSize(32, 32)
+		tab:CreateBackdrop("Overlay")
+		tab.backdrop:SetOutside(tab.Icon)
+		tab:StyleButton(5, 5)
+		tab.checked:SetColorTexture(1, 0.82, 0, 0.3)
+	end
+
 	CharacterFrameLeftPaneHost:SetAlpha(0)
 	CharacterFrameRightPaneHost:SetAlpha(0)
 

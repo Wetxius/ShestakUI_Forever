@@ -102,9 +102,9 @@ local function LoadSkin()
 		end
 	end
 
-	hooksecurefunc('LFGListingActivityView_InitActivityButton', SkinCheckboxes)
+	hooksecurefunc("LFGListingActivityView_InitActivityButton", SkinCheckboxes)
 
-	hooksecurefunc('LFGListingActivityView_InitActivityGroupButton', function(button)
+	hooksecurefunc("LFGListingActivityView_InitActivityGroupButton", function(button)
 		if not button.ExpandOrCollapseButton.styled then
 			button.ExpandOrCollapseButton:GetNormalTexture():SetAlpha(0)
 			T.SkinExpandOrCollapse(button.ExpandOrCollapseButton)

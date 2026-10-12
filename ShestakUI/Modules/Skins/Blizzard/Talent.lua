@@ -20,6 +20,11 @@ local function LoadSkin()
 	PlayerSpellsFrame.TalentsFrame.SearchPreviewContainer:StripTextures()
 	PlayerSpellsFrame.TalentsFrame.SearchPreviewContainer:CreateBackdrop("Transparent")
 
+	T.SkinNextPrevButton(PlayerSpellsFrame.TalentsFrame.SearchOptionsDropdown, nil, "Down")
+	PlayerSpellsFrame.TalentsFrame.SearchOptionsDropdown:SetSize(21, 21)
+	PlayerSpellsFrame.TalentsFrame.SearchOptionsDropdown:SetMovePoint(nil, 2)
+	PlayerSpellsFrame.TalentsFrame.SearchOptionsDropdown.Arrow:SetAlpha(0)
+
 	PlayerSpellsFrame.TalentsFrame.InspectCopyButton:SkinButton()
 
 	for _, tab in next, {PlayerSpellsFrame.TabSystem:GetChildren()} do
@@ -98,6 +103,8 @@ local function LoadSkin()
 		end)
 	end
 
+	PlayerSpellsFrame.TalentsFrame.ClassCurrencyDisplay.Border:SetAlpha(0)
+
 	-- SpellBook
 	local page = PlayerSpellsFrame.SpellBookFrame
 	page.TopBar:SetAlpha(0)
@@ -105,14 +112,42 @@ local function LoadSkin()
 	page.HelpPlateButton.Ring:Hide()
 	page.HelpPlateButton:SetPoint("TOPLEFT", page, "TOPLEFT", -10, 37)
 
-	-- TODO
-	-- for _, tab in next, {page.CategoryTabSystem:GetChildren()} do
-		-- T.SkinTab(tab, true)
-		-- tab.backdrop:SetPoint("TOPLEFT", 2, -5)
-		-- tab.backdrop:SetPoint("BOTTOMRIGHT", -2, 0)
-	-- end
+	local function CategoryTabSelected(tab, selected)
+		if selected then
+			tab.backdrop:SetBackdropBorderColor(1, 0.82, 0, 1)
+		else
+			tab.backdrop:SetBackdropBorderColor(unpack(C.media.border_color))
+		end
+	end
+
+	for _, tab in next, {page.CategoryTabSystem:GetChildren()} do
+		if not tab.backdrop then
+			local icon = tab.Icon
+			icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			icon:RemoveMaskTexture(tab.IconMask)
+
+			tab.SquareBackground:SetAlpha(0)
+			tab.SquareBackgroundActive:SetAlpha(0)
+			-- tab.SquareBackgroundActiveGlow:SetAlpha(0)
+
+			tab:CreateBackdrop()
+			tab.backdrop:SetOutside(icon)
+
+			tab:SetHighlightTexture(C.media.texture)
+
+			local highlight = tab:GetHighlightTexture()
+			highlight:SetVertexColor(1, 1, 1, 0.3)
+			highlight:SetAllPoints(icon)
+
+			hooksecurefunc(tab, "SetTabSelected", CategoryTabSelected)
+			CategoryTabSelected(tab, tab.isSelected)
+		end
+	end
 
 	T.SkinEditBox(page.SearchBox, 250, 22)
+	page.SearchBox:SetMovePoint(nil, -4)
+	T.SkinNextPrevButton(page.SettingsDropdown, nil, "Down")
+	page.SettingsDropdown:SetSize(26, 26)
 	page.SearchPreviewContainer:StripTextures()
 	page.SearchPreviewContainer:CreateBackdrop("Transparent")
 
