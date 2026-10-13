@@ -893,8 +893,18 @@ T.CreateAuraWatch = function(self)
 			auras.PostCreateButton = T.CreateRaidBuffIcon
 
 			local filter = spell[4] and "HELPFUL" or "HELPFUL|PLAYER"
+
+			local list = {}
+			if spell[5] then
+				for _, id in pairs(spell[5]) do
+					list[id] = true
+				end
+			end
+
+			list[spell[1]] = true
+
 			auras:AddGroup(filter, {
-				candidateFilters = {includeSpellIDs = {[spell[1]] = true}},
+				candidateFilters = {includeSpellIDs = list},
 				maxFrameCount = 1
 			})
 		end

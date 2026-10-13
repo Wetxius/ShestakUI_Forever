@@ -8,11 +8,11 @@ local T, C, L = unpack(ShestakUI)
 if C.raidframe.plugins_buffs then
 	T.RaidBuffs = {
 		DRUID = {
-			{774, "TOPRIGHT", {0.8, 0.4, 0.8}},					-- Rejuvenation
-			{8936, "BOTTOMLEFT", {0.2, 0.8, 0.2}},				-- Regrowth
-			{408124, "TOPLEFT", {0.4, 0.8, 0.2}},				-- Lifebloom [Season of Discovery]
-			{408120, "BOTTOMRIGHT", {0.8, 0.4, 0}},				-- Wild Growth [Season of Discovery]
-			{428713, "LEFT", {0.45, 0.3, 0.2}, true},			-- Barkskin [Season of Discovery]
+			{774, "TOPRIGHT", {0.8, 0.4, 0.8}, nil, {1058, 1430, 2090, 2091, 3627, 8910, 9839, 9840, 9841, 25299}},					-- Rejuvenation
+			{8936, "BOTTOMLEFT", {0.2, 0.8, 0.2}, nil, {8938, 8939, 8940, 8941, 9750, 9856, 9857, 9858}},				-- Regrowth
+			-- {408124, "TOPLEFT", {0.4, 0.8, 0.2}},				-- Lifebloom [Season of Discovery]
+			-- {408120, "BOTTOMRIGHT", {0.8, 0.4, 0}},				-- Wild Growth [Season of Discovery]
+			-- {428713, "LEFT", {0.45, 0.3, 0.2}, true},			-- Barkskin [Season of Discovery]
 		},
 		PALADIN = {
 			{407613, "TOPRIGHT", {0.7, 0.3, 0.7}},				-- Beacon of Light [Season of Discovery]
