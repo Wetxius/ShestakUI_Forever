@@ -15,7 +15,7 @@ local function LoadSkin()
 	for i = 1, 4 do
 		local tab = _G["PaperDollSidebarTab"..i]
 		for _, region in next, { tab:GetRegions() } do
-			if region ~= tab.Icon and region:IsObjectType('Texture') then
+			if region ~= tab.Icon and region:IsObjectType("Texture") then
 				region:SetTexture()
 			end
 		end
@@ -220,6 +220,45 @@ local function LoadSkin()
 			end
 		end
 	end
+
+	-- Equipement Manager
+	hooksecurefunc(_G.PaperDollFrame.EquipmentManagerPane.ScrollBox, "Update", function(frame)
+		for _, child in next, {frame.ScrollTarget:GetChildren()} do
+			if child.icon and not child.isSkinned then
+				for _, region in next, { child:GetRegions() } do -- the card background and the icon frame are unnamed
+					local atlas = region:IsObjectType("Texture") and region:GetAtlas()
+					if atlas == "UI-Character-Info-OutfitCard" or atlas == "UI-Character-Info-OutfitIcon-Frame" then
+						region:SetTexture()
+					end
+				end
+
+				child.FrameBackdrop = CreateFrame("Frame", nil, frame)
+				child.FrameBackdrop:SetFrameLevel(frame:GetFrameLevel() - 1)
+				child.FrameBackdrop:SetPoint("TOPLEFT", child.icon, "TOPRIGHT", 5, 2)
+				child.FrameBackdrop:SetPoint("BOTTOMRIGHT", child, -7, 2)
+				child.FrameBackdrop:SetTemplate("Overlay")
+
+				child.icon:SkinIcon()
+
+				for _, bar in next, {child.HighlightBar, child.SelectedBar} do
+					bar:SetInside(child.FrameBackdrop)
+				end
+
+				child.HighlightBar:SetColorTexture(1, 1, 1, 0.3)
+				child.HighlightBar:SetDrawLayer("BACKGROUND")
+				child.SelectedBar:SetColorTexture(1, 0.82, 0, 0.3)
+				child.SelectedBar:SetDrawLayer("BACKGROUND")
+
+				-- Making all icons the same size and position because otherwise BlizzardUI tries to attach itself to itself when it refreshes
+				child.icon:SetPoint("LEFT", child, "LEFT", 4, 0)
+				child.icon.SetPoint = T.dummy
+				child.icon:SetSize(36, 36)
+				child.icon.SetSize = T.dummy
+
+				child.isSkinned = true
+			end
+		end
+	end)
 end
 
 tinsert(T.SkinFuncs["ShestakUI"], LoadSkin)
