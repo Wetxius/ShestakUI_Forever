@@ -71,16 +71,22 @@ local function LoadSkin()
 				button.backdrop:SetPoint("TOPLEFT", 0, 0)
 				button.backdrop:SetPoint("BOTTOMRIGHT", 0, 2)
 				button:StyleButton(nil, nil, true)
-				button.icon:SkinIcon(true)
-				button.icon:SetPoint("LEFT", button, "LEFT", 6, 1)
-				button.icon:SetSize(33, 33)
-				button.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-				button:SetNormalTexture(0)
-				button.disabledBG:SetTexture()
-				button.selectedTex:ClearAllPoints()
-				button.selectedTex:SetInside(button.backdrop)
-				button.selectedTex:SetColorTexture(1, 0.82, 0, 0.3)
+				if button.icon then
+					button.icon:SkinIcon(true)
+					button.icon:SetPoint("LEFT", button, "LEFT", 6, 1)
+					button.icon:SetSize(33, 33)
+					button.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
+					button:SetNormalTexture(0)
+					button.disabledBG:SetTexture()
+					button.selectedTex:ClearAllPoints()
+					button.selectedTex:SetInside(button.backdrop)
+					button.selectedTex:SetColorTexture(1, 0.82, 0, 0.3)
+				else
+					button.LeftPiece:SetAlpha(0)
+					button.CenterPiece:SetAlpha(0)
+					button.RightPiece:SetAlpha(0)
+				end
 				button.IsSkinned = true
 			end
 		end
