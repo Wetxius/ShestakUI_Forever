@@ -15,6 +15,8 @@ local function LoadSkin()
 	LegacySystemFrame.RewardTrackPage.Background:SetAlpha(0)
 	LegacySystemFrame.ChallengesPage.Background:SetAlpha(0)
 	LegacySystemFrame.TreePage.Background:SetAlpha(0)
+	LegacySystemFrame.ChallengesPage.VerticalDivider:SetAlpha(0)
+	LegacySystemFrame.TreePage.VerticalDivider.VerticalDivider:SetAlpha(0)
 
 	T.SkinEditBox(LegacySystemFrame.ChallengesPage.CategoryList.SearchBox)
 	LegacySystemFrame.ChallengesPage.CategoryList.SearchBox.backdrop:SetOutside(nil, 2, -1)
@@ -26,6 +28,54 @@ local function LoadSkin()
 	T.SkinScrollBar(LegacySystemFrame.ChallengesPage.DetailPane.ScrollBar)
 
 	LegacySystemFrame.TreePage.LegacyTreeTraitPanel.ApplyButton:SkinButton()
+
+	for _, bar in next, {LegacySystemFrame.RewardTrackPage.LegacyRewardProgressBar, LegacySystemFrame.ChallengesPage.LegacyChallengePointSummary.PointsBar} do
+		bar.ProgressBarFrame:SetAlpha(0)
+		bar:CreateBackdrop("Overlay")
+	end
+	LegacySystemFrame.ChallengesPage.LegacyChallengePointSummary.ProgressBarBackground:SetAlpha(0)
+
+	hooksecurefunc(LegacySystemFrame.ChallengesPage.CategoryList.ScrollBox, "Update", function(frame)
+		for _, child in next, {frame.ScrollTarget:GetChildren()} do
+			if child and not child.isSkinned then
+				if child.CollapseButton then
+					child:GetNormalTexture():SetAlpha(0)
+
+					child:CreateBackdrop("Overlay")
+					child.backdrop:SetPoint("TOPLEFT", child, 3, -1)
+					child.backdrop:SetPoint("BOTTOMRIGHT", child, -1, 1)
+				end
+
+				child.isSkinned = true
+			end
+		end
+	end)
+
+	hooksecurefunc(LegacySystemFrame.ChallengesPage.DetailPane.ScrollBox, "Update", function(frame)
+		for _, button in next, { frame.ScrollTarget:GetChildren() } do
+			if button and not button.IsSkinned then
+				button.TitleBar:SetAlpha(0)
+				button.Background:SetAlpha(0)
+				button.BackgroundTop:SetAlpha(0)
+				button.BackgroundMiddle:SetAlpha(0)
+				button.BackgroundBottom:SetAlpha(0)
+				button.SelectedOverlay:SetAlpha(0)
+				button.Shield.CheckBackground:SetAlpha(0)
+
+				button:CreateBackdrop("Overlay")
+				button.backdrop:SetInside(button, 0, 2)
+
+				T.SkinCheckBox(button.Tracked)
+				button.Tracked:SetSize(20, 20)
+
+				button.Icon.frame:SetAlpha(0)
+				button.Icon.texture:RemoveMaskTexture(button.Icon.TextureMask)
+				button.Icon.texture:SkinIcon()
+
+				button.IsSkinned = true
+			end
+		end
+	end)
 end
 
 T.SkinFuncs["Blizzard_LegacySystem"] = LoadSkin
