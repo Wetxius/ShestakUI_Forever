@@ -247,6 +247,35 @@ local function LoadSkin()
 		end
 	end)
 
+	local function TalentButtonStateBorder(button, visualState)
+		local color = _G.TalentButtonUtil.GetColorForBaseVisualState(visualState)
+		if visualState == TalentButtonUtil.BaseVisualState.Maxed then
+			button.backdrop:SetBackdropBorderColor(unpack(C.media.border_color))
+		else
+			button.backdrop:SetBackdropBorderColor(color:GetRGB())
+		end
+		button.BorderSheen:Hide() -- Blizzard reshows it on every state update
+	end
+
+	PlayerSpellsFrame.TalentsFrame:HookScript("OnShow", function(self)
+		for button in self:EnumerateAllTalentButtons() do
+			if not button.styled then
+				button.Icon:SkinIcon()
+				button.StateBorder:SetAlpha(0)
+				button.StateBorderHover:Kill()
+				button.Shadow:SetAlpha(0)
+
+				hooksecurefunc(button, 'UpdateStateBorder', TalentButtonStateBorder)
+				local visualState = button:GetVisualState()
+				if visualState then -- state was applied before the hook existed
+					TalentButtonStateBorder(button, visualState)
+				end
+
+				button.styled = true
+			end
+		end
+	end)
+
 	-- Clique skin
 	C_Timer.After(0.1, function()
 		if CliqueSpellbookTabButton then
