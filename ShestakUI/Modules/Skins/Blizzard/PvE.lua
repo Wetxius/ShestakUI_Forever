@@ -112,6 +112,26 @@ local function LoadSkin()
 		end
 		SkinCheckboxes(button)
 	end)
+
+	hooksecurefunc(LFGBrowseFrameScrollBox, "Update", function(frame)
+		for _, child in next, {frame.ScrollTarget:GetChildren()} do
+			if child and not child.isSkinned then
+				if child.CollapseIcon then
+					child.ResultBG:SetAlpha(0)
+
+					child:CreateBackdrop("Overlay")
+					child.backdrop:SetPoint("TOPLEFT", child, 4, -7)
+					child.backdrop:SetPoint("BOTTOMRIGHT", child, -3, 1)
+
+					local highlight = child.Highlight
+					highlight:SetColorTexture(1, 1, 1, 0.3)
+					highlight:SetInside(child.backdrop)
+				end
+
+				child.isSkinned = true
+			end
+		end
+	end)
 end
 
 T.SkinFuncs["Blizzard_GroupFinder_VanillaStyle"] = LoadSkin
