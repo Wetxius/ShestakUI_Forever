@@ -45,7 +45,6 @@
 	<Script file="Modules\GCD.lua"/>
 	<Script file="Modules\QuestIcon.lua"/>
 	<Script file="Modules\Reputation.lua"/>
-	<Script file="Modules\Swing.lua"/>
 	<Script file="Modules\TotemBar.lua"/>
 	<Script file="Modules\Trinkets.lua"/>
 
