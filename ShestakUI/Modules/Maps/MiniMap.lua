@@ -27,25 +27,25 @@ frame:SetScript("OnEvent", function(self, event)
 	MinimapBackdrop:SetSize(MinimapAnchor:GetWidth(), MinimapAnchor:GetWidth())
 
 	-- Instance Difficulty icon
-	MinimapCluster.InstanceDifficulty:SetParent(Minimap)
-	MinimapCluster.InstanceDifficulty:ClearAllPoints()
-	MinimapCluster.InstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 1, 3)
-	MinimapCluster.InstanceDifficulty.Default.Border:Hide()
-	MinimapCluster.InstanceDifficulty.Default.Background:SetSize(28, 28)
-	MinimapCluster.InstanceDifficulty.Default.Background:SetVertexColor(0.6, 0.3, 0)
+	-- MinimapCluster.InstanceDifficulty:SetParent(Minimap)
+	-- MinimapCluster.InstanceDifficulty:ClearAllPoints()
+	-- MinimapCluster.InstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 1, 3)
+	-- MinimapCluster.InstanceDifficulty.Default.Border:Hide()
+	-- MinimapCluster.InstanceDifficulty.Default.Background:SetSize(28, 28)
+	-- MinimapCluster.InstanceDifficulty.Default.Background:SetVertexColor(0.6, 0.3, 0)
 
 	-- Guild Instance Difficulty icon
-	MinimapCluster.InstanceDifficulty.Guild.Border:Hide()
-	MinimapCluster.InstanceDifficulty.Guild.Background:SetSize(28, 28)
-	MinimapCluster.InstanceDifficulty.Guild.Background:ClearAllPoints()
-	MinimapCluster.InstanceDifficulty.Guild.Background:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", -1, 0)
+	-- MinimapCluster.InstanceDifficulty.Guild.Border:Hide()
+	-- MinimapCluster.InstanceDifficulty.Guild.Background:SetSize(28, 28)
+	-- MinimapCluster.InstanceDifficulty.Guild.Background:ClearAllPoints()
+	-- MinimapCluster.InstanceDifficulty.Guild.Background:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", -1, 0)
 
 	-- Challenge Mode icon
-	MinimapCluster.InstanceDifficulty.ChallengeMode.Border:Hide()
-	MinimapCluster.InstanceDifficulty.ChallengeMode.Background:SetSize(28, 28)
-	MinimapCluster.InstanceDifficulty.ChallengeMode.Background:SetVertexColor(0.8, 0.8, 0)
-	MinimapCluster.InstanceDifficulty.ChallengeMode.Background:ClearAllPoints()
-	MinimapCluster.InstanceDifficulty.ChallengeMode.Background:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", -1, 0)
+	-- MinimapCluster.InstanceDifficulty.ChallengeMode.Border:Hide()
+	-- MinimapCluster.InstanceDifficulty.ChallengeMode.Background:SetSize(28, 28)
+	-- MinimapCluster.InstanceDifficulty.ChallengeMode.Background:SetVertexColor(0.8, 0.8, 0)
+	-- MinimapCluster.InstanceDifficulty.ChallengeMode.Background:ClearAllPoints()
+	-- MinimapCluster.InstanceDifficulty.ChallengeMode.Background:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", -1, 0)
 
 	-- Move QueueStatus icon
 	QueueStatusFrame:SetClampedToScreen(true)
@@ -124,13 +124,13 @@ frame:SetScript("OnEvent", function(self, event)
 	MiniMapMailIcon:SetSize(16, 16)
 
 	-- Move crafting order icon
-	local Crafting = MinimapCluster.IndicatorFrame.CraftingOrderFrame
-	hooksecurefunc(Crafting, "SetPoint", function(self, _, anchor)
-		if anchor ~= Minimap then
-			self:ClearAllPoints()
-			self:SetPoint("BOTTOM", Minimap, "BOTTOM", 0, 4)
-		end
-	end)
+	-- local Crafting = MinimapCluster.IndicatorFrame.CraftingOrderFrame
+	-- hooksecurefunc(Crafting, "SetPoint", function(self, _, anchor)
+		-- if anchor ~= Minimap then
+			-- self:ClearAllPoints()
+			-- self:SetPoint("BOTTOM", Minimap, "BOTTOM", 0, 4)
+		-- end
+	-- end)
 end)
 
 -- Adjusting for patch 9.0.1 Minimap.xml
@@ -139,7 +139,7 @@ Minimap:SetFrameLevel(2)
 
 -- Hide Border
 MinimapCompassTexture:Hide()
-MinimapCluster.BorderTop:StripTextures()
+-- MinimapCluster.BorderTop:StripTextures()
 
 -- Hide Zoom Buttons
 Minimap.ZoomIn:Kill()
