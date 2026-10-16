@@ -156,22 +156,16 @@ local function LoadSkin()
 
 	-- Tracking Button
 	local function WorldMapTrackingOptionsButton(button)
-		-- local shadow = button:GetRegions()
-		-- shadow:Hide()
-
-		-- button.Background:Hide()
-		-- button.Border:Hide()
+		T.SkinNextPrevButton(button, nil, "Down")
+		button.Icon:SetAlpha(0)
+		button:SetSize(20, 20)
 
 		T.SkinCloseButton(button.ResetButton, nil, nil, true)
 		button.ResetButton:SetSize(15, 15)
 		button.ResetButton:ClearAllPoints()
-		button.ResetButton:SetPoint("CENTER", button, "TOPRIGHT", -4, -4)
+		button.ResetButton:SetPoint("TOPRIGHT", button, "TOPRIGHT", 10, 8)
 
-		-- local tex = button:GetHighlightTexture()
-		-- tex:SetAtlas("Map-Filter-Button")
-		-- tex:SetAllPoints(button.Icon)
-
-		button:SetMovePoint(nil, -44)
+		button:SetMovePoint(6, -44)
 	end
 
 	-- Tracking Pin
