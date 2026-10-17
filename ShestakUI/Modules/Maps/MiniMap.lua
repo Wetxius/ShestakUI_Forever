@@ -240,7 +240,13 @@ local micromenu = {
 		-- end
 		ToggleProfessionsBook()
 	end},
-	{text = TALENTS_BUTTON, notCheckable = 1, func = function()
+	{text = SPELLBOOK_BUTTON, notCheckable = 1, func = function()
+		-- if InCombatLockdown() then
+			-- print("|cffffff00"..ERR_NOT_IN_COMBAT.."|r") return
+		-- end
+		PlayerSpellsUtil.ToggleSpellBookFrame()
+	end},
+	{text = PLAYERSPELLS_BUTTON, notCheckable = 1, func = function()
 		if T.level >= 10 then
 			PlayerSpellsUtil.ToggleClassTalentOrSpecFrame()
 		else
@@ -266,7 +272,7 @@ local micromenu = {
 	{text = CHAT_CHANNELS, notCheckable = 1, func = function()
 		ToggleChannelFrame()
 	end},
-	{text = GROUP_FINDER, notCheckable = 1, func = function()
+	{text = DUNGEONS_BUTTON, notCheckable = 1, func = function()
 		if T.level >= 10 then
 			ToggleGroupFinderFrame()
 		else
