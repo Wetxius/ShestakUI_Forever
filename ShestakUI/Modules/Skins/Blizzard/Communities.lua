@@ -192,6 +192,7 @@ local function LoadSkin()
 	-- GuildFinderFrame
 	CommunitiesFrame.GuildFinderFrame:StripTextures()
 	ClubFinderCommunityAndGuildFinderFrame:StripTextures()
+	ClubFinderGuildFinderFrame.DisabledFrame.NineSlice:SetTemplate("Overlay")
 	ClubFinderGuildFinderFrame.OptionsList.Search:SkinButton()
 	ClubFinderCommunityAndGuildFinderFrame.OptionsList.Search:SkinButton()
 

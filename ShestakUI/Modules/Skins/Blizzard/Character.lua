@@ -91,6 +91,21 @@ local function LoadSkin()
 		end
 	end
 
+	hooksecurefunc(CharacterStatsPaneScrollBox.ScrollBox, "Update", function(frame)
+		for _, child in next, {frame.ScrollTarget:GetChildren()} do
+			if child and not child.isSkinned then
+				if child.Title then
+					child:CreateBackdrop("Overlay")
+					child.backdrop:SetPoint("TOPLEFT", child, 3, -6)
+					child.backdrop:SetPoint("BOTTOMRIGHT", child, -2, 6)
+					child.Background:SetAlpha(0)
+				end
+
+				child.isSkinned = true
+			end
+		end
+	end)
+
 	local frames = {
 		ReputationFrame,
 		TokenFrame,
@@ -259,6 +274,26 @@ local function LoadSkin()
 			end
 		end
 	end)
+
+	for _, frames in next, {SkillsFrame.SkillDetailFrame, PVPRankFrame.DetailFrame} do
+		hooksecurefunc(frames, "AcquireRow", function(frame)
+			for row in frame.rowPools:EnumerateActive() do
+				if not row.IsSkinned then
+					if row.Background then
+						row:CreateBackdrop("Overlay")
+						row.backdrop:SetPoint("TOPLEFT", row, -3, -7)
+						row.backdrop:SetPoint("BOTTOMRIGHT", row, 3, 7)
+						row.Background:SetAlpha(0)
+					elseif row.IconSlot then
+						row.IconSlot:SetAlpha(0)
+						row.Icon:SkinIcon()
+					end
+
+					row.IsSkinned = true
+				end
+			end
+		end)
+	end
 end
 
 tinsert(T.SkinFuncs["ShestakUI"], LoadSkin)
