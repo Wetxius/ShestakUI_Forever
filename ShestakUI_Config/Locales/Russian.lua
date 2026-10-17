@@ -645,8 +645,6 @@ L_GUI_STATS_CURRENCY_RAID = "Рейдовые печати"
 -- Trade options
 L.trade = "Торговля"
 L.trade_subtext = "Настройки связанные с профессиями и торговлей."
-L.trade_profession_tabs = "Вкладки профессий"
-L.trade_profession_tabs_desc = "Вкладки ваших профессий у окна торговли/профессии"
 L.trade_already_known = "Изученные предметы"
 L.trade_already_known_desc = "Окрашивать уже изученные рецепты, игрушки, маунтов и питомцев"
 L.trade_disenchanting = "Быстрое распыление"

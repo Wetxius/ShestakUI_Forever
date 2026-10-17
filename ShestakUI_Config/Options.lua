@@ -3347,11 +3347,8 @@ end
 do
 	local parent = ShestakUIOptionsPanel.trade
 
-	local profession_tabs = ns.CreateCheckBox(parent, "profession_tabs")
-	profession_tabs:SetPoint("TOPLEFT", parent.subText, "BOTTOMLEFT", 0, 0)
-
 	local already_known = ns.CreateCheckBox(parent, "already_known")
-	already_known:SetPoint("TOPLEFT", profession_tabs, "BOTTOMLEFT", 0, 0)
+	already_known:SetPoint("TOPLEFT", parent.subText, "BOTTOMLEFT", 0, 0)
 
 	local disenchanting = ns.CreateCheckBox(parent, "disenchanting")
 	disenchanting:SetPoint("TOPLEFT", already_known, "BOTTOMLEFT", 0, 0)

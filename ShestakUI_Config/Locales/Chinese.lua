@@ -643,8 +643,6 @@ L_GUI_STATS_CURRENCY_RAID = "副本徽记"
 -- Trade options
 L.trade = "商业"
 L.trade_subtext = "专业和商业设罝"
-L.trade_profession_tabs = "专业介面快捷按鈕"
-L.trade_profession_tabs_desc = "专业/商业介面显示快捷按鈕"
 L.trade_already_known = "彩色显示已学会的"
 L.trade_already_known_desc = "彩色显示已学会的食谱/图纸/坐骑/宠物"
 L.trade_disenchanting = "快捷研磨"

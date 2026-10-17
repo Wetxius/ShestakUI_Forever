@@ -639,8 +639,6 @@ L_GUI_STATS_CURRENCY_RAID = "Mostra i sigilli delle incursioni"
 -- Trade options
 L.trade = "Commercio"
 L.trade_subtext = "Impostazioni relative a professioni e commercio"
-L.trade_profession_tabs = "Schede professioni"
-L.trade_profession_tabs_desc = "Schede professioni artigiane e riquadri di commercio"
 L.trade_already_known = "Colora gli oggetti già conosciuti"
 L.trade_already_known_desc = "Colora ricette/cavalcature/mascotte/oggetti già conosciuti"
 L.trade_disenchanting = "Disincantamento rapido"

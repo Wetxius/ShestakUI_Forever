@@ -639,8 +639,6 @@ L_GUI_STATS_CURRENCY_RAID = "Mostrar sellos de raid"
 -- Trade options
 L.trade = "Comercio"
 L.trade_subtext = "Configuraciones relacionadas con profesiones y comercio"
-L.trade_profession_tabs = "Pestañas de profesiones"
-L.trade_profession_tabs_desc = "Pestañas de profesiones de artesanía y marcos de comercio"
 L.trade_already_known = "Colorear objetos ya conocidos"
 L.trade_already_known_desc = "Colorear recetas/monturas/mascotas/juguetes que ya se conocen"
 L.trade_disenchanting = "Desencantar rápido"

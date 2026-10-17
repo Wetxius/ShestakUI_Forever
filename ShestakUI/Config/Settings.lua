@@ -662,7 +662,6 @@ C["stats"] = {
 --	Trade options
 ----------------------------------------------------------------------------------------
 C["trade"] = {
-	["profession_tabs"] = true,					-- Professions tabs on TradeSkill frames
 	["already_known"] = true,					-- Colorizes recipes/mounts/pets/toys that is already known
 	["disenchanting"] = false,					-- Milling, Prospecting and Disenchanting by Alt + click
 	["enchantment_scroll"] = false,				-- Enchantment scroll on TradeSkill frame

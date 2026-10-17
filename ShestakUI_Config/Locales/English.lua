@@ -664,8 +664,6 @@ L_GUI_STATS_CURRENCY_RAID = "Raid Seals"
 -- Trade options
 L.trade = "Trade"
 L.trade_subtext = "Settings related to professions and trade"
-L.trade_profession_tabs = "Professions tabs"
-L.trade_profession_tabs_desc = "Professions tabs on tradeskill/trade frames"
 L.trade_already_known = "Colorizes already known items"
 L.trade_already_known_desc = "Colorizes recipes/mounts/pets/toys that is already known"
 L.trade_disenchanting = "Quick Disenchanting"

@@ -641,8 +641,6 @@ L_GUI_STATS_CURRENCY_RAID = "Sceaux de raid dans devise"
 -- Trade options
 L.trade = "Métier"
 L.trade_subtext = "Paramètres liés aux professions et aux métiers"
-L.trade_profession_tabs = "Onglet des Professions"
-L.trade_profession_tabs_desc = "Onglet des professions sur les fenêtres de métiers et de craft"
 L.trade_already_known = "Colore les éléments déjà connus"
 L.trade_already_known_desc = "Colore les recettes/supports/animaux/jouets déjà connus"
 L.trade_disenchanting = "Désenchantement rapide"

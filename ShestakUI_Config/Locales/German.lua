@@ -641,8 +641,6 @@ L_GUI_STATS_CURRENCY_RAID = "Zeige Schlatzugs Siegel/Bonuswürffe"
 -- Trade options
 L.trade = "Handel"
 L.trade_subtext = "Einstellungen für Handel und Berufe"
-L.trade_profession_tabs = "Berufereiter/Tabs"
-L.trade_profession_tabs_desc = "Berufereiter an Handelsfähigkeiten und Handelsfenstern anzeigen"
 L.trade_already_known = "Färbt bereits bekannte Elemente ein"
 L.trade_already_known_desc = "Bekannte Rezepte/Reittiere/Begleiter farblich hervorheben"
 L.trade_disenchanting = "Schnelle Entzauberung"
