@@ -34,6 +34,23 @@ local function LoadSkin()
 		bar:CreateBackdrop("Overlay")
 	end
 	LegacySystemFrame.ChallengesPage.LegacyChallengePointSummary.ProgressBarBackground:SetAlpha(0)
+	LegacySystemFrame.TreePage.LegacyTreePointSummary.Border:SetAlpha(0)
+
+	hooksecurefunc(LegacySystemFrame.RewardTrackPage.LegacyRewardProgressFrame, "Init", function(self)
+		for reward in self.elementPool:EnumerateActive() do
+			if not reward.styled then
+				reward:CreateBackdrop("Overlay")
+				reward.backdrop:SetPoint("TOPLEFT", reward, 18, -8)
+				reward.backdrop:SetPoint("BOTTOMRIGHT", reward, -18, 8)
+
+				reward.RewardCardBG:SetAlpha(0)
+
+				reward.Icon:SkinIcon(true)
+				reward.IconBorder:SetAlpha(0)
+				reward.styled = true
+			end
+		end
+	end)
 
 	hooksecurefunc(LegacySystemFrame.ChallengesPage.CategoryList.ScrollBox, "Update", function(frame)
 		for _, child in next, {frame.ScrollTarget:GetChildren()} do
@@ -68,6 +85,66 @@ local function LoadSkin()
 				T.SkinCheckBox(button.Tracked)
 				button.Tracked:SetSize(20, 20)
 
+				hooksecurefunc(button, "DisplayObjectives", function(self)
+					for criteria in self:GetObjectiveFrame().criteriaPool:EnumerateActive() do
+						if not criteria.styled then
+							criteria.Background:SetAlpha(0)
+							local bar = criteria.ProgressBar
+							if bar then
+								bar.ProgressBarFrame:SetAlpha(0)
+								bar:CreateBackdrop("Overlay")
+							end
+							criteria.styled = true
+						end
+					end
+				end)
+
+				local collapse = button.PlusMinus
+				if collapse then
+					collapse:SetAlpha(0)
+					local b = CreateFrame("Button", nil, frame)
+					b:SetPoint("TOPLEFT", collapse)
+					b:Hide()
+					b:SetSize(17, 17)
+					b:StripTextures()
+					b:SetTemplate("Overlay")
+
+					b.minus = b:CreateTexture(nil, "OVERLAY")
+					b.minus:SetSize(7, 1)
+					b.minus:SetPoint("CENTER")
+					b.minus:SetTexture(C.media.blank)
+
+					b.plus = b:CreateTexture(nil, "OVERLAY")
+					b.plus:SetSize(1, 7)
+					b.plus:SetPoint("CENTER")
+					b.plus:SetTexture(C.media.blank)
+
+					b:HookScript("OnEnter", T.SetModifiedBackdrop)
+					b:HookScript("OnLeave", T.SetOriginalBackdrop)
+
+					b:SetScript("OnMouseUp", function() button:OnClick() end)
+
+					hooksecurefunc(collapse, "Hide", function(_, show)
+						b:SetShown(false)
+					end)
+
+					hooksecurefunc(collapse, "Show", function(_, show)
+						b:SetShown(true)
+					end)
+
+					hooksecurefunc(collapse, "SetShown", function(_, show)
+						b:SetShown(show)
+					end)
+
+					hooksecurefunc(button, "UpdatePlusMinusArt", function(self)
+						if self.collapsed then
+							b.plus:Show()
+						else
+							b.plus:Hide()
+						end
+					end)
+				end
+
 				button.Icon.frame:SetAlpha(0)
 				button.Icon.texture:RemoveMaskTexture(button.Icon.TextureMask)
 				button.Icon.texture:SkinIcon()
@@ -76,6 +153,34 @@ local function LoadSkin()
 			end
 		end
 	end)
+
+	hooksecurefunc(LegacySystemFrame.TreePage.LegacyTreeSelectionPanel, "UpdateSelection", function(self)
+		for i, button in ipairs(self.treeButtons) do
+			if not button.styled then
+				button:CreateBackdrop("Default")
+				button:StyleButton(true, 0)
+				button.checked:SetColorTexture(1, 0.82, 0, 0.3)
+
+				button.NormalTexture:SetTexCoord(0.15, 0.85, 0.15, 0.85)
+				button.PushedTexture:SetTexCoord(0.15, 0.85, 0.15, 0.85)
+
+				button.CircleMask:Hide()
+				button.Ring:Hide()
+				button.SelectedGlow:SetAlpha(0)
+				button.Background:SetAlpha(0)
+
+				button.styled = true
+			end
+		end
+	end)
+
+	local SelectedTreeIcon = LegacySystemFrame.TreePage.LegacyTreeTraitPanel.SelectedTreeIcon
+	SelectedTreeIcon:CreateBackdrop("Default")
+	SelectedTreeIcon.CircleMask:Hide()
+	SelectedTreeIcon.Ring:Hide()
+	SelectedTreeIcon.NormalTexture:SetTexCoord(0.15, 0.85, 0.15, 0.85)
+	LegacySystemFrame.TreePage.LegacyTreeTraitPanel.SpentPointsFrame.Background:SetAlpha(0)
+	LegacySystemFrame.TreePage.LegacyTreeTraitPanel.SpentPointsFrame:SetMovePoint(nil, -15)
 
 	local function TalentButtonStateBorder(button, visualState)
 		local color = _G.TalentButtonUtil.GetColorForBaseVisualState(visualState)
@@ -93,7 +198,7 @@ local function LoadSkin()
 			button.StateBorderHover:Kill()
 			button.Shadow:SetAlpha(0)
 
-			hooksecurefunc(button, 'UpdateStateBorder', TalentButtonStateBorder)
+			hooksecurefunc(button, "UpdateStateBorder", TalentButtonStateBorder)
 			local visualState = button:GetVisualState()
 			if visualState then -- state was applied before the hook existed
 				TalentButtonStateBorder(button, visualState)
