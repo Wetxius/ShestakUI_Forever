@@ -18,10 +18,10 @@ end
 if C.reminder.raid_buffs_enable == true or C.announcements.flask_food == true then
 	T.ReminderBuffs = {
 		Flask = {
-			SpellName(17628),	-- Flask of Supreme Power (+150 Spell Damage)
-			SpellName(17627),	-- Flask of Distilled Wisdom (+2000 Mana)
-			SpellName(17629),	-- Flask of Chromatic Resistance (+25 Magic Resistance)
-			SpellName(17626),	-- Flask of the Titans (+400 Health)
+			SpellName(17628),		-- Flask of Supreme Power (+150 Spell Damage)
+			SpellName(17627),		-- Flask of Distilled Wisdom (+2000 Mana)
+			SpellName(17629),		-- Flask of Chromatic Resistance (+25 Magic Resistance)
+			SpellName(17626),		-- Flask of the Titans (+400 Health)
 		},
 		BattleElixir = {
 			-- SpellName(spellID),	-- Spell name
@@ -93,14 +93,14 @@ if C.reminder.raid_buffs_enable == true or C.announcements.flask_food == true th
 			},
 		},
 		Food = {
-			SpellName(24799),	-- Well Fed (+20 Strength) [Smoked Desert Dumplings]
-			-- SpellName(18194),	-- Mana Regeneration (+8 Mp5) [Nightfin Soup]
-			SpellName(15852),	-- Dragonbreath Chili (Special) [Dragonbreath Chili]
-			SpellName(18125),	-- Blessed Sunfruit (+10 Strength) [Blessed Sunfruit]
-			SpellName(18192),	-- Increased Agility (+10 Agility) [Grilled Squid]
-			SpellName(18141),	-- Blessed Sunfruit Juice (+10 Spirit) [Blessed Sunfruit Juice]
-			SpellName(22730),	-- Increased Intellect (+10 Intellect) [Runn Tum Tuber Surprise]
-			SpellName(25661),	-- Increased Stamina (+25 Stamina) [Dirge's Kickin' Chimaerok Chops]
+			SpellName(24799),		-- Well Fed (+20 Strength) [Smoked Desert Dumplings]
+			-- SpellName(18194),		-- Mana Regeneration (+8 Mp5) [Nightfin Soup]
+			SpellName(15852),		-- Dragonbreath Chili (Special) [Dragonbreath Chili]
+			SpellName(18125),		-- Blessed Sunfruit (+10 Strength) [Blessed Sunfruit]
+			SpellName(18192),		-- Increased Agility (+10 Agility) [Grilled Squid]
+			SpellName(18141),		-- Blessed Sunfruit Juice (+10 Spirit) [Blessed Sunfruit Juice]
+			SpellName(22730),		-- Increased Intellect (+10 Intellect) [Runn Tum Tuber Surprise]
+			SpellName(25661),		-- Increased Stamina (+25 Stamina) [Dirge's Kickin' Chimaerok Chops]
 		},
 		Alliance = {
 			Mp5 = {
@@ -110,7 +110,6 @@ if C.reminder.raid_buffs_enable == true or C.announcements.flask_food == true th
 			Physical = {
 				SpellName(25782),	-- Greater Blessing of Might
 				SpellName(19740),	-- Blessing of Might
-				SpellName(425600),	-- Horn of Lordaeron [Season of Discovery]
 			},
 			Threat = {
 				SpellName(25895),	-- Greater Blessing of Salvation
@@ -131,28 +130,27 @@ if C.reminder.raid_buffs_enable == true or C.announcements.flask_food == true th
 			},
 		},
 		AP = {
-			SpellName(6673),	-- Battle Shout
+			SpellName(6673),		-- Battle Shout
 		},
 		Intellect = {
-			SpellName(23028),	-- Arcane Brilliance
-			SpellName(1459),	-- Arcane Intellect
+			SpellName(23028),		-- Arcane Brilliance
+			SpellName(1459),		-- Arcane Intellect
 		},
 		Kings = {
-			SpellName(25898),	-- Greater Blessing of Kings
-			SpellName(20217),	-- Blessing of Kings
-			SpellName(409583),	-- Aspect of the Lion [Season of Discovery]
+			SpellName(25898),		-- Greater Blessing of Kings
+			SpellName(20217),		-- Blessing of Kings
 		},
 		Mark = {
-			SpellName(21849),	-- Gift of the Wild
-			SpellName(1126),	-- Mark of the Wild
+			SpellName(21849),		-- Gift of the Wild
+			SpellName(1126),		-- Mark of the Wild
 		},
 		Spirit = {
-			SpellName(27681),	-- Prayer of Spirit
-			SpellName(14752),	-- Divine Spirit
+			SpellName(27681),		-- Prayer of Spirit
+			SpellName(14752),		-- Divine Spirit
 		},
 		Stamina = {
-			SpellName(21562),	-- Prayer of Fortitude
-			SpellName(1243),	-- Power Word: Fortitude
+			SpellName(21562),		-- Prayer of Fortitude
+			SpellName(1243),		-- Power Word: Fortitude
 		},
 		Custom = {
 			-- SpellName(spellID),	-- Spell name
@@ -244,7 +242,6 @@ if C.reminder.solo_buffs_enable == true then
 					SpellName(13163),	-- Aspect of the Monkey
 					SpellName(13159),	-- Aspect of the Pack
 					SpellName(20043),	-- Aspect of the Wild
-					SpellName(409580),	-- Aspect of the Lion [Season of Discovery]
 				},
 				["combat"] = true,
 				["instance"] = true,
@@ -266,7 +263,6 @@ if C.reminder.solo_buffs_enable == true then
 					SpellName(168),		-- Frost Armor
 					SpellName(6117),	-- Mage Armor
 					SpellName(7302),	-- Ice Armor
-					SpellName(428741),	-- Molten Armor [Season of Discovery]
 				},
 				["combat"] = true,
 				["instance"] = true,
@@ -285,7 +281,6 @@ if C.reminder.solo_buffs_enable == true then
 			[1] = {	-- Righteous Fury group
 				["spells"] = {
 					SpellName(25780),	-- Righteous Fury
-					-- SpellName(407627),	-- Righteous Fury [Season of Discovery]
 				},
 				["role"] = "Tank",
 				["combat"] = true,
@@ -341,7 +336,6 @@ if C.reminder.solo_buffs_enable == true then
 					SpellName(31892),		-- Seal of Blood
 					SpellName(348700),		-- Seal of the Martyr
 					SpellName(348704),		-- Seal of Corruption
-					SpellName(407798),		-- Seal of Martyrdom [Season of Discovery]
 				},
 				["combat"] = true,
 				["instance"] = true,
@@ -413,9 +407,6 @@ if C.reminder.solo_buffs_enable == true then
 					SpellName(3408),	-- Crippling Poison
 					SpellName(5761),	-- Mind-numbing Poison
 					SpellName(13219),	-- Wound Poison
-					SpellName(439465),	-- Atrophic Poison [Season of Discovery]
-					SpellName(439464),	-- Numbing Poison [Season of Discovery]
-					SpellName(439462),	-- Sebacious Poison [Season of Discovery]
 				},
 				["mainhand"] = true,
 				["combat"] = true,
@@ -439,9 +430,6 @@ if C.reminder.solo_buffs_enable == true then
 					SpellName(3408),	-- Crippling Poison
 					SpellName(5761),	-- Mind-numbing Poison
 					SpellName(13219),	-- Wound Poison
-					SpellName(439465),	-- Atrophic Poison [Season of Discovery]
-					SpellName(439464),	-- Numbing Poison [Season of Discovery]
-					SpellName(439462),	-- Sebacious Poison [Season of Discovery]
 				},
 				["offhand"] = true,
 				["combat"] = true,
@@ -453,9 +441,7 @@ if C.reminder.solo_buffs_enable == true then
 		SHAMAN = {
 			[1] = {	-- Shields group
 				["spells"] = {
-					SpellName(408510),	-- Water Shield [Season of Discovery]
 					SpellName(324),		-- Lightning Shield
-					SpellName(974),		-- Earth Shield [Season of Discovery]
 				},
 				["combat"] = true,
 				["instance"] = true,
@@ -515,7 +501,6 @@ if C.reminder.solo_buffs_enable == true then
 			[1] = {	-- Battle Shout group
 				["spells"] = {
 					SpellName(6673),	-- Battle Shout
-					SpellName(403215),	-- Commanding Shout [Season of Discovery]
 				},
 				["combat"] = true,
 				["instance"] = true,
@@ -527,7 +512,6 @@ if C.reminder.solo_buffs_enable == true then
 					SpellName(2457),		-- Battle Stance
 					SpellName(2458),		-- Berserker Stance
 					SpellName(71),			-- Defensive Stance
-					SpellName(412513),		-- Gladiator Stance [Season of Discovery]
 				},
 				["combat"] = true,
 				["instance"] = true,
