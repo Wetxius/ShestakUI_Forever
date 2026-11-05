@@ -14,7 +14,7 @@ local function LoadSkin()
 	PVPMatchScoreboard.Content:StripTextures()
 
 	T.SkinScrollBar(PVPMatchScoreboard.Content.ScrollBar)
-	T.SkinCloseButton(PVPMatchScoreboard.CloseButton)
+	T.SkinCloseButton(PVPMatchScoreboard.ClosePanelButton)
 
 	for i = 1, 3 do
 		T.SkinTab(_G.PVPMatchScoreboard.Content.TabContainer.TabGroup["Tab"..i])
@@ -32,23 +32,23 @@ local function LoadSkin()
 	T.SkinScrollBar(PVPMatchResults.content.scrollBar)
 	T.SkinCloseButton(PVPMatchResults.CloseButton)
 	PVPMatchResults.buttonContainer.leaveButton:SkinButton()
-	PVPMatchResults.buttonContainer.requeueButton:SkinButton()
+	--BETA PVPMatchResults.buttonContainer.requeueButton:SkinButton()
 
 	for i = 1, 3 do
 		T.SkinTab(_G.PVPMatchResults.content.tabContainer.tabGroup["tab"..i])
 	end
 
-	local honor = PVPMatchResults.content.earningsContainer.progressContainer.honor.button
-	honor.CircleMask:Hide()
-	honor.Ring:Hide()
-	honor.Icon:SkinIcon()
-	PVPMatchResults.content.earningsContainer.progressContainer.honor:SetScale(1)
+	-- local honor = PVPMatchResults.content.earningsContainer.progressContainer.honor.button
+	-- honor.CircleMask:Hide()
+	-- honor.Ring:Hide()
+	-- honor.Icon:SkinIcon()
+	-- PVPMatchResults.content.earningsContainer.progressContainer.honor:SetScale(1)
 
-	local conquest = PVPMatchResults.content.earningsContainer.progressContainer.conquest.button
-	conquest.CircleMask:Hide()
-	conquest.Ring:Hide()
-	conquest.Icon:SkinIcon()
-	PVPMatchResults.content.earningsContainer.progressContainer.conquest:SetScale(1)
+	-- local conquest = PVPMatchResults.content.earningsContainer.progressContainer.conquest.button
+	-- conquest.CircleMask:Hide()
+	-- conquest.Ring:Hide()
+	-- conquest.Icon:SkinIcon()
+	-- PVPMatchResults.content.earningsContainer.progressContainer.conquest:SetScale(1)
 
 	hooksecurefunc(PVPMatchResults, "AddItemReward", function()
 		for itemFrame in PVPMatchResults.itemPool:EnumerateActive() do
