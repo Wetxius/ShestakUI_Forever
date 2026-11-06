@@ -278,8 +278,8 @@ LootRollAnchor:SetScript("OnEvent", function(_, _, addon)
 	LootRollAnchor:UnregisterEvent("ADDON_LOADED")
 	LootRollAnchor:RegisterEvent("START_LOOT_ROLL")
 
-	UIParent:UnregisterEvent("START_LOOT_ROLL")
-	UIParent:UnregisterEvent("CANCEL_LOOT_ROLL")
+	GameEvent.UnregisterInternalEvent("START_LOOT_ROLL")
+	GameEvent.UnregisterInternalEvent("CANCEL_LOOT_ROLL")
 
 	LootRollAnchor:SetScript("OnEvent", function(_, _, ...)
 		return START_LOOT_ROLL(...)
