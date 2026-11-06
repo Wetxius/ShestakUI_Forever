@@ -926,7 +926,8 @@ local function style(self, unit)
 
 		if C.nameplate.track_debuffs then
 			self.Auras:AddGroup("HARMFUL|PLAYER", {
-				candidateFilters = {includeSpellIDs = T.DebuffWhiteList, excludeSpellIDs = T.DebuffBlackList},
+				-- candidateFilters = {includeSpellIDs = T.DebuffWhiteList, excludeSpellIDs = T.DebuffBlackList},
+				candidateFilters = {nameplateShowPersonal = true},
 				maxFrameCount = 6,
 				isDebuff = true
 			})
