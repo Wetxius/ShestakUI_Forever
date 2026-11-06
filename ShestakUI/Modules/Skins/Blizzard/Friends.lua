@@ -64,7 +64,9 @@ local function LoadSkin()
 		RecruitAFriendRecruitmentFrame.GenerateOrCopyLinkButton,
 		FriendsFriendsFrame.SendRequestButton,
 		FriendsFriendsFrame.CloseButton,
-		AddFriendInfoFrame.OkayButton
+		AddFriendInfoFrame.OkayButton,
+		SocialUIFrame.IgnoreListFrame.BlockButton,
+		SocialUIFrame.IgnoreListFrame.UnblockButton
 	}
 
 	for i = 1, #buttons do
@@ -79,7 +81,8 @@ local function LoadSkin()
 		FriendsListFrame.ScrollBar,
 		QuickJoinFrame.ScrollBar,
 		RecruitAFriendFrame.RecruitList.ScrollBar,
-		FriendsFriendsFrame.ScrollBar
+		FriendsFriendsFrame.ScrollBar,
+		SocialUIFrame.IgnoreListFrame.ScrollBar
 	}
 
 	for i = 1, #scrollbars do
@@ -92,9 +95,12 @@ local function LoadSkin()
 	for _, frame in next, { SocialUIFrame.FriendsList, SocialUIFrame.RecentAlliesList, SocialUIFrame.QuickJoinFrame, SocialUIFrame.FriendRequestsList, SocialUIFrame.RecruitAFriendFrame } do
 		frame:StripTextures()
 		T.SkinFilter(frame.FilterBar.SearchFilterDropdown)
+		frame.FilterBar.SearchFilterDropdown:SetHeight(24)
+		frame.FilterBar.SearchFilterDropdown.SetHeight = T.dummy
 		T.SkinEditBox(frame.FilterBar.SearchBar)
 		T.SkinScrollBar(frame.ScrollBar)
 		frame.ActionButton:SkinButton()
+		frame.ActionButton:SetHeight(30)
 
 		hooksecurefunc(frame.ScrollBox, "Update", function(frame)
 			for _, child in next, {frame.ScrollTarget:GetChildren()} do
@@ -102,8 +108,24 @@ local function LoadSkin()
 					if child.CollapseButton then
 						child:SetNormalTexture(0)
 						child:CreateBackdrop("Overlay")
-						child.backdrop:SetPoint("TOPLEFT", child, 3, -1)
+						child.backdrop:SetPoint("TOPLEFT", child, 0, -1)
 						child.backdrop:SetPoint("BOTTOMRIGHT", child, -1, 1)
+					end
+
+					if child.TextHolder then
+						child.Background:SetAlpha(0)
+						child:SetNormalTexture(0)
+						child:CreateBackdrop("Overlay")
+						child.backdrop:SetPoint("TOPLEFT", child, 0, -1)
+						child.backdrop:SetPoint("BOTTOMRIGHT", child, -1, 1)
+					end
+
+					if child.PartyButton then
+						child.PartyButton:SetNormalTexture(0)
+
+						child.PartyButton.b = CreateFrame("Frame", nil, child)
+						child.PartyButton.b:SetTemplate("Overlay")
+						child.PartyButton.b:SetInside(child.PartyButton)
 					end
 
 					child.isSkinned = true
@@ -126,10 +148,12 @@ local function LoadSkin()
 	SocialUIFrame.BattleNetBar:StripTextures()
 	T.SkinDropDownBox(SocialUIFrame.BattleNetBar.ControlsContainer.OnlineStatusDropdown)
 
+	SocialUIFrame.BattleNetBar.ControlsContainer.BattleNetMenuButton:SetHeight(33)
+
 	local battleTag = SocialUIFrame.BattleNetBar.ControlsContainer.PersonalBattleTagDisplay
-	battleTag:CreateBackdrop('Transparent')
+	battleTag:CreateBackdrop("Transparent")
 	battleTag.backdrop:SetOutside(SocialUIFrame.BattleNetBar.ControlsContainer.BattleNetBackground, 4)
-	battleTag.backdrop:SetBackdropColor(FRIENDS_BNET_BACKGROUND_COLOR.r, FRIENDS_BNET_BACKGROUND_COLOR.g, FRIENDS_BNET_BACKGROUND_COLOR.b, FRIENDS_BNET_BACKGROUND_COLOR.a)
+	battleTag.backdrop:SetBackdropColor(FRIENDS_BNET_BACKGROUND_COLOR.r * 0.2, FRIENDS_BNET_BACKGROUND_COLOR.g * 0.2, FRIENDS_BNET_BACKGROUND_COLOR.b * 0.2, 1)
 	SocialUIFrame.BattleNetBar.ControlsContainer.BattleNetBackground:SetAlpha(0)
 
 	T.SkinEditBox(AddFriendNameEditBox, nil, AddFriendNameEditBox:GetHeight() - 5)
@@ -138,9 +162,7 @@ local function LoadSkin()
 	FriendsFriendsFrame:SetTemplate("Transparent")
 
 	-- Ignore
-	T.SkinFrame(FriendsFrame.IgnoreListWindow)
-	FriendsFrame.IgnoreListWindow.UnignorePlayerButton:SkinButton()
-	T.SkinScrollBar(FriendsFrame.IgnoreListWindow.ScrollBar)
+	T.SkinFrame(SocialUIFrame.IgnoreListFrame)
 
 	-- Recruit a Friend
 	local SplashFrame = RecruitAFriendFrame.SplashFrame

@@ -219,11 +219,14 @@ local function LoadSkin()
 
 	for _, slot in next, { _G.PaperDollItemsFrame:GetChildren() } do
 		if slot:IsObjectType("Button") or slot:IsObjectType("ItemButton") then
-			slot:StripTextures()
+			-- slot:StripTextures()
 			slot:SetTemplate("Default")
 			slot:StyleButton()
+			slot:SetNormalTexture(0)
+			if slot.BorderFrame then slot.BorderFrame:SetAlpha(0) end
 
 			slot.icon:CropIcon()
+			slot.icon.SetTexCoord = T.dummy
 
 			slot.SetHighlightTexture = T.dummy
 			slot:GetHighlightTexture().SetAllPoints = T.dummy
