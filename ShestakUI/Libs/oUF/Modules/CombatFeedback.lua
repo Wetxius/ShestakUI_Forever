@@ -73,7 +73,7 @@ local function combat(self, event, unit, eventType, flags, amount)
 		fontHeight = fontHeight
 		text = CombatFeedbackText[eventType]
 	elseif eventType == "WOUND" and not FeedbackText.ignoreDamage then
-		if amount and amount ~= 0 then
+		if T.IsSecretValue(amount) or (T.NotSecretValue(amount) and amount ~= 0) then
 			if flags == "CRITICAL" then
 				color = fColors and fColors.CRITICAL or colors.CRITICAL
 				fontHeight = fontHeight
