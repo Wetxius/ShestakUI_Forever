@@ -33,15 +33,17 @@ local function LoadSkin()
 		item_bar:StripTextures(true)
 		item_bar:CreateBackdrop("Overlay")
 
-		b:StripTextures()
+		-- b:StripTextures()
 		b:StyleButton()
 		b:SetTemplate("Default")
 		b:SetPoint("TOPLEFT", item_bar, "TOPLEFT", 4, -4)
+		b:SetNormalTexture(0)
 
 		b.IconBorder:SetAlpha(0)
 		b.IconOverlay:SetAlpha(0)	-- Housing decor
 
 		t:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+		t.SetTexCoord = T.dummy -- BETA
 		t:ClearAllPoints()
 		t:SetPoint("TOPLEFT", 2, -2)
 		t:SetPoint("BOTTOMRIGHT", -2, 2)
