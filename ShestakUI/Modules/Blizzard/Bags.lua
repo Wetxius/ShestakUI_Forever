@@ -249,7 +249,7 @@ function Stuffing:SlotUpdate(b)
 		CooldownFrame_Set(b.cooldown, start, duration, enable)
 	end
 
-	if C.bag.ilvl == true then
+	if C.bag.ilvl == true and b.frame.text then
 		b.frame.text:SetText("")
 	end
 
