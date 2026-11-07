@@ -650,19 +650,8 @@ T.PostCastStart = function(Castbar, unit, _, notInterruptible)
 	end
 end
 
-T.CustomCastTimeText = function(self, durationObject)
-	local duration = durationObject:GetRemainingDuration()
-	local elapsed = durationObject:GetElapsedDuration()
-	local total = durationObject:GetTotalDuration()
-
-	self.Time:SetText(("%.1f / %.1f"):format(self.channeling and duration or elapsed, total))
-end
-
-T.CustomCastDelayText = function(self, durationObject)
-	local duration = durationObject:GetRemainingDuration()
-	local elapsed = durationObject:GetElapsedDuration()
-
-	self.Time:SetText(("%.1f |cffaf5050%s %.1f|r"):format(self.channeling and duration or elapsed, self.channeling and "-" or "+", abs(self.delay)))
+T.CustomCastDelayText = function(self, delay, isChanneling)
+	self.Delay:SetFormattedText("%s%.1f", isChanneling and "-" or "+", delay)
 end
 
 local castTimeFormatter = C_StringUtil.CreateSecondsFormatter()

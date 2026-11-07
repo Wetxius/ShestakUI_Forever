@@ -773,6 +773,7 @@ local function Shared(self, unit)
 			self.Castbar.Delay = T.SetFontString(self.Castbar, C.font.unit_frames_font, C.font.unit_frames_font_size, C.font.unit_frames_font_style)
 			self.Castbar.Delay:SetPoint("RIGHT", self.Castbar.Time, "LEFT", -2, 0)
 			self.Castbar.Delay:SetTextColor(0.7, 0.3, 0.3)
+			self.Castbar.CustomDelayText = T.CustomCastDelayText
 
 			self.Castbar.Text = T.SetFontString(self.Castbar, C.font.unit_frames_font, C.font.unit_frames_font_size, C.font.unit_frames_font_style)
 			self.Castbar.Text:SetPoint("LEFT", self.Castbar, "LEFT", 2, 0)
