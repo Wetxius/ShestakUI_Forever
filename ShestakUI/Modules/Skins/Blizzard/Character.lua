@@ -176,13 +176,9 @@ local function LoadSkin()
 			if button then
 				button:StyleButton()
 				button.IconBorder:Hide()
-
-				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 				button:GetNormalTexture():SetTexture(nil)
 
-				icon:ClearAllPoints()
-				icon:SetPoint("TOPLEFT", 2, -2)
-				icon:SetPoint("BOTTOMRIGHT", -2, 2)
+				icon:CropIcon()
 				button:SetFrameStrata("DIALOG")
 				if not button.backdrop then
 					button:CreateBackdrop("Default")
@@ -235,6 +231,10 @@ local function LoadSkin()
 
 			if slot.ignoreTexture then
 				slot.ignoreTexture:SetTexture([[Interface\PaperDollInfoFrame\UI-GearManager-LeaveItem-Transparent]])
+			end
+
+			if slot == CharacterAmmoSlot then
+				select(13, CharacterAmmoSlot:GetRegions()):Hide()
 			end
 		end
 	end
