@@ -347,8 +347,8 @@ local function updatePet(self, event, unit)
 end
 
 local function updateRaid(self, event)
-	local unitGUID = UnitGUID(self.__unit)
-	if(unitGUID ~= nil and not issecretvalue(unitGUID) and unitGUID ~= self.unitGUID) then
+	local unitGUID = scrubsecretvalues(UnitGUID(self.__unit))
+	if(unitGUID and unitGUID ~= self.unitGUID) then
 		self.unitGUID = unitGUID
 
 		self:UpdateAllElements(event)
@@ -384,7 +384,8 @@ local function initObject(unit, style, styleFunc, header, ...)
 		-- frame will be stuck with the 'vehicle' unit.
 		object:RegisterEvent('PLAYER_ENTERING_WORLD', evalUnitAndUpdate, true)
 
-		if(not objectUnit:match('%w+target') and not object.isNamePlate) then
+		local isEventlessUnit = objectUnit:match('%w+target')
+		if(not isEventlessUnit and not object.isNamePlate) then
 			object:RegisterEvent('UNIT_ENTERED_VEHICLE', evalUnitAndUpdate)
 			object:RegisterEvent('UNIT_EXITED_VEHICLE', evalUnitAndUpdate)
 
@@ -402,7 +403,7 @@ local function initObject(unit, style, styleFunc, header, ...)
 			object:SetAttribute('*type2', 'togglemenu')
 			object:SetAttribute('toggleForVehicle', true)
 
-			if(objectUnit:match('%w+target')) then
+			if(isEventlessUnit) then
 				oUF:HandleEventlessUnit(object)
 			else
 				oUF:HandleUnit(object)
@@ -830,7 +831,7 @@ Used to create a single unit frame and apply the currently active style to it.
 * self         - the global oUF object
 * unit         - the frame's unit (string)
 * overrideName - unique global name to use for the unit frame. Defaults to an auto-generated name based on the unit
-                 (string?)
+				 (string?)
 
 oUF implements some of its own attributes. These can be supplied by the layout, but are optional.
 PingableUnitFrameTemplate is inherited for Ping support.
@@ -1139,6 +1140,19 @@ function oUF:AddMetaElement(name, create, update, enable, disable)
 		disable = disable,
 	}
 	self:RegisterMetaFunction('Create' .. name, create)
+end
+
+--[[ oUF:GetUnitFrame(unit)
+Query oUF for a frame attached to the unit.
+
+Layouts can opt out of this by defining `.dontExpose` on each frame.
+--]]
+function oUF:GetUnitFrame(unit)
+	for _, object in next, self.objects do
+		if(object.__unit == unit and not object.dontExpose) then
+			return object
+		end
+	end
 end
 
 oUF.version = _VERSION

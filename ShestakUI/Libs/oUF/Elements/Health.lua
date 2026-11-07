@@ -5,6 +5,9 @@ local Private = oUF.Private
 local STATE = {}
 
 local unitSelectionType = Private.unitSelectionType
+local GameVersion = Private.GameVersion
+
+local playerClass = UnitClassBase('player')
 
 local function UpdateColor(self, event, unit)
 	if(not unit or self.__unit ~= unit) then return end
@@ -16,7 +19,9 @@ local function UpdateColor(self, event, unit)
 	elseif(element.colorTapping and not UnitPlayerControlled(unit) and UnitIsTapDenied(unit)) then
 		color = self.colors.tapped
 	elseif(element.colorThreat and not UnitPlayerControlled(unit) and UnitThreatSituation('player', unit)) then
-		color =  self.colors.threat[UnitThreatSituation('player', unit)]
+		color = self.colors.threat[UnitThreatSituation('player', unit)]
+	elseif(element.colorHappiness and GameVersion.Forever and unit == 'pet' and playerClass == 'HUNTER' and C_PetInfo.GetPetHappiness()) then
+		color = self.colors.happiness[(C_PetInfo.GetPetHappiness())]
 	elseif(element.colorClass and (UnitIsPlayer(unit) or UnitInPartyIsAI(unit)))
 		or (element.colorClassNPC and not (UnitIsPlayer(unit) or UnitInPartyIsAI(unit)))
 		or (element.colorClassPet and UnitPlayerControlled(unit) and not UnitIsPlayer(unit)) then
@@ -362,6 +367,10 @@ local function Enable(self, unit)
 
 		if(element.colorThreat) then
 			self:RegisterEvent('UNIT_THREAT_LIST_UPDATE', ColorPath)
+		end
+
+		if(element.colorHappiness and GameVersion.Forever and unit == 'pet' and playerClass == 'HUNTER') then
+			self:RegisterEvent('UNIT_HAPPINESS', ColorPath)
 		end
 
 		if(element.HealingAll or element.HealingPlayer or element.HealingOther or element.OverHealIndicator) then
