@@ -220,9 +220,7 @@ local function SkinQuestIcons(_, block)
 
 		item:SetNormalTexture(0)
 
-		item.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-		item.icon:SetPoint("TOPLEFT", item, 2, -2)
-		item.icon:SetPoint("BOTTOMRIGHT", item, -2, 2)
+		item.icon:CropIcon()
 
 		item.Cooldown:SetAllPoints(item.icon)
 
