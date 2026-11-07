@@ -51,23 +51,23 @@ local function LoadSkin()
 			unlearn:SetMovePoint(6)
 		end
 
-		local spellButtons = frame.spellButtons
-		if spellButtons then
-			for _, button in next, spellButtons do
-				button.IconTextureOverlay:SetAlpha(0)
+		for _, button in next, {frame.SpellButton1, frame.SpellButton2} do
+			if button then
+				local icon = button.IconTexture
+				local rank = button.SubSpellName
+				button.IconBorder:Hide()
 
-				button:GetCheckedTexture():SetColorTexture(0, 1, 0, 0.3)
+				if rank then
+					rank:SetTextColor(1, 1, 1)
+				end
+
+				button:GetCheckedTexture():SetColorTexture(0, 1, 0, 0.2)
 				button:GetCheckedTexture():SetPoint("TOPLEFT", button, 4, -4)
 				button:GetCheckedTexture():SetPoint("BOTTOMRIGHT", button, -4, 4)
-
-				button:GetPushedTexture():SetColorTexture(0, 1, 0, 0.3)
-				button:GetPushedTexture():SetPoint("TOPLEFT", button, 4, -4)
-				button:GetPushedTexture():SetPoint("BOTTOMRIGHT", button, -4, 4)
 
 				button.cooldown:SetPoint("TOPLEFT", button, 4, -4)
 				button.cooldown:SetPoint("BOTTOMRIGHT", button, -4, 4)
 
-				local icon = button.IconTexture
 				if icon then
 					icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 					icon:ClearAllPoints()
@@ -84,6 +84,40 @@ local function LoadSkin()
 				end
 			end
 		end
+
+		-- local spellButtons = frame.spellButtons
+		-- if spellButtons then
+			-- for _, button in next, spellButtons do
+				-- button.IconTextureOverlay:SetAlpha(0)
+
+				-- button:GetCheckedTexture():SetColorTexture(0, 1, 0, 0.3)
+				-- button:GetCheckedTexture():SetPoint("TOPLEFT", button, 4, -4)
+				-- button:GetCheckedTexture():SetPoint("BOTTOMRIGHT", button, -4, 4)
+
+				-- button:GetPushedTexture():SetColorTexture(0, 1, 0, 0.3)
+				-- button:GetPushedTexture():SetPoint("TOPLEFT", button, 4, -4)
+				-- button:GetPushedTexture():SetPoint("BOTTOMRIGHT", button, -4, 4)
+
+				-- button.cooldown:SetPoint("TOPLEFT", button, 4, -4)
+				-- button.cooldown:SetPoint("BOTTOMRIGHT", button, -4, 4)
+
+				-- local icon = button.IconTexture
+				-- if icon then
+					-- icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+					-- icon:ClearAllPoints()
+					-- icon:SetPoint("TOPLEFT", 4, -4)
+					-- icon:SetPoint("BOTTOMRIGHT", -4, 4)
+
+					-- hooksecurefunc(button, "UpdateButton", replaceHighlight)
+
+					-- if not button.backdrop then
+						-- button:CreateBackdrop("Default")
+						-- button.backdrop:SetPoint("TOPLEFT", 2, -2)
+						-- button.backdrop:SetPoint("BOTTOMRIGHT", -2, 2)
+					-- end
+				-- end
+			-- end
+		-- end
 	end
 
 	ProfessionsFrame.CraftingPage:StripTextures()
