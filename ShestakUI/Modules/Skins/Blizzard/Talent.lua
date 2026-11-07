@@ -120,29 +120,34 @@ local function LoadSkin()
 		end
 	end
 
-	for _, tab in next, {page.CategoryTabSystem:GetChildren()} do
-		if not tab.backdrop then
-			local icon = tab.Icon
-			icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-			icon:RemoveMaskTexture(tab.IconMask)
+	local function skinCategoryTab(frame)
+		for _, tab in next, {frame:GetChildren()} do
+			if not tab.backdrop then
+				local icon = tab.Icon
+				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				icon:RemoveMaskTexture(tab.IconMask)
 
-			tab.SquareBackground:SetAlpha(0)
-			tab.SquareBackgroundActive:SetAlpha(0)
-			-- tab.SquareBackgroundActiveGlow:SetAlpha(0)
+				tab.SquareBackground:SetAlpha(0)
+				tab.SquareBackgroundActive:SetAlpha(0)
+				-- tab.SquareBackgroundActiveGlow:SetAlpha(0)
 
-			tab:CreateBackdrop()
-			tab.backdrop:SetOutside(icon)
+				tab:CreateBackdrop()
+				tab.backdrop:SetOutside(icon)
 
-			tab:SetHighlightTexture(C.media.texture)
+				tab:SetHighlightTexture(C.media.texture)
 
-			local highlight = tab:GetHighlightTexture()
-			highlight:SetVertexColor(1, 1, 1, 0.3)
-			highlight:SetAllPoints(icon)
+				local highlight = tab:GetHighlightTexture()
+				highlight:SetVertexColor(1, 1, 1, 0.3)
+				highlight:SetAllPoints(icon)
 
-			hooksecurefunc(tab, "SetTabSelected", CategoryTabSelected)
-			CategoryTabSelected(tab, tab.isSelected)
+				hooksecurefunc(tab, "SetTabSelected", CategoryTabSelected)
+				CategoryTabSelected(tab, tab.isSelected)
+			end
 		end
 	end
+
+	-- skinCategoryTab(page.CategoryTabSystem)
+	hooksecurefunc(page.CategoryTabSystem, "AddTab", skinCategoryTab)
 
 	T.SkinEditBox(page.SearchBox, 250, 22)
 	page.SearchBox:SetMovePoint(nil, -4)
