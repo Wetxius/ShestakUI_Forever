@@ -168,16 +168,6 @@ if C.raidframe.plugins_pvp_debuffs == true then
 	[SpellName(157997)] = 1,	-- Ice Nova
 	[SpellName(228600)] = 1,	-- Glacial Spike
 	[SpellName(198121)] = 1,	-- Frostbite
-	-- Monk
-	[SpellName(119381)] = 4,	-- Leg Sweep
-	[SpellName(202346)] = 4,	-- Double Barrel
-	[SpellName(115078)] = 4,	-- Paralysis
-	[SpellName(198909)] = 3,	-- Song of Chi-Ji
-	[SpellName(202274)] = 3,	-- Incendiary Brew
-	[SpellName(233759)] = 4,	-- Grapple Weapon
-	[SpellName(123407)] = 1,	-- Spinning Fire Blossom
-	[SpellName(116706)] = 1,	-- Disable
-	[SpellName(232055)] = 4,	-- Fists of Fury
 	-- Paladin
 	[SpellName(853)] = 3,		-- Hammer of Justice
 	[SpellName(20066)] = 3,		-- Repentance
@@ -262,7 +252,6 @@ T.RaidDebuffsIgnore = {
 	[71041] = true,		-- Dungeon Deserter
 	[80354] = true,		-- Temporal Displacement
 	[95809] = true,		-- Hunter Pet Insanity
-	[124255] = true,	-- Stagger
 	[160455] = true,	-- Hunter Pet Fatigued
 	[206151] = true,	-- Challenger's Burden
 	[264689] = true,	-- Hunter Pet Fatigued

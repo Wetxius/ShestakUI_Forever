@@ -330,40 +330,6 @@ elseif T.class == "MAGE" then
 		T.aoespam[277703] = 3		-- Trailing Embers
 		T.aoespam[325130] = 1.9		-- Shifting Power (Covenant Night Fae)
 	end
-elseif T.class == "MONK" then
-	if C.combattext.merge_aoe_spam then
-		-- Healing spells
-		T.aoespam[119611] = 3		-- Renewing Mist
-		T.aoespam[124682] = 3		-- Enveloping Mist
-		T.aoespam[115175] = 3		-- Soothing Mist
-		T.aoespam[107270] = 3		-- Spinning Crane Kick
-		T.aoespam[132463] = 3		-- Chi Wave
-		T.aoespam[130654] = 3		-- Chi Burst
-		T.aoespam[124081] = 3		-- Zen Pulse
-		T.aoespam[116670] = 0		-- Uplift
-		T.aoespam[178173] = 3		-- Gift of the Ox
-		T.aoespam[162530] = 3		-- Refreshing Jade Wind
-		-- Damaging spells
-		T.aoespam[228649] = 1		-- Blackout Kick (x3)
-		T.aoespam[148187] = 4		-- Rushing Jade Wind
-		T.aoespam[123996] = 4		-- Crackling Tiger Lightning
-		T.aoespam[124280] = 4		-- Touch of Karma
-		T.aoespam[196608] = 4		-- Eye of the Tiger
-		T.aoespam[117952] = 3		-- Crackling Jade Lightning
-		T.aoespam[117418] = 3.5		-- Fists of Fury
-		T.aoespam[121253] = 0		-- Keg Smash
-		T.aoespam[115181] = 0		-- Breath of Fire
-		T.aoespam[123725] = 3		-- Breath of Fire (DoT)
-		T.aoespam[107270] = 3		-- Spinning Crane Kick
-		T.aoespam[123586] = 3		-- Flying Serpent Kick
-		T.aoespam[132467] = 3		-- Chi Wave
-		T.aoespam[148135] = 3		-- Chi Burst
-		T.aoespam[158221] = 1		-- Hurricane Strike
-	end
-	if C.combattext.healing then
-		T.healfilter[196608] = true	-- Eye of the Tiger
-		T.healfilter[216521] = true	-- Celestial Fortune
-	end
 elseif T.class == "PALADIN" then
 	if C.combattext.merge_aoe_spam then
 		-- Healing spells
