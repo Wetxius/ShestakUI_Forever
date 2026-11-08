@@ -1396,47 +1396,22 @@ do
 	font:SetShadowOffset(C.font.cooldown_timers_font_shadow and 1 or 0, C.font.cooldown_timers_font_shadow and -1 or 0)
 end
 
-local numberFormatter = C_StringUtil.CreateNumericRuleFormatter()
-numberFormatter:SetBreakpoints({
-	{
-		threshold = 0,
-		format = CreateColor(1, 0.2, 0.2, 1):WrapTextInColorCode("%d"),
-		step = 1,
-		rounding = Enum.NumericRuleFormatRounding.Up,
-	},
-	{
-		threshold = 5,
-		format = CreateColor(1, 1, 1, 1):WrapTextInColorCode("%d"),
-		step = 1,
-		rounding = Enum.NumericRuleFormatRounding.Up,
-	},
-	{
-		threshold = 59,		-- minute (minus 1 second to not show 60)
-		format = "%.0fm",
-		components = {
-			{
-				div = 59,
-			},
-		}
-	},
-	{
-		threshold = 3540,	-- 1 hour (minus 1 minute to not show 60m)
-		format = "%.0fh",
-		components = {
-			{
-				div = 3540,
-			},
-		}
-	},
-	{
-		threshold = 82800,	-- 1 day (minus 1 hour to not show 24h)
-		format = CreateColor(0.8, 0.8, 0.8, 1):WrapTextInColorCode("%.0fd"),
-		components = {
-			{
-				div = 82800,
-			},
-		}
-	},
+local cooldownFormatter = C_StringUtil.CreateNumericRuleFormatter()
+cooldownFormatter:SetBreakpoints({
+	{threshold = 0, format = CreateColor(1, 0.2, 0.2, 1):WrapTextInColorCode("%d"), step = 1, rounding = Enum.NumericRuleFormatRounding.Up},
+	{threshold = 5, format = CreateColor(1, 1, 1, 1):WrapTextInColorCode("%d"), step = 1, rounding = Enum.NumericRuleFormatRounding.Up},
+	{threshold = 59, format = "%.0fm", components = {{div = 59}}},		-- minute (minus 1 second to not show 60)
+	{threshold = 3540, format = "%.0fh", components = {{div = 3540}}},	-- 1 hour (minus 1 minute to not show 60m)
+	{threshold = 82800, format = CreateColor(0.8, 0.8, 0.8, 1):WrapTextInColorCode("%.0fd"), components = {{div = 82800}}}	-- 1 day (minus 1 hour to not show 24h)
+})
+
+local auraFormatter = C_StringUtil.CreateNumericRuleFormatter()
+auraFormatter:SetBreakpoints({
+	{threshold = 0, format = CreateColor(1, 1, 1, 1):WrapTextInColorCode("%.1f"), step = 0.1, rounding = Enum.NumericRuleFormatRounding.Up},
+	{threshold = 5, format = CreateColor(1, 1, 1, 1):WrapTextInColorCode("%d"), step = 1, rounding = Enum.NumericRuleFormatRounding.Up},
+	{threshold = 59, format = "%.0fm", components = {{div = 59}}},		-- minute (minus 1 second to not show 60)
+	{threshold = 3540, format = "%.0fh", components = {{div = 3540}}},	-- 1 hour (minus 1 minute to not show 60m)
+	{threshold = 82800, format = CreateColor(1, 1, 1, 1):WrapTextInColorCode("%.0fd"), components = {{div = 82800}}}	-- 1 day (minus 1 hour to not show 24h)
 })
 
 function T.SkinCooldown(cooldown, name)
@@ -1451,11 +1426,11 @@ function T.SkinCooldown(cooldown, name)
 		end
 		cooldown:SetCountdownFont("ShestakUI_AuraTimerFont")
 		text:SetHeight(C.font.auras_font_size)
-		cooldown:SetCountdownMillisecondsThreshold(5)
+		cooldown:SetCountdownFormatter(auraFormatter)
 	elseif name == "actionbar" then
 		cooldown:SetCountdownFont("ShestakUI_ActionBarTimerFont")
 		text:SetHeight(C.font.cooldown_timers_font_size)
-		cooldown:SetCountdownFormatter(numberFormatter)
+		cooldown:SetCountdownFormatter(cooldownFormatter)
 	elseif name == "bar" then
 		cooldown:SetCountdownFont("ShestakUI_AuraTimerFont")
 		text:SetHeight(C.font.auras_font_size)
