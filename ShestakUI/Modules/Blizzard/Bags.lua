@@ -508,7 +508,6 @@ function Stuffing:BagFrameSlotNew(p, slot)
 
 	ret.icon = _G[ret.frame:GetName().."IconTexture"]
 	ret.icon:CropIcon()
-	ret.icon.SetTexCoord = T.dummy -- BETA need?
 
 	-- C_Timer.After(2, function() -- NOTE: Test it if quality not returned after first open
 	if ret.frame.quality and ret.frame.quality > 1 then
@@ -569,7 +568,6 @@ function Stuffing:SlotNew(bag, slot)
 
 		ret.icon = _G[ret.frame:GetName().."IconTexture"]
 		ret.icon:CropIcon()
-		ret.icon.SetTexCoord = T.dummy
 
 		ret.count = _G[ret.frame:GetName().."Count"]
 		ret.count:SetFont(C.font.bags_font, C.font.bags_font_size, C.font.bags_font_style)

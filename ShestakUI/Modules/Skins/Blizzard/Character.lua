@@ -222,7 +222,6 @@ local function LoadSkin()
 			if slot.BorderFrame then slot.BorderFrame:SetAlpha(0) end
 
 			slot.icon:CropIcon()
-			slot.icon.SetTexCoord = T.dummy
 
 			slot.SetHighlightTexture = T.dummy
 			slot:GetHighlightTexture().SetAllPoints = T.dummy

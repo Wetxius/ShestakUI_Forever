@@ -377,6 +377,16 @@ end
 ----------------------------------------------------------------------------------------
 --	Style icon function
 ----------------------------------------------------------------------------------------
+local function resetIcon(icon, x1)
+	if x1 ~= 0.1 then
+		icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+	end
+end
+
+T.ResetTexCoord = function(icon)
+	hooksecurefunc(icon, "SetTexCoord", resetIcon)
+end
+
 local function SkinIcon(icon, t, parent)
 	parent = parent or icon:GetParent()
 
@@ -392,14 +402,14 @@ local function SkinIcon(icon, t, parent)
 	icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 	icon:SetParent(t and icon.b or parent)
 
-	icon.SetTexCoord = T.dummy -- BETA
+	T.ResetTexCoord(icon) -- BETA
 end
 
 local function CropIcon(icon)
 	icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 	icon:SetInside()
 
-	icon.SetTexCoord = T.dummy
+	T.ResetTexCoord(icon) -- BETA
 end
 
 ----------------------------------------------------------------------------------------
@@ -1227,7 +1237,7 @@ function T.SkinSideTabs(tab)
 
 	tab.Icon:SetInside(tab.backdrop)
 	tab.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-	tab.Icon.SetTexCoord = T.dummy
+	T.ResetTexCoord(tab.Icon)
 
 	if tab.Background then
 		tab.Background:SetAlpha(0)

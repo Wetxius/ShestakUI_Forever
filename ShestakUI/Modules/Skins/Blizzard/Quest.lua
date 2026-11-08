@@ -53,7 +53,7 @@ local function LoadSkin()
 		button.backdrop:SetPoint("BOTTOMRIGHT", texture, 2, -2)
 
 		texture:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-		texture.SetTexCoord = T.dummy -- BETA
+		T.ResetTexCoord(texture)
 	end
 
 	hooksecurefunc("QuestFrameProgressItems_Update", function()
@@ -151,7 +151,7 @@ local function LoadSkin()
 		if button.IconBorder then button.IconBorder:SetAlpha(0) end
 		if button.IconOverlay then button.IconOverlay:SetAlpha(0) end -- decor
 		button.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-		button.Icon.SetTexCoord = T.dummy -- BETA
+		T.ResetTexCoord(button.Icon)
 		button:CreateBackdrop("Default")
 		button.backdrop:ClearAllPoints()
 		button.backdrop:SetPoint("TOPLEFT", button.Icon, -2, 2)

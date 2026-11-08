@@ -42,11 +42,7 @@ local function LoadSkin()
 		b.IconBorder:SetAlpha(0)
 		b.IconOverlay:SetAlpha(0)	-- Housing decor
 
-		t:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-		t.SetTexCoord = T.dummy -- BETA
-		t:ClearAllPoints()
-		t:SetPoint("TOPLEFT", 2, -2)
-		t:SetPoint("BOTTOMRIGHT", -2, 2)
+		t:CropIcon()
 
 		hooksecurefunc(_G["MerchantItem"..i.."AltCurrencyFrame"], "SetPoint", function(self, _, _, _, x)
 			if x == -14 then
