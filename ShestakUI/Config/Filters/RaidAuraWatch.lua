@@ -8,39 +8,39 @@ local T, C, L = unpack(ShestakUI)
 if C.raidframe.plugins_buffs then
 	T.RaidBuffs = {
 		DRUID = {
-			{774, "TOPRIGHT", {0.8, 0.4, 0.8}, nil, {1058, 1430, 2090, 2091, 3627, 8910, 9839, 9840, 9841, 25299}},					-- Rejuvenation
+			{774, "TOPRIGHT", {0.8, 0.4, 0.8}, nil, {1058, 1430, 2090, 2091, 3627, 8910, 9839, 9840, 9841, 25299}},		-- Rejuvenation
 			{8936, "BOTTOMLEFT", {0.2, 0.8, 0.2}, nil, {8938, 8939, 8940, 8941, 9750, 9856, 9857, 9858}},				-- Regrowth
 			-- {408124, "TOPLEFT", {0.4, 0.8, 0.2}},				-- Lifebloom [Season of Discovery]
 			-- {408120, "BOTTOMRIGHT", {0.8, 0.4, 0}},				-- Wild Growth [Season of Discovery]
 			-- {428713, "LEFT", {0.45, 0.3, 0.2}, true},			-- Barkskin [Season of Discovery]
 		},
 		PALADIN = {
-			{407613, "TOPRIGHT", {0.7, 0.3, 0.7}},				-- Beacon of Light [Season of Discovery]
-			{1022, "BOTTOMRIGHT", {0.2, 0.2, 1}, true},			-- Blessing of Protection
+			-- {407613, "TOPRIGHT", {0.7, 0.3, 0.7}},				-- Beacon of Light [Season of Discovery]
+			{1022, "BOTTOMRIGHT", {0.2, 0.2, 1}, true, {5599, 10278}},			-- Blessing of Protection
 			{1044, "BOTTOMRIGHT", {0.89, 0.45, 0}, true},		-- Blessing of Freedom
-			{6940, "BOTTOMRIGHT", {0.89, 0.1, 0.1}, true},		-- Blessing of Sacrifice
-			{412019, "TOPLEFT", {0.4, 0.7, 0.2}, true},			-- Sacred Shield [Season of Discovery]
+			{6940, "BOTTOMRIGHT", {0.89, 0.1, 0.1}, true, {20729}},		-- Blessing of Sacrifice
+			-- {412019, "TOPLEFT", {0.4, 0.7, 0.2}, true},			-- Sacred Shield [Season of Discovery]
 		},
 		PRIEST = {
-			{401859, "BOTTOMRIGHT", {0.2, 0.7, 0.2}},			-- Prayer of Mending [Season of Discovery]
-			{139, "BOTTOMLEFT", {0.4, 0.7, 0.2}}, 				-- Renew
-			{17, "TOPLEFT", {0.81, 0.85, 0.1}, true},			-- Power Word: Shield
-			{402004, "LEFT", {0.89, 0.1, 0.1}, true},			-- Pain Suppression [Season of Discovery]
+			-- {401859, "BOTTOMRIGHT", {0.2, 0.7, 0.2}},			-- Prayer of Mending [Season of Discovery]
+			{139, "BOTTOMLEFT", {0.4, 0.7, 0.2}, nil, {6074, 6075, 6076, 6077, 6078, 10927, 10928, 10929, 25315}}, 		-- Renew
+			{17, "TOPLEFT", {0.81, 0.85, 0.1}, true, {592, 600, 3747, 6065, 6066, 10898, 10899, 10900, 10901}},			-- Power Word: Shield
+			-- {402004, "LEFT", {0.89, 0.1, 0.1}, true},			-- Pain Suppression [Season of Discovery]
 			{6788, "TOPRIGHT", {1, 0, 0}, true},				-- Weakened Soul
 			{10060, "RIGHT", {0.89, 0.1, 0.1}},					-- Power Infusion
 		},
 		SHAMAN = {
-			{408521, "TOPRIGHT", {0.7, 0.3, 0.7}, true},		-- Riptide [Season of Discovery]
-			{974, "BOTTOMLEFT", {0.2, 0.7, 0.2}, true},			-- Earth Shield [Season of Discovery]
+			-- {408521, "TOPRIGHT", {0.7, 0.3, 0.7}, true},		-- Riptide [Season of Discovery]
+			-- {974, "BOTTOMLEFT", {0.2, 0.7, 0.2}, true},			-- Earth Shield [Season of Discovery]
 			{29203, "BOTTOMRIGHT", {0.7, 0.4, 0}},				-- Healing Way (Change Color?)
 			{16177, "TOPLEFT", {0.4, 0.7, 0.2}},				-- Ancestral Fortitude
-			{408696, "BOTTOM", {0.2, 0.2, 0.1}},				-- Spirit of the Alpha [Season of Discovery]
+			-- {408696, "BOTTOM", {0.2, 0.2, 0.1}},				-- Spirit of the Alpha [Season of Discovery]
 		},
 		WARLOCK = {
 			{20707, "TOPRIGHT", {0.7, 0.32, 0.75}},				-- Soulstone
 		},
 		WARRIOR = {
-			{403338, "TOPRIGHT", {0.89, 0.1, 0.1}},				-- Intervene [Season of Discovery]
+			-- {403338, "TOPRIGHT", {0.89, 0.1, 0.1}},				-- Intervene [Season of Discovery]
 		},
 		ALL = {
 			{23333, "LEFT", {1, 0, 0}, true}, 					-- Warsong flag, Horde

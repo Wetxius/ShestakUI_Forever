@@ -1783,13 +1783,33 @@ C["filger_spells"] = {
 			-- Inspiration
 			{spellID = 14893, unitID = "target", caster = "player", filter = "BUFF"},
 			-- Lightwell Renew
-			{spellID = 7001, unitID = "target", caster = "player", filter = "BUFF"},
+			{spellID = 7001, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 27873, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 27874, unitID = "target", caster = "player", filter = "BUFF", absID = true},
 			-- Power Word: Shield
-			{spellID = 17, unitID = "target", caster = "player", filter = "BUFF"},
+			{spellID = 17, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 592, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 600, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 3747, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 6065, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 6066, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 10898, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 10899, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 10900, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 10901, unitID = "target", caster = "player", filter = "BUFF", absID = true},
 			-- Prayer of Mending [Season of Discovery]
 			{spellID = 401859, unitID = "target", caster = "player", filter = "BUFF"},
 			-- Renew
-			{spellID = 139, unitID = "target", caster = "player", filter = "BUFF"},
+			{spellID = 139, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 6074, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 6075, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 6076, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 6077, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 6078, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 10927, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 10928, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 10929, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 25315, unitID = "target", caster = "player", filter = "BUFF", absID = true},
 			-- Weakened Soul
 			{spellID = 6788, unitID = "target", caster = "all", filter = "DEBUFF"},
 
