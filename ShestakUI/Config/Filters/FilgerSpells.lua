@@ -252,9 +252,27 @@ C["filger_spells"] = {
 			-- Living Seed [Season of Discovery]
 			{spellID = 414680, unitID = "target", caster = "player", filter = "BUFF"},
 			-- Regrowth
-			{spellID = 8936, unitID = "target", caster = "player", filter = "BUFF"},
+			{spellID = 8936, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 8938, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 8939, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 8940, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 8941, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 9750, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 9856, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 9857, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 9858, unitID = "target", caster = "player", filter = "BUFF", absID = true},
 			-- Rejuvenation
-			{spellID = 774, unitID = "target", caster = "player", filter = "BUFF"},
+			{spellID = 774, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 1058, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 1430, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 2090, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 2091, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 3627, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 8910, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 9839, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 9840, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 9841, unitID = "target", caster = "player", filter = "BUFF", absID = true},
+			{spellID = 25299, unitID = "target", caster = "player", filter = "BUFF", absID = true},
 			-- Wild Growth [Season of Discovery]
 			{spellID = 408120, unitID = "target", caster = "player", filter = "BUFF"},
 
