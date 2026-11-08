@@ -287,7 +287,21 @@ local function SetupFlyoutButton(button)
 	end
 
 	if not button.IsSkinned then
-		StyleNormalButton(button)
+		button:SetNormalTexture(0)
+		button:SetTemplate("Transparent")
+		if C.actionbar.classcolor_border == true then
+			button:SetBackdropBorderColor(unpack(C.media.classborder_color))
+		end
+
+		button:StyleButton()
+
+		local count = button.Count
+		count:ClearAllPoints()
+		count:SetPoint("BOTTOMRIGHT", 0, 2)
+		count:SetFont(C.font.action_bars_font, C.font.action_bars_font_size, C.font.action_bars_font_style)
+		count:SetShadowOffset(C.font.action_bars_font_shadow and 1 or 0, C.font.action_bars_font_shadow and -1 or 0)
+		count:SetHeight(C.font.action_bars_font_size)
+		count:SetParent(button)
 
 		if C.actionbar.rightbars_mouseover == true then
 			SpellFlyout:HookScript("OnEnter", function() RightBarMouseOver(1) end)
@@ -307,12 +321,8 @@ local function SetupFlyoutButton(button)
 end
 
 local function StyleFlyoutButton()
-	local button, i = _G["SpellFlyoutPopupButton1"], 1
-	while button do
-		SetupFlyoutButton(button)
-
-		i = i + 1
-		button = _G["SpellFlyoutPopupButton"..i]
+	for _, b in pairs(SpellFlyout.buttons) do
+		SetupFlyoutButton(b)
 	end
 end
 
