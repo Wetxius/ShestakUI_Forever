@@ -552,8 +552,6 @@ C["filger_spells"] = {
 			IconSize = C.filger.buffs_size,
 			Position = {"TOP", T_DEBUFF_ICON_Anchor},
 
-			-- Beast Lore
-			-- {spellID = 1462, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Black Arrow
 			{spellID = 3674, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Charge (Boar)
@@ -572,14 +570,16 @@ C["filger_spells"] = {
 			-- {spellID = 13812, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Expose Weakness [Season of Discovery]
 			{spellID = 409507, unitID = "target", caster = "all", filter = "DEBUFF", absID = true},
-			-- Flare
-			-- {spellID = 1543, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Frost Trap Aura
 			{spellID = 13810, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Hunter's Mark
 			{spellID = 1130, unitID = "target", caster = "player", filter = "DEBUFF"},
-			-- Immolation Trap Effect
-			-- {spellID = 13797, unitID = "target", caster = "player", filter = "DEBUFF"},
+			-- Immolation Trap
+			{spellID = 13797, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 14298, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 14299, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 14300, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 14301, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
 			-- Improved Concussive Shot
 			{spellID = 19410, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Improved Wing Clip
@@ -605,7 +605,14 @@ C["filger_spells"] = {
 			-- Screech r2 (Bat / Bird of Prey / Carrion Bird)
 			{spellID = 24577, unitID = "target", caster = "all", filter = "DEBUFF", absID = true},
 			-- Serpent Sting
-			{spellID = 1978, unitID = "target", caster = "player", filter = "DEBUFF"},
+			{spellID = 1978, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 13549, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 13550, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 13551, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 13552, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 13553, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 13554, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
+			{spellID = 13555, unitID = "target", caster = "player", filter = "DEBUFF", absID = true},
 			-- Viper Sting
 			{spellID = 3034, unitID = "target", caster = "player", filter = "DEBUFF"},
 			-- Wing Clip
