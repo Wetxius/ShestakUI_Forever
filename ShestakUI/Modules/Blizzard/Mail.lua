@@ -106,7 +106,7 @@ local function makeButton(id, text, w, h, x, y)
 	return button
 end
 
-button = makeButton("OpenAllButton", ALL, 70, 25, -65, -398)
+button = makeButton("OpenAllButton", ALL, 70, 25, -45, -398)
 button:SetScript("OnClick", openAll)
 button:SetScript("OnEvent", onEvent)
 button:SetScript("OnEnter", function()
@@ -116,7 +116,7 @@ button:SetScript("OnEnter", function()
 end)
 button:SetScript("OnLeave", function() GameTooltip:Hide() end)
 
-button2 = makeButton("OpenAllButton2", MONEY, 70, 25, 18, -398)
+button2 = makeButton("OpenAllButton2", MONEY, 70, 25, 35, -398)
 button2:SetScript("OnClick", openAllCash)
 button2:SetScript("OnEnter", function()
 	if not total_cash then
