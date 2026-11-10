@@ -30,10 +30,7 @@ local function LoadSkin()
 		b:StyleButton()
 
 		local t = _G["MailItem"..i.."ButtonIcon"]
-		t:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-		t:ClearAllPoints()
-		t:SetPoint("TOPLEFT", 2, -2)
-		t:SetPoint("BOTTOMRIGHT", -2, 2)
+		t:CropIcon()
 
 		_G["MailItem"..i.."ButtonIconBorder"]:SetAlpha(0)
 	end
@@ -87,10 +84,7 @@ local function LoadSkin()
 			local t = b:GetNormalTexture()
 
 			if t then
-				t:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-				t:ClearAllPoints()
-				t:SetPoint("TOPLEFT", 2, -2)
-				t:SetPoint("BOTTOMRIGHT", -2, 2)
+				t:CropIcon()
 			end
 		end
 	end
@@ -148,16 +142,14 @@ local function LoadSkin()
 		local b = _G["OpenMailAttachmentButton"..i]
 		local t = _G["OpenMailAttachmentButton"..i.."IconTexture"]
 
-		b:StripTextures()
+		-- b:StripTextures()
+		b:SetNormalTexture(0)
 		b:SetTemplate("Default")
 		b:StyleButton()
 		b.IconBorder:SetAlpha(0)
 
 		if t then
-			t:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-			t:ClearAllPoints()
-			t:SetPoint("TOPLEFT", 2, -2)
-			t:SetPoint("BOTTOMRIGHT", -2, 2)
+			t:CropIcon()
 		end
 	end
 
