@@ -5,39 +5,31 @@ if C.skins.blizzard_frames ~= true then return end
 --	PetStable skin
 ----------------------------------------------------------------------------------------
 local function LoadSkin()
-	local frame = StableFrame
+	local frame = PetStableFrame
 	T.SkinFrame(frame)
 
-	local list = StableFrame.StabledPetList
-	list:StripTextures()
-	list.ListCounter:StripTextures()
+	PetStableMoneyFrame:StripTextures()
+	PetStableFrame.TopDividerFrame:SetAlpha(0)
+	PetStableFrame.BottomDividerFrame:SetAlpha(0)
 
-	StableFrame.MainHelpButton.Ring:Hide()
-	StableFrame.MainHelpButton:SetPoint("TOPLEFT", StableFrame, "TOPLEFT", -10, 15)
+	PetStableFrame.purchaseButton:SkinButton()
 
-	T.SkinEditBox(list.FilterBar.SearchBox, nil, 20)
-	T.SkinFilter(list.FilterBar.FilterDropdown, true)
-	T.SkinScrollBar(list.ScrollBar)
+	local buttons = {
+		"PetStableCurrentPet",
+		"PetStableStabledPet1",
+		"PetStableStabledPet2",
+	}
 
-	hooksecurefunc(StableFrame.PetModelScene.PetInfo.Type, "SetText", T.ReplaceIconString)
+	for _, v in pairs(buttons) do
+		local button = _G[v]
+		local icon = _G[v.."IconTexture"]
 
-	local list = StableFrame.PetModelScene.AbilitiesList
-	if list then
-		hooksecurefunc(list, "Layout", function(self)
-			for frame in self.abilityPool:EnumerateActive() do
-				if not frame.styled then
-					frame.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-					frame.styled = true
-				end
-			end
-		end)
+		button:StripTextures()
+		button:StyleButton()
+		button:SetTemplate("Default")
+
+		icon:CropIcon()
 	end
-	T.SkinModelControl(StableFrame.PetModelScene)
-
-	T.SkinDropDownBox(StableFrame.PetModelScene.PetInfo.Specialization)
-
-	StableFrame.StableTogglePetButton:SkinButton()
-	StableFrame.ReleasePetButton:SkinButton()
 end
 
 tinsert(T.SkinFuncs["ShestakUI"], LoadSkin)
