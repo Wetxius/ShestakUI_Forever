@@ -104,6 +104,7 @@ local function LoadSkin()
 	OpenMailFrame.backdrop:SetPoint("TOPLEFT", -5, 0)
 	OpenMailFrame.backdrop:SetPoint("BOTTOMRIGHT", 0, 0)
 	OpenMailFrameInset:StripTextures()
+	OpenMailFramePortrait:SetAlpha(0)
 
 	T.SkinCloseButton(OpenMailFrameCloseButton, OpenMailFrame.backdrop)
 	OpenMailReportSpamButton:SkinButton()
