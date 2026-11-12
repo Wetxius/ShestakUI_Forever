@@ -322,7 +322,7 @@ local OnTooltipSetUnit = function(self)
 
 	if not canaccessvalue(unit) then return end -- need?
 
-	local name, secondName = UnitName(unit)
+	local name = NameUtil.GetUnmodifiedUnitFullName(unit)
 	local race, englishRace = UnitRace(unit)
 	local level = UnitLevel(unit)
 	local levelColor = GetCreatureDifficultyColor(level)
@@ -350,10 +350,8 @@ local OnTooltipSetUnit = function(self)
 		name = titleName
 	end
 
-	secondName = secondName or ""
-
 	local r, g, b = GetColor(unit)
-	_G["GameTooltipTextLeft1"]:SetFormattedText("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, name.." "..secondName or "")
+	_G["GameTooltipTextLeft1"]:SetFormattedText("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, name or "")
 
 	if isPlayer then
 		if T.CheckUnitStatus(UnitIsAFK, unit) then
