@@ -76,7 +76,7 @@ end
 oUF.Tags.Events["NameMedium"] = "UNIT_NAME_UPDATE"
 
 oUF.Tags.Methods["NameLong"] = function(unit)
-	local name = UnitName(unit)
+	local name = NameUtil.GetUnmodifiedUnitFullName(unit)
 	return T.UTF(name, 18, true)
 end
 oUF.Tags.Events["NameLong"] = "UNIT_NAME_UPDATE"
