@@ -14,6 +14,8 @@ local BAGS_WARBAND_2 = {15, 16}
 local ST_NORMAL = 1
 local ST_FISHBAG = 2
 local ST_SPECIAL = 3
+local ST_QUIVER = 4
+local ST_SOULBAG = 5
 local bag_bars = 0
 local unusable
 
@@ -629,15 +631,23 @@ end
 
 -- From OneBag
 local BAGTYPE_PROFESSION = 0x0008 + 0x0010 + 0x0020 + 0x0040 + 0x0080 + 0x0200 + 0x0400 + 0x10000
+local BAGTYPE_QUIVER = 0x0001 + 0x0002
+local BAGTYPE_SOUL = 0x004
 local BAGTYPE_FISHING = 32768
 
 function Stuffing:BagType(bag)
 	local bagType = select(2, C_Container.GetContainerNumFreeSlots(bag))
 
-	if bagType and bit.band(bagType, BAGTYPE_FISHING) > 0 then
-		return ST_FISHBAG
-	elseif bagType and bit.band(bagType, BAGTYPE_PROFESSION) > 0 then
-		return ST_SPECIAL
+	if bagType then
+		if bit.band(bagType, BAGTYPE_QUIVER) > 0 then
+			return ST_QUIVER
+		elseif bit.band(bagType, BAGTYPE_SOUL) > 0 then
+			return ST_SOULBAG
+		elseif bit.band(bagType, BAGTYPE_FISHING) > 0 then
+			return ST_FISHBAG
+		elseif bit.band(bagType, BAGTYPE_PROFESSION) > 0 then
+			return ST_SPECIAL
+		end
 	end
 
 	return ST_NORMAL
@@ -1463,7 +1473,13 @@ function Stuffing:Layout(type)
 				b.frame.lock = false
 				b.frame:SetAlpha(1)
 
-				if bagType == ST_FISHBAG then
+				if bagType == ST_QUIVER then
+					b.frame:SetBackdropBorderColor(0.8, 0.8, 0.2)	-- Quiver
+					b.frame.lock = true
+				elseif bagType == ST_SOULBAG then
+					b.frame:SetBackdropBorderColor(0.8, 0.2, 0.2)	-- Soul Bag
+					b.frame.lock = true
+				elseif bagType == ST_FISHBAG then
 					b.frame:SetBackdropBorderColor(1, 0, 0)	-- Tackle
 					b.frame.lock = true
 				elseif bagType == ST_SPECIAL then
