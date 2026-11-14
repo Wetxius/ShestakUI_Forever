@@ -71,6 +71,7 @@ local function Shared(self, unit)
 		self.Health.colorDisconnected = true
 		self.Health.colorClass = true
 		self.Health.colorReaction = true
+		self.Health.colorHappiness = true
 	end
 	if C.unitframe.plugins_smooth_bar then
 		self.Health.smoothing = Enum.StatusBarInterpolation.ExponentialEaseOut or 1

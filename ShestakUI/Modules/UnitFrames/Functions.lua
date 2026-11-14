@@ -141,8 +141,9 @@ T.PostUpdateHealthColor = function(health, unit, color)
 	T.PostUpdateBackdropColor(health, color)
 
 	if not health.value then return end	-- arena target
+
+	local r, g, b
 	if UnitIsConnected(unit) and not UnitIsDeadOrGhost(unit) then
-		local r, g, b
 		if (C.unitframe.own_color ~= true and C.unitframe.enemy_health_color and unit == "target" and UnitIsEnemy(unit, "player") and (UnitIsPlayer(unit) or UnitInPartyIsAI(unit))) or (C.unitframe.own_color ~= true and unit == "target" and not UnitIsPlayer(unit) and not UnitInPartyIsAI(unit) and UnitIsFriend(unit, "player")) then
 			local c = T.oUF_colors.reaction[UnitReaction(unit, "player")]
 			if c then
@@ -153,12 +154,18 @@ T.PostUpdateHealthColor = function(health, unit, color)
 			health:SetStatusBarColor(r, g, b)
 		end
 		if unit == "pet" then
-			local _, class = UnitClass("player")
-			local r, g, b = T.oUF_colors.class[class]:GetRGB()
 			if C.unitframe.own_color then
 				health:SetStatusBarColor(unpack(C.unitframe.uf_color))
 				health.bg:SetVertexColor(0.1, 0.1, 0.1)
 			else
+				local _, class = UnitClass("player")
+				r, g, b = T.oUF_colors.class[class]:GetRGB()
+
+				local cur_happiness = C_PetInfo.GetPetHappiness()
+				if cur_happiness and cur_happiness < 3 then
+					r, g, b = T.oUF_colors.happiness[(cur_happiness)]:GetRGB()
+				end
+
 				if b then
 					health:GetStatusBarTexture():SetVertexColor(r, g, b)
 					if health.bg and health.bg.multiplier then
@@ -173,7 +180,9 @@ T.PostUpdateHealthColor = function(health, unit, color)
 				r, g, b = C.unitframe.uf_color[1], C.unitframe.uf_color[2], C.unitframe.uf_color[3]
 			else
 				if color then
-					r, g, b = color:GetRGB()
+					if not r then -- don't rewrite pet class color
+						r, g, b = color:GetRGB()
+					end
 				else
 					r, g, b = 0.3, 0.7, 0.3
 				end
@@ -277,11 +286,11 @@ end
 T.PostUpdateRaidHealthColor = function(health, unit, color)
 	T.PostUpdateBackdropColor(health, color)
 
+	local r, g, b
 	if UnitIsConnected(unit) and not UnitIsDeadOrGhost(unit) then
-		local r, g, b
 		if not UnitIsPlayer(unit) and not UnitInPartyIsAI(unit) and UnitIsFriend(unit, "player") and C.unitframe.own_color ~= true then
 			local c = T.oUF_colors.reaction[5]
-			local r, g, b = c:GetRGB()
+			r, g, b = c:GetRGB()
 			health:SetStatusBarColor(r, g, b)
 			if health.bg and health.bg.multiplier then
 				local mu = health.bg.multiplier
