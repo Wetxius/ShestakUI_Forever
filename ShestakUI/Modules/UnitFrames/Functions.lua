@@ -137,6 +137,17 @@ T.PostUpdateBackdropColor = function(element, color)
 	end
 end
 
+local health_color_curve = C_CurveUtil.CreateColorCurve()
+local health_color_low = CreateColor(1, 0, 0)
+local health_color_mid = CreateColor(1, 1, 0)
+local function updateCurve(r, g, b)
+	health_color_curve:ClearPoints()
+	health_color_curve:AddPoint(0.0, health_color_low)
+	health_color_curve:AddPoint(0.5, health_color_mid)
+	health_color_curve:AddPoint(1, CreateColor(r, g, b))
+	return health_color_curve
+end
+
 T.PostUpdateHealthColor = function(health, unit, color)
 	T.PostUpdateBackdropColor(health, color)
 
@@ -188,13 +199,9 @@ T.PostUpdateHealthColor = function(health, unit, color)
 				end
 			end
 
-			local curve = C_CurveUtil.CreateColorCurve()
-			curve:AddPoint(0.0, CreateColor(1, 0, 0))
-			curve:AddPoint(0.5, CreateColor(1, 1, 0))
-			curve:AddPoint(1, CreateColor(r, g, b))
-
-			local color = UnitHealthPercent(unit, true, curve)
-			local newr, newg, newb = color:GetRGB()
+			local curve = updateCurve(r, g, b)
+			local newcolor = UnitHealthPercent(unit, true, curve)
+			local newr, newg, newb = newcolor:GetRGB()
 			health:GetStatusBarTexture():SetVertexColor(newr, newg, newb)
 			if health.bg and health.bg.multiplier then
 				-- local mu = health.bg.multiplier -- can't calc secret value
@@ -308,13 +315,9 @@ T.PostUpdateRaidHealthColor = function(health, unit, color)
 				end
 			end
 
-			local curve = C_CurveUtil.CreateColorCurve()
-			curve:AddPoint(0.0, CreateColor(1, 0, 0))
-			curve:AddPoint(0.5, CreateColor(1, 1, 0))
-			curve:AddPoint(1, CreateColor(r, g, b))
-
-			local color = UnitHealthPercent(unit, true, curve)
-			local newr, newg, newb = color:GetRGB()
+			local curve = updateCurve(r, g, b)
+			local newcolor = UnitHealthPercent(unit, true, curve)
+			local newr, newg, newb = newcolor:GetRGB()
 			health:GetStatusBarTexture():SetVertexColor(newr, newg, newb)
 			if health.bg and health.bg.multiplier then
 				-- local mu = health.bg.multiplier -- can't calc secret value
