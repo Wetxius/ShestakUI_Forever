@@ -471,7 +471,7 @@ do
 	DiscordButton:SetSize(100, 23)
 	DiscordButton:SetText("Discord")
 	DiscordButton:SetWidth(DiscordButton.Text:GetWidth() + 15)
-	local url = "https://discord.gg/vwHwnTt"
+	local url = "https://discord.gg/ucJafcPQK8"
 	DiscordButton:SetScript("OnClick", function()
 		StaticPopup_Show("LINK_URL", _, _, url)
 	end)
