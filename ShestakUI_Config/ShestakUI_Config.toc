@@ -18,7 +18,7 @@
 ## Category-zhCN: UI重构
 ## Category-zhTW: UI重構
 
-## X-Website: https://github.com/Wetxius/ShestakUI
+## X-Website: https://github.com/Wetxius/ShestakUI_Forever
 ## X-Credits: Haleth, Solor
 ## X-Thanks: Tryllemann, Wetxius
 
