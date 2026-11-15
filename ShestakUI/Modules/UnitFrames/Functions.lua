@@ -878,7 +878,7 @@ T.CreateAuraWatch = function(self)
 
 	if buffs then
 		for _, spell in pairs(buffs) do
-			local auras = self:CreateAuras()
+			local auras = self:CreateAurasElement()
 			auras.size = 7 * C.raidframe.icon_multiplier
 			auras:SetPoint(spell[2], 0, 0)
 			auras.showCount = true
@@ -1064,7 +1064,7 @@ T.CustomFilter = function(_, unit, data)
 end
 
 T.DispelColor = function(self)
-	local frame = self:CreateAuras()
+	local frame = self:CreateAurasElement()
 	frame:SetAllPoints(self.Health)
 	frame.disableMouse = true
 	frame.disableCooldown = true
@@ -1213,7 +1213,7 @@ T.CreateFilgerAuras = function(self, unit)
 	if unit == "player" then
 		if C.filger.show_pvp_player then
 			-- Crowd controls
-			self.CCDebuffs = self:CreateAuras({
+			self.CCDebuffs = self:CreateAurasElement({
 				growthX = "LEFT",
 				growthY = "UP",
 				initialAnchor = "TOPRIGHT",
@@ -1235,7 +1235,7 @@ T.CreateFilgerAuras = function(self, unit)
 		end
 		if C.filger.show_special then
 			-- Special buffs on player
-			self.SBuffs = self:CreateAuras({
+			self.SBuffs = self:CreateAurasElement({
 				growthX = "LEFT",
 				growthY = "UP",
 				initialAnchor = "TOPRIGHT",
@@ -1264,7 +1264,7 @@ T.CreateFilgerAuras = function(self, unit)
 		end
 		if C.filger.show_buff then
 			-- Player buffs
-			self.PBuffs = self:CreateAuras({
+			self.PBuffs = self:CreateAurasElement({
 				growthX = "LEFT",
 				growthY = "UP",
 				initialAnchor = "TOPRIGHT",
@@ -1287,7 +1287,7 @@ T.CreateFilgerAuras = function(self, unit)
 		end
 		if C.filger.show_proc then
 			-- Player's Proc
-			self.PProc = self:CreateAuras({
+			self.PProc = self:CreateAurasElement({
 				growthX = "RIGHT",
 				growthY = "UP",
 				layoutLimit = (C.filger.buffs_size + C.filger.buffs_space) * 6
@@ -1310,7 +1310,7 @@ T.CreateFilgerAuras = function(self, unit)
 	elseif unit == "target" then
 		if C.filger.show_pvp_target then
 			-- Crowd controls
-			self.CCDebuffsT = self:CreateAuras({
+			self.CCDebuffsT = self:CreateAurasElement({
 				growthX = "RIGHT",
 				growthY = "UP",
 				layoutLimit = C.filger.pvp_size + C.filger.pvp_space
@@ -1331,7 +1331,7 @@ T.CreateFilgerAuras = function(self, unit)
 		end
 		if C.filger.show_pvp_target then
 			-- Defensive spells on target
-			self.TBuffs = self:CreateAuras({
+			self.TBuffs = self:CreateAurasElement({
 				growthX = "RIGHT",
 				growthY = "UP",
 				layoutLimit = C.filger.pvp_size + C.filger.pvp_space
@@ -1355,7 +1355,7 @@ T.CreateFilgerAuras = function(self, unit)
 		end
 		if C.filger.show_debuff then
 			-- Player's Debuffs on target
-			self.PDebuffs = self:CreateAuras({
+			self.PDebuffs = self:CreateAurasElement({
 				growthX = "RIGHT",
 				growthY = "UP",
 				layoutLimit = (C.filger.buffs_size + C.filger.buffs_space) * 6
@@ -1377,7 +1377,7 @@ T.CreateFilgerAuras = function(self, unit)
 		end
 		if C.filger.show_aura_bar then
 			-- Player's Debuffs bar on target
-			self.BarDebuffs = self:CreateAuras({
+			self.BarDebuffs = self:CreateAurasElement({
 				growthX = "RIGHT",
 				growthY = "UP",
 				layoutLimit = 28,
@@ -1408,7 +1408,7 @@ T.CreateFilgerAuras = function(self, unit)
 	elseif unit == "focus" then
 		if C.filger.show_aura_bar then
 			-- CC Debuffs bar on focus
-			self.CCBarDebuffs = self:CreateAuras({
+			self.CCBarDebuffs = self:CreateAurasElement({
 				growthX = "RIGHT",
 				growthY = "UP",
 				layoutLimit = 28,

@@ -240,7 +240,7 @@ local function Shared(self, unit)
 
 	-- Debuff icons
 	if unit == "party" and (not (suffix == "target")) and (not (suffix == "pet")) then
-		self.Debuffs = self:CreateAuras({
+		self.Debuffs = self:CreateAurasElement({
 			initialAnchor = "LEFT",
 			growthY = "RIGHT",
 			growthY = "DOWN",

@@ -260,7 +260,7 @@ local function Shared(self, unit)
 		T.CreateAuraWatch(self, unit)
 
 		-- Defensive buffs
-		self.Auras = self:CreateAuras({
+		self.Auras = self:CreateAurasElement({
 			initialAnchor = "TOPRIGHT",
 			growthX = "LEFT"
 		})
@@ -279,7 +279,7 @@ local function Shared(self, unit)
 
 	-- Raid Debuffs
 	if C.raidframe.plugins_debuffs == true and not (suffix == "pet" or suffix == "target" or suffix == "targettarget") then
-		self.Debuffs = self:CreateAuras()
+		self.Debuffs = self:CreateAurasElement()
 		self.Debuffs:SetPoint("CENTER", self, 0, 1)
 		self.Debuffs.size = 18 * C.raidframe.icon_multiplier
 		self.Debuffs.maxFrameCount = 1

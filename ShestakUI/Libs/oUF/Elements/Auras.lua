@@ -241,7 +241,7 @@ function elementMixin:ForceUpdate()
 	self:UpdateAllAuras()
 end
 
---[[ Auras: frame:CreateAuras([options])
+--[[ Auras: frame:CreateAurasElementElement([options])
 Create and return a aura element.
 
 * self     - the unit frame on which to create the element

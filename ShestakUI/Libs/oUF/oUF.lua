@@ -831,7 +831,7 @@ Used to create a single unit frame and apply the currently active style to it.
 * self         - the global oUF object
 * unit         - the frame's unit (string)
 * overrideName - unique global name to use for the unit frame. Defaults to an auto-generated name based on the unit
-				 (string?)
+                 (string?)
 
 oUF implements some of its own attributes. These can be supplied by the layout, but are optional.
 PingableUnitFrameTemplate is inherited for Ping support.
@@ -1139,7 +1139,12 @@ function oUF:AddMetaElement(name, create, update, enable, disable)
 		enable = enable,
 		disable = disable,
 	}
-	self:RegisterMetaFunction('Create' .. name, create)
+	self:RegisterMetaFunction('Create' .. name .. 'Element', create)
+
+	if(name == 'Auras') then
+		-- deprecated fallback, will be removed in oUF 15
+		self:RegisterMetaFunction('Create' .. name, create)
+	end
 end
 
 --[[ oUF:GetUnitFrame(unit)

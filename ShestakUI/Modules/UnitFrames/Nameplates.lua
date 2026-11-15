@@ -901,7 +901,7 @@ local function style(self, unit)
 
 	-- Aura tracking
 	if C.nameplate.track_debuffs or C.nameplate.track_buffs then
-		self.Auras = self:CreateAuras({
+		self.Auras = self:CreateAurasElement({
 			initialAnchor = "BOTTOMRIGHT",
 			growthX = "LEFT",
 			growthY = "UP",
