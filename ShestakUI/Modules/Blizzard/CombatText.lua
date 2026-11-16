@@ -43,6 +43,7 @@ if C.combattext.damage or C.combattext.healing then
 else
 	numf = 3
 end
+numf = 3 -- BETA
 
 -- Detect vehicle
 local function SetUnit()
