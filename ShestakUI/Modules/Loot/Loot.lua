@@ -209,7 +209,12 @@ local function Announce(chn)
 	if UnitIsPlayer("target") or not UnitExists("target") then
 		T.SendChatMessage(">> "..LOOT..":", chn)
 	else
-		T.SendChatMessage(">> "..LOOT.." - '"..UnitName("target").."':", chn)
+		local targetName = UnitName("target")
+		if targetName and canaccessvalue(targetName) then
+			T.SendChatMessage(">> "..LOOT.." - '"..targetName.."':", chn)
+		else
+			T.SendChatMessage(">> "..LOOT..":", chn)
+		end
 	end
 	for i = 1, GetNumLootItems() do
 		if LootSlotHasItem(i) then
