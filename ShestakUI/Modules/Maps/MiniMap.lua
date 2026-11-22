@@ -393,6 +393,7 @@ MinimapCluster.Tracking.Background:Hide()
 
 if C.minimap.tracking_icon then
 	trackButton:SetHighlightTexture(0)
+	trackButton:SetNormalTexture(0)
 	trackButton:SetSize(16, 16)
 
 	MinimapCluster.Tracking:CreateBackdrop("ClassColor")
