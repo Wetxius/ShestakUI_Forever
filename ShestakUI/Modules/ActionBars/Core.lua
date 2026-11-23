@@ -31,7 +31,7 @@ frame:SetScript("OnEvent", function()
 
 	local elements = {
 		OverrideActionBar, PossessActionBar, StatusTrackingBarManager, BagsBar,
-		MultiBarBottomLeft.QuickKeybindGlow, MultiBarLeft.QuickKeybindGlow, MultiBarBottomRight.QuickKeybindGlow, MultiBarRight.QuickKeybindGlow,
+		-- MultiBarBottomLeft.QuickKeybindGlow, MultiBarLeft.QuickKeybindGlow, MultiBarBottomRight.QuickKeybindGlow, MultiBarRight.QuickKeybindGlow,
 	}
 
 	for i = 1, #elements do
@@ -46,15 +46,9 @@ frame:SetScript("OnEvent", function()
 		end
 
 		-- f:Hide() - cause taint
+		f:SetParent(T.Hider)
 		f:SetAlpha(0)
 	end
-
-	-- for i = 1, 6 do
-		-- local b = _G["OverrideActionBarButton"..i]
-		-- b:UnregisterAllEvents()
-		-- b:SetAttribute("statehidden", true)
-		-- -- b:SetAttribute("showgrid", 1)
-	-- end
 
 	-- Enable grid showing
 	for i = 1, 10 do
@@ -580,35 +574,3 @@ T.PetBarUpdate = function()
 	end
 	PetActionBar.rangeTimer = -1
 end
-
-----------------------------------------------------------------------------------------
---	Rewrite Blizzard function to prevent ShowBase, SetPointBase, ClearAllPointsBase taints after finish Pet Battle, entering new combat and summon Hunter pet (.../Blizzard_ActionBarController/ActionBarController.lua)
-----------------------------------------------------------------------------------------
--- function ValidateActionBarTransition()
-	-- if ActionBarBusy() then
-		-- return
-	-- end
-
-	-- if CURRENT_ACTION_BAR_STATE == LE_ACTIONBAR_STATE_MAIN then
-		-- -- MainActionBar:Show()
-
-		-- -- if StanceBar:ShouldShow() then
-			-- -- StanceBar:Show()
-		-- -- end
-
-		-- if OverrideActionBar:IsShown() then
-			-- MicroMenu:ResetMicroMenuPosition()
-			-- BeginActionBarTransition(OverrideActionBar, nil)
-		-- end
-	-- elseif CURRENT_ACTION_BAR_STATE == LE_ACTIONBAR_STATE_OVERRIDE then
-		-- -- MainActionBar:Hide()
-		-- -- StanceBar:Hide()
-
-		-- if not OverrideActionBar:IsShown() then
-			-- BeginActionBarTransition(OverrideActionBar, 1)
-		-- end
-	-- end
-
-	-- -- MultiActionBar_Update()
-	-- ManageFramePositions()
--- end

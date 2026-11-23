@@ -244,6 +244,8 @@ end
 ----------------------------------------------------------------------------------------
 local HiddenFrame = CreateFrame("Frame")
 HiddenFrame:Hide()
+HiddenFrame:SetPoint("TOP", UIParent, 0, 200)
+HiddenFrame:SetSize(1, 1)
 T.Hider = HiddenFrame
 local function Kill(object)
 	if object.UnregisterAllEvents then
