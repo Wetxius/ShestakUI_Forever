@@ -1855,6 +1855,17 @@ function Stuffing.Menu(self, level)
 	UIDropDownMenu_AddButton(info, level)
 
 	wipe(info)
+	info.text = BINDING_NAME_TOGGLEKEYRING
+	info.notCheckable = 1
+	info.func = function()
+		if InCombatLockdown() then
+			print("|cffffff00"..ERR_NOT_IN_COMBAT.."|r") return
+		end
+		OpenBag(KEYRING_CONTAINER)
+	end
+	UIDropDownMenu_AddButton(info, level)
+
+	wipe(info)
 	info.disabled = nil
 	info.notCheckable = 1
 	info.text = CLOSE
