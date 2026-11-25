@@ -22,7 +22,7 @@ if C.raidframe.plugins_buffs then
 			-- {412019, "TOPLEFT", {0.4, 0.7, 0.2}, true},			-- Sacred Shield [Season of Discovery]
 		},
 		PRIEST = {
-			-- {401859, "BOTTOMRIGHT", {0.2, 0.7, 0.2}},			-- Prayer of Mending [Season of Discovery]
+			{401877, "BOTTOMRIGHT", {0.2, 0.7, 0.2}, nil, {1240848, 1240849}},			-- Prayer of Mending
 			{139, "BOTTOMLEFT", {0.4, 0.7, 0.2}, nil, {6074, 6075, 6076, 6077, 6078, 10927, 10928, 10929, 25315}}, 		-- Renew
 			{17, "TOPLEFT", {0.81, 0.85, 0.1}, true, {592, 600, 3747, 6065, 6066, 10898, 10899, 10900, 10901}},			-- Power Word: Shield
 			-- {402004, "LEFT", {0.89, 0.1, 0.1}, true},			-- Pain Suppression [Season of Discovery]
