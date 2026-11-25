@@ -894,6 +894,7 @@ T.CreateAuraWatch = function(self)
 			auras.PostCreateButton = T.CreateRaidBuffIcon
 
 			local filter = spell[4] and "HELPFUL" or "HELPFUL|PLAYER"
+			if spell[1] == 6788 then filter = "HARMFUL"
 
 			local list = {}
 			if spell[5] then
