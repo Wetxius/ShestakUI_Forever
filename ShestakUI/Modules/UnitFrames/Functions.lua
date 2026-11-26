@@ -568,7 +568,13 @@ local function castColor(unit)
 	local r, g, b
 	if UnitIsPlayer(unit) or UnitInPartyIsAI(unit) or unit == "pet" or unit == "vehicle" then
 		local _, class = UnitClass(unit)
-		local color = T.oUF_colors.class[class]
+		local color
+		if issecretvalue(class) then
+			-- class token is secret, but C_ClassColor still provides the color
+			color = C_ClassColor.GetClassColor(class)
+		else
+			color = T.oUF_colors.class[class]
+		end
 		if color then
 			r, g, b = color:GetRGB()
 		end
