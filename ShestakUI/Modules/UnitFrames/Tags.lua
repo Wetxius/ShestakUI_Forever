@@ -21,14 +21,14 @@ oUF.Tags.Methods["DiffColor"] = function(unit)
 	if level < 1 then
 		r, g, b = 0.69, 0.31, 0.31
 	else
-		local DiffColor = UnitLevel(unit) - UnitLevel("player")
-		if DiffColor >= 5 then
+		local DiffColor = C_PlayerInfo.GetContentDifficultyCreatureForPlayer(unit)
+		if DiffColor == 4 then
 			r, g, b = 0.69, 0.31, 0.31
-		elseif DiffColor >= 3 then
+		elseif DiffColor == 3 then
 			r, g, b = 0.71, 0.43, 0.27
-		elseif DiffColor >= -2 then
+		elseif DiffColor == 2 then
 			r, g, b = 0.84, 0.75, 0.65
-		elseif -DiffColor <= 5 then
+		elseif DiffColor == 1 then
 			r, g, b = 0.33, 0.59, 0.33
 		else
 			r, g, b = 0.55, 0.57, 0.61
