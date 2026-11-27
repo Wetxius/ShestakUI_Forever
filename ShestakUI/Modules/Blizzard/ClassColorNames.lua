@@ -178,16 +178,16 @@ local function RefreshList(self)
 	local playerArea = GetRealZoneText()
 	local memberInfo = self:GetMemberInfo()
 	if memberInfo then
-		if memberInfo.presence == Enum.ClubMemberPresence.Offline then return end
-		if memberInfo.zone and memberInfo.zone == playerArea then
+		if canaccessvalue(memberInfo.presence) and memberInfo.presence == Enum.ClubMemberPresence.Offline then return end
+		if memberInfo.zone and canaccessvalue(memberInfo.zone) and memberInfo.zone == playerArea then
 			self.Zone:SetText("|cff4cff4c"..memberInfo.zone)
 		end
 
-		if memberInfo.level then
+		if memberInfo.level and canaccessvalue(memberInfo.level) then
 			self.Level:SetText(diffColor[memberInfo.level]..memberInfo.level)
 		end
 
-		if memberInfo.guildRankOrder and memberInfo.guildRank then
+		if memberInfo.guildRankOrder and canaccessvalue(memberInfo.guildRankOrder) and memberInfo.guildRank and canaccessvalue(memberInfo.guildRank) then
 			self.Rank:SetText(guildRankColor[memberInfo.guildRankOrder]..memberInfo.guildRank)
 		end
 	end

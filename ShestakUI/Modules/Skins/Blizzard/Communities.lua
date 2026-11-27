@@ -406,7 +406,7 @@ local function LoadSkin()
 
 	hooksecurefunc(CommunitiesMemberListEntryMixin, "RefreshExpandedColumns", function(self)
 		local memberInfo = self:GetMemberInfo()
-		if memberInfo and memberInfo.classID then
+		if memberInfo and memberInfo.classID and canaccessvalue(memberInfo.classID) then
 			local classInfo = C_CreatureInfo.GetClassInfo(memberInfo.classID)
 			if classInfo then
 				local texcoord = CLASS_ICON_TCOORDS[classInfo.classFile]
